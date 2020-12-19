@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MySettingsScreen</string>
+    <string name="open_settings_screen">Open Settings Screen</string>
+</resources>

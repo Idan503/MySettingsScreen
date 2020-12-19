@@ -1,0 +1,3 @@
+include ':MySettingsScreen'
+include ':app'
+rootProject.name = "MySettingsScreen"
