@@ -1,11 +1,14 @@
-package com.idankorenisraeli.mysettingsscreen;
+package com.idankorenisraeli.mysettingsscreensample;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.button.MaterialButton;
+import com.idankorenisraeli.mysettingsscreen.MySettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,11 +21,10 @@ public class MainActivity extends AppCompatActivity {
 
         findViews();
 
-        main_BTN_settings.setOnClickListener(
-                new View.OnClickListener() {
+        main_BTN_settings.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        Intent intent = new Intent(MainActivity.this, MySettingsActivity.class);
                     }
                 }
         );
