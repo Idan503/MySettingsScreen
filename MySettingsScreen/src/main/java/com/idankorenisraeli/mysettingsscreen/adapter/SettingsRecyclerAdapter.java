@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.ClickableTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.SettingsTileHolder;
 
 import java.util.List;
 
@@ -28,7 +27,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     // inflates the row layout from xml when needed
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = mInflater.inflate(R.layout.settings_tile_layout, parent, false);
+        View view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
         return new ClickableTileHolder(view);
     }
 
@@ -36,10 +35,10 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder mHolder, int position) {
 
-        //switch case...
-        SettingsTileHolder holder = (SettingsTileHolder) mHolder;
-        //...
 
+        //switch case...
+        ClickableTileHolder holder = (ClickableTileHolder) mHolder;
+        //...
 
         holder.setData(getItem(position));
     }

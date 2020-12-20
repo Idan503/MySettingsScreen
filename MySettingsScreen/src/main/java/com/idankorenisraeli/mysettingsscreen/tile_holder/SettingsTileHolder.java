@@ -9,8 +9,8 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 
 public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
-    private TextView titleText;
-    private TextView descriptionText;
+    private final TextView titleText;
+    private final TextView descriptionText;
 
 
     public SettingsTileHolder(View itemView) {
@@ -20,7 +20,7 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
     }
 
 
-    public void setData(SettingsTileData tileObject){
+    protected void setData(SettingsTileData tileObject){
         this.setTitleText(tileObject.getTitle());
         this.setDescriptionText(tileObject.getDescription());
     }

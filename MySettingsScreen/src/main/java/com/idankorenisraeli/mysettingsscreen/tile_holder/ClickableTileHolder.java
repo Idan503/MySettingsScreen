@@ -1,8 +1,10 @@
 package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
+import android.util.Log;
 import android.view.View;
 
 import com.idankorenisraeli.mysettingsscreen.tile.ClickableTileData;
+import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 
 public class ClickableTileHolder extends SettingsTileHolder{
 
@@ -10,13 +12,21 @@ public class ClickableTileHolder extends SettingsTileHolder{
         super(itemView);
     }
 
-    public void setData(ClickableTileData tileObject) {
+    @Override
+    public void setData(SettingsTileData tileObject) {
         super.setData(tileObject);
-        this.itemView.setOnClickListener(new View.OnClickListener() {
+
+        ClickableTileData mData = (ClickableTileData) tileObject;
+
+        View.OnClickListener tileClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tileObject.getClickListener().onItemClick(itemView, getAdapterPosition());
+                if(mData.getClickListener()!=null)
+                    mData.getClickListener().onItemClick(itemView, getAdapterPosition());
             }
-        });
+        };
+
+        this.itemView.setClickable(true);
+        this.itemView.setOnClickListener(tileClickListener);
     }
 }
