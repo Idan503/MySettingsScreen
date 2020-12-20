@@ -2,12 +2,12 @@ package com.idankorenisraeli.mysettingsscreen.tile;
 
 import java.io.Serializable;
 
-public abstract class SettingsTile implements Serializable {
+public abstract class SettingsTileData implements Serializable {
 
     private String title;
     private String description;
 
-    public SettingsTile(String title, String description) {
+    public SettingsTileData(String title, String description) {
         this.title = title;
         this.description = description;
     }
@@ -16,7 +16,7 @@ public abstract class SettingsTile implements Serializable {
         return title;
     }
 
-    public void setTitle(String title) {
+    private void setTitle(String title) {
         this.title = title;
     }
 
@@ -24,7 +24,7 @@ public abstract class SettingsTile implements Serializable {
         return description;
     }
 
-    public void setDescription(String description) {
+    private void setDescription(String description) {
         this.description = description;
     }
 }

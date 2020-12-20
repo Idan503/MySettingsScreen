@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile.ClickableTile;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTile;
+import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.ClickableTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SettingsTileHolder;
 
@@ -17,11 +16,11 @@ import java.util.List;
 
 public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private List<SettingsTile> tilesData;
+    private List<SettingsTileData> tilesData;
     private LayoutInflater mInflater;
 
     // data is passed into the constructor
-    public SettingsRecyclerAdapter(Context context, List<SettingsTile> data) {
+    public SettingsRecyclerAdapter(Context context, List<SettingsTileData> data) {
         this.mInflater = LayoutInflater.from(context);
         this.tilesData = data;
     }
@@ -36,9 +35,13 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder mHolder, int position) {
+
+        //switch case...
         SettingsTileHolder holder = (SettingsTileHolder) mHolder;
-        ((SettingsTileHolder) holder).setTitleText(getItem(position).getTitle());
-        ((SettingsTileHolder) holder).setDescriptionText(getItem(position).getDescription());
+        //...
+
+
+        holder.setData(getItem(position));
     }
 
     // total number of rows
@@ -48,13 +51,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     // convenience method for getting data at click position
-    SettingsTile getItem(int id) {
+    SettingsTileData getItem(int id) {
         return tilesData.get(id);
     }
 
 
-    // parent activity will implement this method to respond to click events
-    public interface ItemClickListener {
-        void onItemClick(View view, int position);
-    }
 }

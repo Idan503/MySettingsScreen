@@ -6,7 +6,7 @@ import android.widget.TextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTile;
+import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 
 public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
     private TextView titleText;
@@ -19,10 +19,16 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
         descriptionText = itemView.findViewById(R.id.tile_LBL_description);
     }
 
-    public void setTitleText(String title){
+
+    public void setData(SettingsTileData tileObject){
+        this.setTitleText(tileObject.getTitle());
+        this.setDescriptionText(tileObject.getDescription());
+    }
+
+    private void setTitleText(String title){
         this.titleText.setText(title);
     }
-    public void setDescriptionText(String title){
+    private void setDescriptionText(String title){
         this.descriptionText.setText(title);
     }
 
