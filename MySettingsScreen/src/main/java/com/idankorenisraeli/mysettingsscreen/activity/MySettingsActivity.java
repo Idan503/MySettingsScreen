@@ -1,17 +1,21 @@
-package com.idankorenisraeli.mysettingsscreen;
+package com.idankorenisraeli.mysettingsscreen.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.Toast;
 
+import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
-import com.idankorenisraeli.mysettingsscreen.callback.OnSettingsTileClicked;
 import com.idankorenisraeli.mysettingsscreen.tile.ClickableTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
+import com.idankorenisraeli.mysettingsscreen.tile.TitleTileData;
 
 import java.util.ArrayList;
 
@@ -31,10 +35,12 @@ public class MySettingsActivity extends AppCompatActivity {
 
 
         ArrayList<SettingsTileData> tiles = new ArrayList<>();
-        tiles.add(new ClickableTileData("Hey123", "This is a description", new OnSettingsTileClicked() {
+        tiles.add(new TitleTileData("Hey123", "This is a description"));
+
+        tiles.add(new SwitchTileData("SwitchTile", "There is a switch", new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onItemClick(View view, int position) {
-                Toast.makeText(MySettingsActivity.this, "View: " + position, Toast.LENGTH_LONG).show();
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.i("pttt", isChecked + "    ");
             }
         }));
 

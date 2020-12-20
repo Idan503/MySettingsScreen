@@ -9,12 +9,17 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 
 public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
-    private final TextView titleText;
-    private final TextView descriptionText;
+    private TextView titleText;
+    private TextView descriptionText;
 
 
     public SettingsTileHolder(View itemView) {
         super(itemView);
+        findViews();
+    }
+
+
+    protected void findViews(){
         titleText = itemView.findViewById(R.id.tile_LBL_title);
         descriptionText = itemView.findViewById(R.id.tile_LBL_description);
     }

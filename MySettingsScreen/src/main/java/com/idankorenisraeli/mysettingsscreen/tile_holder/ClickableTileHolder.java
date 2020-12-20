@@ -18,15 +18,18 @@ public class ClickableTileHolder extends SettingsTileHolder{
 
         ClickableTileData mData = (ClickableTileData) tileObject;
 
-        View.OnClickListener tileClickListener = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(mData.getClickListener()!=null)
-                    mData.getClickListener().onItemClick(itemView, getAdapterPosition());
-            }
-        };
+        if(mData.getClickListener()!=null) {
+            View.OnClickListener tileClickListener = new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mData.getClickListener().onClick(itemView);
+                }
+            };
 
-        this.itemView.setClickable(true);
-        this.itemView.setOnClickListener(tileClickListener);
+            this.itemView.setClickable(true);
+            this.itemView.setOnClickListener(tileClickListener);
+        }
+
+
     }
 }

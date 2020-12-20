@@ -1,18 +1,23 @@
 package com.idankorenisraeli.mysettingsscreen.tile;
+import android.view.View;
 
-import com.idankorenisraeli.mysettingsscreen.callback.OnSettingsTileClicked;
 
 public class ClickableTileData extends SettingsTileData {
 
-    private final OnSettingsTileClicked onClick;
+    protected View.OnClickListener onClick;
 
-    public ClickableTileData(String title, String description, OnSettingsTileClicked onClick) {
+    public ClickableTileData(String title, String description, View.OnClickListener onClick) {
         super(title, description);
-        this.onClick = onClick;
+        if(onClick!=null)
+            this.onClick = onClick;
+    }
+
+    public ClickableTileData(String title, String description) {
+        super(title, description);
     }
 
 
-    public OnSettingsTileClicked getClickListener() {
+    public View.OnClickListener getClickListener() {
         return onClick;
     }
 }
