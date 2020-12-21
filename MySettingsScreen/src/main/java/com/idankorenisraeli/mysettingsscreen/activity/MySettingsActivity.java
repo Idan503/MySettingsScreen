@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
+import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.idankorenisraeli.mysettingsscreen.R;
@@ -35,20 +36,33 @@ public class MySettingsActivity extends AppCompatActivity {
         setActionBar(actionBar);
 
 
-        ArrayList<SettingsTileData> tiles = new ArrayList<>();
-        tiles.add(new TitleTileData("Hey123", "This is a description",120));
+        ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
+        dataTiles.add(new ClickableTileData("Hey", "This is a simple tile")
+                .setIconId(android.R.drawable.ic_menu_add));
+        dataTiles.add(new TitleTileData("This Title", "Description of a title no icon"));
+        dataTiles.add(new SeekbarTileData("This Title", "Description of a title no icon")
+            .setOnChange(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    Log.i("pttt", progress + "");
+                }
 
-        tiles.add(new SwitchTileData("SwitchTile", "There is a switch", new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.i("pttt", isChecked + "    ");
-            }
-        }));
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+                    Log.i("pttt", "started");
+                }
 
-        tiles.add(new SeekbarTileData("Seek Bar", "This is a simple seekbar", null));
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+                    Log.i("pttt", "finished");
+                }
+            })
+            .setIconId(android.R.drawable.ic_delete)
+            );
+
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
-        settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, tiles));
+        settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, dataTiles));
 
     }
 

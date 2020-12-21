@@ -21,7 +21,7 @@ public class TitleTileHolder extends SettingsTileHolder{
         super.setData(tileObject);
         TitleTileData mData = (TitleTileData) tileObject;
 
-        if(mData.getHeight()!=-1)
+        if(mData.getHeight()!=null)
             resizeHeight(mData.getHeight());
 
 

@@ -5,30 +5,49 @@
     style="@style/TileCard.Clickable"
     >
 
-    <LinearLayout
-        android:id="@id/tile_LAY_layout"
-        style="@style/TileLayout">
 
-        <TextView
-            android:id="@id/tile_LBL_title"
-            style="@style/TextView.TileTitle"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@id/tile_LBL_description"
-            style="@style/TextView.TileDescription"/>
+        <ImageView
+            android:id="@id/tile_IMG_icon"
+            style="@style/TileIcon"
+            android:contentDescription="@string/settings_icon"
+            android:visibility="gone"
+            />
+
+        <LinearLayout
+            android:id="@id/tile_LAY_text"
+            style="@style/TileLayout"
+            android:layout_toEndOf="@id/tile_IMG_icon">
+
+            <TextView
+                android:id="@id/tile_LBL_title"
+                style="@style/TextView.TileTitle" />
+
+            <TextView
+                android:id="@id/tile_LBL_description"
+                style="@style/TextView.TileDescription" />
+
+        </LinearLayout>
 
 
-    </LinearLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:theme="@style/CustomTheme.switchState"
+            android:layout_gravity="end|center"
+            android:id="@id/tile_SW_switch"
+            android:layout_marginEnd="16dp"
+            android:gravity="center_vertical"
+            android:layout_alignParentEnd="true"
+            android:layout_toEndOf="@id/tile_LAY_text" />
 
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:theme="@style/CustomTheme.switchState"
-        android:layout_gravity="end|center"
-        android:id="@id/tile_SW_switch"
-        android:layout_marginEnd="16dp"
-        android:layout_toEndOf="@id/tile_LAY_layout" />
+    </RelativeLayout>
+
 
 
 </com.google.android.material.card.MaterialCardView>

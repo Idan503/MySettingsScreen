@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@id/tile_CARD_card"
     style="@style/TileCard">
 
 
-    <LinearLayout
-        android:id="@id/tile_LAY_layout"
-        style="@style/TileLayout">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@id/tile_LBL_title"
-            style="@style/TextView.TileTitle.Resizable" />
+        <ImageView
+            style="@style/TileIcon"
+            android:contentDescription="@string/settings_icon"
+            android:id="@id/tile_IMG_icon"
+            android:visibility="gone"
+            />
 
-        <TextView
-            android:id="@id/tile_LBL_description"
-            style="@style/TextView.TileDescription.Resizable" />
+        <LinearLayout
+            android:id="@id/tile_LAY_text"
+            android:layout_toEndOf="@id/tile_IMG_icon"
+            style="@style/TileLayout">
+
+            <TextView
+                android:id="@id/tile_LBL_title"
+                style="@style/TextView.TileTitle.Resizable" />
+
+            <TextView
+                android:id="@id/tile_LBL_description"
+                style="@style/TextView.TileDescription.Resizable" />
+
+        </LinearLayout>
 
 
-    </LinearLayout>
-
+    </RelativeLayout>
 
 </com.google.android.material.card.MaterialCardView>

@@ -2,8 +2,9 @@
 <resources>
 
     <!-- Common Views IDS -->
-    <item name="tile_LAY_layout" type="id"/>
+    <item name="tile_LAY_text" type="id"/>
     <item name="tile_CARD_card" type="id"/>
+    <item name="tile_IMG_icon" type="id"/>
     <item name="tile_LBL_title" type="id"/>
     <item name="tile_LBL_description" type="id"/>
 

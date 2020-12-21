@@ -32,14 +32,17 @@ public class SwitchTileHolder extends ClickableTileHolder{
     public void setData(SettingsTileData tileObject) {
         super.setData(tileObject);
         SwitchTileData mData = (SwitchTileData) tileObject;
-        switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                mData.getOnChange().onCheckedChanged(buttonView, isChecked);
 
-                //SP Management should be implemented here
-            }
-        });
+        if(mData.getOnChange()!=null) {
+            switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                @Override
+                public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    mData.getOnChange().onCheckedChanged(buttonView, isChecked);
+
+                    //SP Management should be implemented here
+                }
+            });
+        }
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

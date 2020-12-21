@@ -12,16 +12,17 @@ public class SeekbarTileData extends SettingsTileData {
 
     // TODO - MIN VALUE, MAX VALUE, SP LINK
 
-    public SeekbarTileData(String title, String description, SeekBar.OnSeekBarChangeListener onChange) {
+    public SeekbarTileData(String title, String description) {
         super(title, description);
-        this.onChange = onChange;
     }
+
 
     public SeekBar.OnSeekBarChangeListener getOnChange() {
         return onChange;
     }
 
-    public void setOnChange(SeekBar.OnSeekBarChangeListener onChange) {
+    public SeekbarTileData setOnChange(SeekBar.OnSeekBarChangeListener onChange) {
         this.onChange = onChange;
+        return this;
     }
 }
