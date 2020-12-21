@@ -8,6 +8,10 @@ import androidx.annotation.Nullable;
 
 public class SwitchTileData extends ClickableTileData {
 
+    @Override
+    protected ClickableTileData build() {
+        return this;
+    }
 
     private @Nullable CompoundButton.OnCheckedChangeListener onChange;
     //Outer layout click functionality implemented inside holder object

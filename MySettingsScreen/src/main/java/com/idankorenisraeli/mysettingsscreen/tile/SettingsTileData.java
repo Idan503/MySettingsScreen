@@ -7,15 +7,16 @@ import androidx.annotation.Nullable;
 
 import java.io.Serializable;
 
-public abstract class SettingsTileData implements Serializable {
+public abstract class SettingsTileData<T> implements Serializable {
+
+    protected abstract T build();
 
     private String title;
     private String description;
     private @Nullable Integer iconId;
 
-    // Empty Builder
+    
     public SettingsTileData(){
-
     }
 
     public SettingsTileData(String title, String description) {
@@ -27,18 +28,18 @@ public abstract class SettingsTileData implements Serializable {
         return title;
     }
 
-    public SettingsTileData setTitle(String title) {
+    public T setTitle(String title) {
         this.title = title;
-        return this;
+        return build();
     }
 
     public String getDescription() {
         return description;
     }
 
-    public SettingsTileData setDescription(String description) {
+    public T setDescription(String description) {
         this.description = description;
-        return this;
+        return build();
     }
 
     @Nullable
@@ -51,8 +52,8 @@ public abstract class SettingsTileData implements Serializable {
      * @param iconId Id of icon drawable
      * @return Result tile (builder)
      */
-    public SettingsTileData setIconId(@Nullable Integer iconId) {
+    public T setIconId(@Nullable Integer iconId) {
         this.iconId = iconId;
-        return this;
+        return build();
     }
 }

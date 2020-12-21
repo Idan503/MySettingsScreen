@@ -2,7 +2,12 @@ package com.idankorenisraeli.mysettingsscreen.tile;
 import android.view.View;
 
 
-public class ClickableTileData extends SettingsTileData {
+public class ClickableTileData extends SettingsTileData<ClickableTileData> {
+
+    @Override
+    protected ClickableTileData build() {
+        return this;
+    }
 
     protected View.OnClickListener onClick;
 

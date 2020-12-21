@@ -5,8 +5,13 @@ import androidx.annotation.Nullable;
 /**
  * TitleTile is used for showing information without any user-interaction
  */
-public class TitleTileData extends SettingsTileData {
+public class TitleTileData extends SettingsTileData<TitleTileData> {
     private @Nullable Integer height;
+
+    @Override
+    protected TitleTileData build() {
+        return this;
+    }
 
     public TitleTileData(String title, String description) {
         super(title, description);
