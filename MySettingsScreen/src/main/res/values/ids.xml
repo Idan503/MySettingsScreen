@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Common Views IDS -->
+    <item name="tile_LAY_layout" type="id"/>
+    <item name="tile_CARD_card" type="id"/>
+    <item name="tile_LBL_title" type="id"/>
+    <item name="tile_LBL_description" type="id"/>
+
+
+
+    <item name="tile_SW_switch" type="id"/>
+
+</resources>

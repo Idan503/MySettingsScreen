@@ -8,4 +8,66 @@
     </style>
 
 
+
+    <!-- Outer Card of Tiles -->
+
+
+    <style name="TileCard" parent="Widget.MaterialComponents.CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">80dp</item>
+        <item name="cardCornerRadius">0dp</item>
+    </style>
+
+    <style name="TileCard.Clickable" parent="TileCard">
+        <item name="android:clickable">true</item>
+        <item name="rippleColor">@android:color/darker_gray</item>
+    </style>
+
+
+    <!-- Inner Layout of Tiles -->
+
+    <style name="TileLayout">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">2dp</item>
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">10dp</item>
+    </style>
+
+    <!-- Text of Tiles -->
+
+    <style name="TextView.TileTitle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lines">1</item>
+        <item name="android:textColor">@android:color/darker_gray</item> <!-- SHOULD BE DECLARED IN 'COLORS'-->
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextView.TileDescription" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lines">1</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:textColor">@android:color/darker_gray</item> <!-- SHOULD BE DECLARED IN 'COLORS'-->
+        <item name="android:textSize">14sp</item>
+    </style>
+
+
+    <style name="TextView.TileTitle.Resizable" parent="TextView.TileTitle">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">14sp</item>
+        <item name="autoSizeMaxTextSize">16sp</item>
+    </style>
+
+    <style name="TextView.TileDescription.Resizable" parent="TextView.TileDescription">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="autoSizeMinTextSize">12sp</item>
+        <item name="autoSizeMaxTextSize">14sp</item>
+    </style>
+
+
 </resources>

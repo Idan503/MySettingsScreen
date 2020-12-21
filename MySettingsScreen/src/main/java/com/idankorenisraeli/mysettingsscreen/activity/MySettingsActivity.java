@@ -35,7 +35,7 @@ public class MySettingsActivity extends AppCompatActivity {
 
 
         ArrayList<SettingsTileData> tiles = new ArrayList<>();
-        tiles.add(new TitleTileData("Hey123", "This is a description"));
+        tiles.add(new TitleTileData("Hey123", "This is a description",120));
 
         tiles.add(new SwitchTileData("SwitchTile", "There is a switch", new CompoundButton.OnCheckedChangeListener() {
             @Override
