@@ -10,5 +10,6 @@
 
 
     <item name="tile_SW_switch" type="id"/>
+    <item name="tile_SB_seekbar" type="id"/>
 
 </resources>

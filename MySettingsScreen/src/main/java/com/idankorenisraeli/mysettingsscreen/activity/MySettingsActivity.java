@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.tile.ClickableTileData;
+import com.idankorenisraeli.mysettingsscreen.tile.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.TitleTileData;
@@ -43,6 +44,8 @@ public class MySettingsActivity extends AppCompatActivity {
                 Log.i("pttt", isChecked + "    ");
             }
         }));
+
+        tiles.add(new SeekbarTileData("Seek Bar", "This is a simple seekbar", null));
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, tiles));

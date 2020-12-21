@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.ClickableTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.SeekbarTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SettingsTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SwitchTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.TitleTileHolder;
@@ -56,6 +58,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case SWITCH:
                 view = mInflater.inflate(R.layout.switch_tile_layout, parent, false);
                 return new SwitchTileHolder(view);
+            case SEEKBAR:
+                view = mInflater.inflate(R.layout.seekbar_tile_layout, parent, false);
+                return new SeekbarTileHolder(view);
             default:
                 view = mInflater.inflate(R.layout.title_tile_layout, parent, false);
                 return new TitleTileHolder(view);
@@ -78,6 +83,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case SWITCH:
                 ((SwitchTileHolder) holder).setData(item);
                 break;
+            case SEEKBAR:
+                ((SeekbarTileHolder)holder).setData(item);
         }
 
 
@@ -99,6 +106,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return TITLE;
             case "SwitchTileData":
                 return SWITCH;
+            case "SeekbarTileData":
+                return SEEKBAR;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + getItem(position).getClass());

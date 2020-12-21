@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@id/tile_CARD_card"
+    style="@style/TileCard"
+    android:layout_height="120dp">
+
+
+
+    <LinearLayout
+        android:id="@id/tile_LAY_layout"
+        style="@style/TileLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@id/tile_LBL_title"
+            style="@style/TextView.TileTitle"/>
+
+        <TextView
+            android:id="@id/tile_LBL_description"
+            style="@style/TextView.TileDescription"/>
+
+        <SeekBar
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:id="@id/tile_SB_seekbar"
+            />
+
+    </LinearLayout>
+
+
+
+</com.google.android.material.card.MaterialCardView>
