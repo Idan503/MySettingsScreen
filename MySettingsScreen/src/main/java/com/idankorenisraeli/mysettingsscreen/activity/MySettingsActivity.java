@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.CompoundButton;
 import android.widget.SeekBar;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
+import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectedListener;
 import com.idankorenisraeli.mysettingsscreen.tile.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SeekbarTileData;
@@ -31,6 +33,11 @@ public class MySettingsActivity extends AppCompatActivity {
 
         setActionBar(actionBar);
 
+
+        ArrayList<String> options = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            options.add("Option " + i);
+        }
 
         ArrayList<SettingsTileData<?>> dataTiles = new ArrayList<>();
         dataTiles.add(new ButtonTileData("Hey", "This is a simple tile")
@@ -55,7 +62,15 @@ public class MySettingsActivity extends AppCompatActivity {
             })
             .setIconId(android.R.drawable.ic_delete)
             );
-        dataTiles.add(new RadioTileData("Radio", "This is a radio type"));
+        dataTiles.add(new RadioTileData("Radio", "This is a radio type")
+                .setDropDown(false)
+                .setOptions(options)
+                .setOnSelected(new OnOptionSelectedListener() {
+                    @Override
+                    public void onOptionSelected(String option) {
+                        Log.i("pttt", "OPTION SELECETD: " + option);
+                    }
+                }));
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));

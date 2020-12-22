@@ -18,6 +18,8 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
     private TextView descriptionText;
     private ImageView iconImage;
 
+    protected static final String TAG = "SettingsTileHolder";
+
 
 
     public SettingsTileHolder(View itemView) {

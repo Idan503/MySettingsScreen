@@ -2,14 +2,18 @@ package com.idankorenisraeli.mysettingsscreen.tile;
 
 import android.widget.CompoundButton;
 
-import java.util.ArrayList;
+import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectedListener;
+
+import java.util.InputMismatchException;
+import java.util.List;
 
 
 public class RadioTileData extends SettingsTileData<RadioTileData> {
 
+    private String defaultOption;
     private boolean dropDown;
-    private CompoundButton.OnCheckedChangeListener onChanged;
-    private ArrayList<String> options;
+    private OnOptionSelectedListener onSelected;
+    private List<String> options;
     //Outer layout click functionality implemented inside holder object
 
     // TODO - MIN VALUE, MAX VALUE, SP LINK
@@ -23,20 +27,20 @@ public class RadioTileData extends SettingsTileData<RadioTileData> {
         super(title, description);
     }
 
-    public CompoundButton.OnCheckedChangeListener getOnChanged() {
-        return onChanged;
+    public OnOptionSelectedListener getOnSelected() {
+        return onSelected;
     }
 
-    public RadioTileData setOnChanged(CompoundButton.OnCheckedChangeListener onChanged) {
-        this.onChanged = onChanged;
+    public RadioTileData setOnSelected(OnOptionSelectedListener onSelected) {
+        this.onSelected = onSelected;
         return build();
     }
 
-    public ArrayList<String> getOptions() {
+    public List<String> getOptions() {
         return options;
     }
 
-    public RadioTileData setOptions(ArrayList<String> options) {
+    public RadioTileData setOptions(List<String> options) {
         this.options = options;
         return build();
     }
@@ -47,6 +51,17 @@ public class RadioTileData extends SettingsTileData<RadioTileData> {
 
     public RadioTileData setDropDown(boolean dropDown) {
         this.dropDown = dropDown;
+        return build();
+    }
+
+    public String getDefaultOption() {
+        return defaultOption;
+    }
+
+    public RadioTileData setDefaultOption(String defaultOption) {
+        if(!options.contains(defaultOption))
+            throw new InputMismatchException("Options list must contain the Default Option");
+        this.defaultOption = defaultOption;
         return build();
     }
 }
