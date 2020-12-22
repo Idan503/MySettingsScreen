@@ -3,6 +3,7 @@
 
     <!-- Common Views IDS -->
     <item name="tile_LAY_text" type="id"/>
+    <item name="tile_INC_text" type="id"/>
     <item name="tile_CARD_card" type="id"/>
     <item name="tile_IMG_icon" type="id"/>
     <item name="tile_LBL_title" type="id"/>

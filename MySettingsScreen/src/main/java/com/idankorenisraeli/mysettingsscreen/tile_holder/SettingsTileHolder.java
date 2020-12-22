@@ -4,6 +4,7 @@ import android.graphics.drawable.Drawable;
 import android.service.autofill.VisibilitySetterAction;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.core.content.ContextCompat;
@@ -18,6 +19,7 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
     private ImageView iconImage;
 
 
+
     public SettingsTileHolder(View itemView) {
         super(itemView);
         findViews();
@@ -25,8 +27,9 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
 
 
     protected void findViews(){
-        titleText = itemView.findViewById(R.id.tile_LBL_title);
-        descriptionText = itemView.findViewById(R.id.tile_LBL_description);
+        LinearLayout innerTextLayout = itemView.findViewById(R.id.tile_INC_text);
+        titleText = innerTextLayout.findViewById(R.id.tile_LBL_title);
+        descriptionText = innerTextLayout.findViewById(R.id.tile_LBL_description);
         iconImage = itemView.findViewById(R.id.tile_IMG_icon);
     }
 

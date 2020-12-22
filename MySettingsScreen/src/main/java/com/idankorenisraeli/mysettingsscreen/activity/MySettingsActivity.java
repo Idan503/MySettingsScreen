@@ -35,7 +35,7 @@ public class MySettingsActivity extends AppCompatActivity {
         ArrayList<SettingsTileData<?>> dataTiles = new ArrayList<>();
         dataTiles.add(new ClickableTileData("Hey", "This is a simple tile")
                 .setIconId(android.R.drawable.ic_menu_add));
-        dataTiles.add(new TitleTileData("This Title", "Description of a title no icon").setInvisibleIcon(true));
+        dataTiles.add(new ClickableTileData("This Title", "Description of a title no icon").setInvisibleIcon(true));
         dataTiles.add(new SeekbarTileData("This Title", "Description of a title no icon")
             .setOnChange(new SeekBar.OnSeekBarChangeListener() {
                 @Override

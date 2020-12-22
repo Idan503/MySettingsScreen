@@ -1,45 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/tile_CARD_card"
     style="@style/TileCard"
-    android:layout_height="120dp">
+    android:layout_height="140dp">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp">
 
         <ImageView
             android:id="@id/tile_IMG_icon"
             style="@style/TileIcon"
+            android:layout_alignParentTop="true"
             android:contentDescription="@string/settings_icon"
             android:visibility="gone"
             />
 
-        <LinearLayout
-            android:id="@id/tile_LAY_text"
-            style="@style/InnerTileLayout"
-            android:layout_toEndOf="@id/tile_IMG_icon">
+        <include
+            style="@style/IncludeTileText"
+            android:layout_alignParentTop="true"
+            layout="@layout/text_inner_tile_layout"
+            android:id="@id/tile_INC_text"
+            tools:ignore="IncludeLayoutParam" />
 
-            <TextView
-                android:id="@id/tile_LBL_title"
-                style="@style/TextView.TileTitle" />
-
-            <TextView
-                android:id="@id/tile_LBL_description"
-                style="@style/TextView.TileDescription" />
-
-        </LinearLayout>
 
         <SeekBar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="15dp"
-            android:layout_gravity="bottom"
-            android:layout_below="@id/tile_LAY_text"
+            android:paddingTop="4dp"
             android:layout_toEndOf="@id/tile_IMG_icon"
             android:id="@id/tile_SB_seekbar"
+            android:layout_below="@id/tile_INC_text"
             />
 
     </RelativeLayout>

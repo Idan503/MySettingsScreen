@@ -17,20 +17,11 @@
             android:visibility="gone"
             />
 
-        <LinearLayout
-            android:id="@id/tile_LAY_text"
-            style="@style/InnerTileLayout"
-            android:layout_toEndOf="@id/tile_IMG_icon">
-
-            <TextView
-                android:id="@id/tile_LBL_title"
-                style="@style/TextView.TileTitle" />
-
-            <TextView
-                android:id="@id/tile_LBL_description"
-                style="@style/TextView.TileDescription" />
-
-        </LinearLayout>
+        <include
+            style="@style/IncludeTileText"
+            layout="@layout/text_inner_tile_layout"
+            android:id="@id/tile_INC_text"
+            />
 
 
 

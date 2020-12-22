@@ -17,7 +17,7 @@ public class TitleTileHolder extends SettingsTileHolder{
 
 
     @Override
-    public void setData(SettingsTileData tileObject) {
+    public void setData(SettingsTileData<?> tileObject) {
         super.setData(tileObject);
         TitleTileData mData = (TitleTileData) tileObject;
 
