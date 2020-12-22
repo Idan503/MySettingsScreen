@@ -51,8 +51,9 @@ public abstract class SettingsTileData<T> implements Serializable {
     }
 
     /**
-     * Set a null iconId for no-icon-tile
-     * @param iconId Id of icon drawable
+     * Set a null iconId for no-icon-tile.
+     * Icon Id of -1 will show padding only (No icon)
+     * @param iconId Id of icon drawable, -1 for invisible
      * @return Result tile (builder)
      */
     public T setIconId(@Nullable Integer iconId) {
@@ -60,8 +61,4 @@ public abstract class SettingsTileData<T> implements Serializable {
         return build();
     }
 
-    public T setInvisibleIcon(boolean iconPaddingOnly){
-        this.iconId = (iconPaddingOnly) ? INVISIBLE_ICON_ID : iconId;
-        return build();
-    }
 }

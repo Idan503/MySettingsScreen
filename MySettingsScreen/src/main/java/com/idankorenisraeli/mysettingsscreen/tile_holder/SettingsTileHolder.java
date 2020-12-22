@@ -1,7 +1,6 @@
 package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
 import android.graphics.drawable.Drawable;
-import android.service.autofill.VisibilitySetterAction;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -15,12 +14,14 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 
 public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
+
     private TextView titleText;
     private TextView descriptionText;
     private ImageView iconImage;
 
     protected static final String TAG = "SettingsTileHolder";
 
+    private static final int NO_ICON_PADDING = 32;
 
 
     public SettingsTileHolder(View itemView) {
@@ -34,7 +35,17 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
      * @return False if there was an error
      */
     protected boolean validateData(SettingsTileData<?> mData){
-        return mData!=null;
+        if(mData == null){
+            Log.w(TAG, "Settings Tile data is null.");
+            return false;
+        }
+
+        if(mData.getTitle()==null) {
+            Log.w(TAG, "Settings Tile is missing \"Title\" attribute.");
+            mData.setTitle("");
+        }
+
+        return true;
     }
 
     protected void findViews(){
@@ -46,13 +57,14 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
 
 
     /**
-     *
+     * This function applies a certain data to the tile that should hold it
+     * If there is a major issue with the TileData object, it will do nothing.
      * @param tileObject data of this tile holder
      * @return True when data was set successfully
      */
     public boolean setData(SettingsTileData<?> tileObject){
         if(!validateData(tileObject)) {
-            return false; // cannot perform data set
+            return false; // cannot apply data to tile
         }
 
         this.setTitleText(tileObject.getTitle());
@@ -77,7 +89,19 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
                 icon = ContextCompat.getDrawable(itemView.getContext(), id);
             iconImage.setImageDrawable(icon);
             iconImage.setVisibility(View.VISIBLE);
+        }else{
+            //No icon is set, adding padding to parent layout
+            LinearLayout textParentLayout = (LinearLayout) titleText.getParent();
+            overrideStartPadding(textParentLayout);
         }
+
+    }
+
+    private void overrideStartPadding(View view){
+        int top = view.getPaddingTop();
+        int end = view.getPaddingEnd();
+        int bottom = view.getPaddingBottom();
+        view.setPadding(NO_ICON_PADDING, top, end, bottom);
     }
 
 }

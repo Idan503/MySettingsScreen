@@ -43,29 +43,31 @@ public class MySettingsActivity extends AppCompatActivity {
         ArrayList<SettingsTileData<?>> dataTiles = new ArrayList<>();
         dataTiles.add(new ButtonTileData("Hey", "This is a simple tile")
                 .setIconId(android.R.drawable.ic_menu_add));
-        dataTiles.add(new ButtonTileData("This Title", "Description of a title no icon").setInvisibleIcon(true));
+        dataTiles.add(new ButtonTileData("This Title", "Description of a title no icon")
+                .setIconId(SettingsTileData.INVISIBLE_ICON_ID));
         dataTiles.add(new SeekbarTileData("This Title", "Description of a title no icon")
-            .setOnChange(new SeekBar.OnSeekBarChangeListener() {
-                @Override
-                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                    Log.i("pttt", progress + "");
-                }
+                .setOnChange(new SeekBar.OnSeekBarChangeListener() {
+                    @Override
+                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                        Log.i("pttt", progress + "");
+                    }
 
-                @Override
-                public void onStartTrackingTouch(SeekBar seekBar) {
-                    Log.i("pttt", "started");
-                }
+                    @Override
+                    public void onStartTrackingTouch(SeekBar seekBar) {
+                        Log.i("pttt", "started");
+                    }
 
-                @Override
-                public void onStopTrackingTouch(SeekBar seekBar) {
-                    Log.i("pttt", "finished");
-                }
-            })
-            .setIconId(android.R.drawable.ic_delete)
-            );
+                    @Override
+                    public void onStopTrackingTouch(SeekBar seekBar) {
+                        Log.i("pttt", "finished");
+                    }
+                })
+                .setIconId(android.R.drawable.ic_menu_call)
+        );
         dataTiles.add(new RadioTileData("Radio", "This is a radio type")
                 .setDropDown(false)
                 .setOptions(options)
+                .setIconId(SettingsTileData.INVISIBLE_ICON_ID)
                 .setOnSelected(new OnOptionSelectedListener() {
                     @Override
                     public void onOptionSelected(String option) {
@@ -73,19 +75,20 @@ public class MySettingsActivity extends AppCompatActivity {
                     }
                 }));
         dataTiles.add(new SwitchTileData("SwitchTile", "This is a switch tile data")
-        .setOnChange(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.i("pttt", "" + isChecked);
+                .setIconId(SettingsTileData.INVISIBLE_ICON_ID)
+                .setOnChange(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        Log.i("pttt", "" + isChecked);
 
-            }
-        }));
+                    }
+                }));
 
         dataTiles.add(new RadioTileData("Radio Dropdown", "This dropdown here right")
-        .setDropDown(true)
-        .setOptions(options)
-        .setDefaultOption(options.get(0))
-        .setInvisibleIcon(true));
+                .setDropDown(true)
+                .setOptions(options)
+
+                .setDefaultOption(options.get(0)));
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
@@ -94,7 +97,7 @@ public class MySettingsActivity extends AppCompatActivity {
     }
 
 
-    private void findViews(){
+    private void findViews() {
         actionBar = findViewById(R.id.settings_TB_toolbar);
         settingsRecycler = findViewById(R.id.settings_RV_recycler);
     }
