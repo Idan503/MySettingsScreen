@@ -90,7 +90,7 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
             iconImage.setImageDrawable(icon);
             iconImage.setVisibility(View.VISIBLE);
         }else{
-            //No icon is set, adding padding to parent layout
+            //No icon is set, adding padding to text's parent layout
             LinearLayout textParentLayout = (LinearLayout) titleText.getParent();
             overrideStartPadding(textParentLayout);
         }

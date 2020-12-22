@@ -87,8 +87,13 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(new RadioTileData("Radio Dropdown", "This dropdown here right")
                 .setDropDown(true)
                 .setOptions(options)
-
-                .setDefaultOption(options.get(0)));
+                .setOnSelected(new OnOptionSelectedListener() {
+                    @Override
+                    public void onOptionSelected(String option) {
+                        Log.i("pttt", "Selected new dropdown " + option);
+                    }
+                })
+                .setDefaultOption(options.get(4)));
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));

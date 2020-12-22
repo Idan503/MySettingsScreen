@@ -30,9 +30,8 @@ public class RadioDialogTileHolder extends SettingsTileHolder {
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //mData.getOnChanged().onCheckedChanged();
                     buildRadioAlertDialog(mData);
-                    //Init dialog with the callback ^^
+
                 }
             });
 
