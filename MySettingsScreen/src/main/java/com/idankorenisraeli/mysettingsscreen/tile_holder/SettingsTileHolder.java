@@ -2,6 +2,7 @@ package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
 import android.graphics.drawable.Drawable;
 import android.service.autofill.VisibilitySetterAction;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,6 +28,14 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
         findViews();
     }
 
+    /**
+     * Checks the data of the holder, shows warnings/errors in needed
+     * @param mData the data that is set to the holder
+     * @return False if there was an error
+     */
+    protected boolean validateData(SettingsTileData<?> mData){
+        return mData!=null;
+    }
 
     protected void findViews(){
         LinearLayout innerTextLayout = itemView.findViewById(R.id.tile_INC_text);
@@ -36,11 +45,21 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
     }
 
 
-    protected void setData(SettingsTileData<?> tileObject){
+    /**
+     *
+     * @param tileObject data of this tile holder
+     * @return True when data was set successfully
+     */
+    public boolean setData(SettingsTileData<?> tileObject){
+        if(!validateData(tileObject)) {
+            return false; // cannot perform data set
+        }
+
         this.setTitleText(tileObject.getTitle());
         this.setDescriptionText(tileObject.getDescription());
         this.setIconDrawable(tileObject.getIconId());
 
+        return true;
     }
 
     private void setTitleText(String title){

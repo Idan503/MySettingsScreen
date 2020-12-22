@@ -1,6 +1,7 @@
 package com.idankorenisraeli.mysettingsscreen.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +13,10 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.ButtonTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDialogTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDropdownTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SeekbarTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.SettingsTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SwitchTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.TitleTileHolder;
 
@@ -60,7 +63,10 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return new SeekbarTileHolder(view);
             case RADIO_DIALOG:
                 view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
-                return new RadioTileHolder(view);
+                return new RadioDialogTileHolder(view);
+            case RADIO_DROPDOWN:
+                view = mInflater.inflate(R.layout.dropdown_tile_layout, parent, false);
+                return new RadioDropdownTileHolder(view);
             default:
                 view = mInflater.inflate(R.layout.title_tile_layout, parent, false);
                 return new TitleTileHolder(view);
@@ -72,23 +78,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         SettingsTileData<?> item = getItem(position);
 
-        switch (getItemViewType(position)){
-            case TITLE:
-                ((TitleTileHolder) holder).setData(item);
-                break;
-            case CLICKABLE:
-                ((ButtonTileHolder) holder).setData(item);
-                break;
-            case SWITCH:
-                ((SwitchTileHolder) holder).setData(item);
-                break;
-            case SEEKBAR:
-                ((SeekbarTileHolder)holder).setData(item);
-                break;
-            case RADIO_DIALOG:
-                ((RadioTileHolder)holder).setData(item);
-                break;
-        }
+        Log.i("pttt", "POSITION " + position);
+        ((SettingsTileHolder)holder).setData(item);
 
 
 

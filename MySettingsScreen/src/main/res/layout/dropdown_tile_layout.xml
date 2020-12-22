@@ -26,14 +26,13 @@
 
 
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
+        <androidx.appcompat.widget.AppCompatSpinner
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:theme="@style/CustomTheme.switchState"
             android:layout_gravity="end|center"
-            android:id="@id/tile_SW_switch"
+            android:id="@id/tile_SPN_spinner"
             android:layout_marginEnd="16dp"
-            app:switchMinWidth="55dp"
             android:gravity="center_vertical"
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@id/tile_LAY_text"

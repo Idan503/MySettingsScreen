@@ -12,6 +12,7 @@ public class SwitchTileData extends SettingsTileData<SwitchTileData> {
         return this;
     }
 
+    private boolean defaultValue = false;
     private @Nullable CompoundButton.OnCheckedChangeListener onChange;
     //Outer layout click functionality implemented inside holder object
 
@@ -27,6 +28,15 @@ public class SwitchTileData extends SettingsTileData<SwitchTileData> {
 
     public SwitchTileData setOnChange(@Nullable CompoundButton.OnCheckedChangeListener onChange) {
         this.onChange = onChange;
+        return build();
+    }
+
+    public boolean isDefaultValue() {
+        return defaultValue;
+    }
+
+    public SwitchTileData setDefaultValue(boolean defaultValue) {
+        this.defaultValue = defaultValue;
         return build();
     }
 }

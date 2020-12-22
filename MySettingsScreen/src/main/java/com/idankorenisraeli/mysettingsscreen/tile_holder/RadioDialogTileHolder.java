@@ -14,15 +14,16 @@ import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 
 import java.util.List;
 
-public class RadioTileHolder extends SettingsTileHolder {
+public class RadioDialogTileHolder extends SettingsTileHolder {
 
-    public RadioTileHolder(View itemView) {
+    public RadioDialogTileHolder(View itemView) {
         super(itemView);
     }
 
+
     @Override
-    public void setData(SettingsTileData<?> tileObject) {
-        super.setData(tileObject);
+    public boolean setData(SettingsTileData<?> tileObject) {
+        if(!super.setData(tileObject)) return false;
         RadioTileData mData = (RadioTileData) tileObject;
 
         if (mData.getOnSelected() != null)
@@ -34,6 +35,8 @@ public class RadioTileHolder extends SettingsTileHolder {
                     //Init dialog with the callback ^^
                 }
             });
+
+        return true;
     }
 
     private void buildRadioAlertDialog(RadioTileData mData){
@@ -41,8 +44,7 @@ public class RadioTileHolder extends SettingsTileHolder {
         RadioGroup radioGroup = createRadioGroup(mData.getOptions(), mData.getDefaultOption());
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
-                .setTitle("Hey")
-                .setMessage("Hey")
+                .setTitle(mData.getTitle())
                 .setView(radioGroup)
                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                     @Override
@@ -53,19 +55,19 @@ public class RadioTileHolder extends SettingsTileHolder {
                         mData.getOnSelected().onOptionSelected(radioButton.getText().toString());
                     }
                 });
-
         builder.show();
 
     }
 
+
     private boolean validateData(RadioTileData mData) {
         if(mData.getOptions().size() == 0){
-            Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute");
+            Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
             return false;
         }
         if(mData.getDefaultOption() == null) {
             mData.setDefaultOption(mData.getOptions().get(0));
-            Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute");
+            Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
         }
 
         return true;
@@ -88,7 +90,7 @@ public class RadioTileHolder extends SettingsTileHolder {
         }
 
 
-        radioGroup.setPadding(30, 10 , 25, 40);
+        radioGroup.setPadding(30, 25 , 25, 40);
         radioGroup.check(defaultSelectedId);
 
         return radioGroup;

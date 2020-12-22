@@ -3,7 +3,11 @@
     package="com.idankorenisraeli.mysettingsscreen">
 
     <application>
-        <activity android:name=".activity.MySettingsActivity"></activity>
+        <activity
+            android:name=".activity.MySettingsActivity"
+            android:screenOrientation="portrait"
+
+            />
     </application>
 
 </manifest>

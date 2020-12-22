@@ -12,6 +12,7 @@ import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
 
 public class SwitchTileHolder extends SettingsTileHolder{
 
+
     SwitchMaterial switchMaterial;
 
     public SwitchTileHolder(View itemView) {
@@ -29,8 +30,8 @@ public class SwitchTileHolder extends SettingsTileHolder{
     }
 
     @Override
-    public void setData(SettingsTileData<?> tileObject) {
-        super.setData(tileObject);
+    public boolean setData(SettingsTileData<?> tileObject) {
+        if(!super.setData(tileObject)) return false;
         SwitchTileData mData = (SwitchTileData) tileObject;
 
         if(mData.getOnChange()!=null) {
@@ -42,6 +43,8 @@ public class SwitchTileHolder extends SettingsTileHolder{
                     //SP Management should be implemented here
                 }
             });
+
+
         }
 
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -50,5 +53,7 @@ public class SwitchTileHolder extends SettingsTileHolder{
                 switchMaterial.performClick();
             }
         });
+
+        return true;
     }
 }

@@ -11,9 +11,10 @@ public class ButtonTileHolder extends SettingsTileHolder{
         super(itemView);
     }
 
+
     @Override
-    public void setData(SettingsTileData<?> tileObject) {
-        super.setData(tileObject);
+    public boolean setData(SettingsTileData<?> tileObject) {
+        if(!super.setData(tileObject)) return false;
 
         ButtonTileData mData = (ButtonTileData) tileObject;
 
@@ -29,6 +30,6 @@ public class ButtonTileHolder extends SettingsTileHolder{
             this.itemView.setOnClickListener(tileClickListener);
         }
 
-
+        return true;
     }
 }

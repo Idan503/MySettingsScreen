@@ -16,6 +16,7 @@ import com.idankorenisraeli.mysettingsscreen.tile.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
 
 import java.util.ArrayList;
 
@@ -71,6 +72,20 @@ public class MySettingsActivity extends AppCompatActivity {
                         Log.i("pttt", "OPTION SELECETD: " + option);
                     }
                 }));
+        dataTiles.add(new SwitchTileData("SwitchTile", "This is a switch tile data")
+        .setOnChange(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                Log.i("pttt", "" + isChecked);
+
+            }
+        }));
+
+        dataTiles.add(new RadioTileData("Radio Dropdown", "This dropdown here right")
+        .setDropDown(true)
+        .setOptions(options)
+        .setDefaultOption(options.get(0))
+        .setInvisibleIcon(true));
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));

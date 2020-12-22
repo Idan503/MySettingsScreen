@@ -17,14 +17,14 @@ public class TitleTileHolder extends SettingsTileHolder{
 
 
     @Override
-    public void setData(SettingsTileData<?> tileObject) {
-        super.setData(tileObject);
+    public boolean setData(SettingsTileData<?> tileObject) {
+        if(!super.setData(tileObject)) return false;
         TitleTileData mData = (TitleTileData) tileObject;
 
         if(mData.getHeight()!=null)
             resizeHeight(mData.getHeight());
 
-
+        return true;
     }
 
     private void resizeHeight(int newHeight){

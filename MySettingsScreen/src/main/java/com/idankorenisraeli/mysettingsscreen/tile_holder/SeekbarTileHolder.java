@@ -28,8 +28,8 @@ public class SeekbarTileHolder extends SettingsTileHolder{
     }
 
     @Override
-    public void setData(SettingsTileData<?> tileObject) {
-        super.setData(tileObject);
+    public boolean setData(SettingsTileData<?> tileObject) {
+        if(!super.setData(tileObject)) return false;
         SeekbarTileData mData = (SeekbarTileData) tileObject;
         tileSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -52,10 +52,11 @@ public class SeekbarTileHolder extends SettingsTileHolder{
                     mData.getOnChange().onStopTrackingTouch(seekBar);
             }
 
+
         });
 
 
 
-
+        return true;
     }
 }
