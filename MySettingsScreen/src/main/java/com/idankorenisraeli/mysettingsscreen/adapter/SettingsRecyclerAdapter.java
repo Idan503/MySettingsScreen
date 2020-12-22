@@ -1,22 +1,18 @@
 package com.idankorenisraeli.mysettingsscreen.adapter;
 
 import android.content.Context;
-import android.os.Debug;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SeekBar;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.ClickableTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.ButtonTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SeekbarTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.SettingsTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SwitchTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.TitleTileHolder;
 
@@ -54,13 +50,16 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return new TitleTileHolder(view);
             case CLICKABLE:
                 view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
-                return new ClickableTileHolder(view);
+                return new ButtonTileHolder(view);
             case SWITCH:
                 view = mInflater.inflate(R.layout.switch_tile_layout, parent, false);
                 return new SwitchTileHolder(view);
             case SEEKBAR:
                 view = mInflater.inflate(R.layout.seekbar_tile_layout, parent, false);
                 return new SeekbarTileHolder(view);
+            case RADIO_CHOICE:
+                view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
+                return new RadioTileHolder(view);
             default:
                 view = mInflater.inflate(R.layout.title_tile_layout, parent, false);
                 return new TitleTileHolder(view);
@@ -71,20 +70,24 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
-        SettingsTileData item = getItem(position);
+        SettingsTileData<?> item = getItem(position);
 
         switch (getItemViewType(position)){
             case TITLE:
                 ((TitleTileHolder) holder).setData(item);
                 break;
             case CLICKABLE:
-                ((ClickableTileHolder) holder).setData(item);
+                ((ButtonTileHolder) holder).setData(item);
                 break;
             case SWITCH:
                 ((SwitchTileHolder) holder).setData(item);
                 break;
             case SEEKBAR:
                 ((SeekbarTileHolder)holder).setData(item);
+                break;
+            case RADIO_CHOICE:
+                ((RadioTileHolder)holder).setData(item);
+                break;
         }
 
 
@@ -100,7 +103,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     @Override
     public int getItemViewType(int position) {
         switch (getItem(position).getClass().getSimpleName()){
-            case "ClickableTileData":
+            case "ButtonTileData":
                 return CLICKABLE;
             case "TitleTileData":
                 return TITLE;
@@ -108,6 +111,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return SWITCH;
             case "SeekbarTileData":
                 return SEEKBAR;
+            case "RadioTileData":
+                return RADIO_CHOICE;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + getItem(position).getClass());
@@ -116,7 +121,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     // convenience method for getting data at click position
-    SettingsTileData getItem(int id) {
+    SettingsTileData<?> getItem(int id) {
         return tilesData.get(id);
     }
 

@@ -1,22 +1,21 @@
 package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
-import android.util.Log;
 import android.view.View;
 
-import com.idankorenisraeli.mysettingsscreen.tile.ClickableTileData;
+import com.idankorenisraeli.mysettingsscreen.tile.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 
-public class ClickableTileHolder extends SettingsTileHolder{
+public class ButtonTileHolder extends SettingsTileHolder{
 
-    public ClickableTileHolder(View itemView) {
+    public ButtonTileHolder(View itemView) {
         super(itemView);
     }
 
     @Override
-    public void setData(SettingsTileData tileObject) {
+    public void setData(SettingsTileData<?> tileObject) {
         super.setData(tileObject);
 
-        ClickableTileData mData = (ClickableTileData) tileObject;
+        ButtonTileData mData = (ButtonTileData) tileObject;
 
         if(mData.getOnClick()!=null) {
             View.OnClickListener tileClickListener = new View.OnClickListener() {

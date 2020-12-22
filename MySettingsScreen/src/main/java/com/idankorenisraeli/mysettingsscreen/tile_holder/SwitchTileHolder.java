@@ -10,7 +10,7 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
 
-public class SwitchTileHolder extends ClickableTileHolder{
+public class SwitchTileHolder extends SettingsTileHolder{
 
     SwitchMaterial switchMaterial;
 
@@ -29,7 +29,7 @@ public class SwitchTileHolder extends ClickableTileHolder{
     }
 
     @Override
-    public void setData(SettingsTileData tileObject) {
+    public void setData(SettingsTileData<?> tileObject) {
         super.setData(tileObject);
         SwitchTileData mData = (SwitchTileData) tileObject;
 
@@ -50,8 +50,5 @@ public class SwitchTileHolder extends ClickableTileHolder{
                 switchMaterial.performClick();
             }
         });
-
-
-
     }
 }

@@ -11,10 +11,11 @@
 
     <!-- Icon of Tile -->
     <style name="TileIcon">
-        <item name="android:layout_width">80dp</item>
-        <item name="android:layout_height">80dp</item>
+        <item name="android:layout_width">70dp</item>
+        <item name="android:layout_height">70dp</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:padding">15dp</item>
+        <item name="android:padding">12dp</item>
+        <item name="android:layout_alignParentStart">true</item>
     </style>
 
 
@@ -47,9 +48,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_gravity">center_vertical</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingStart">12dp</item>
         <item name="android:paddingEnd">2dp</item>
-        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingTop">10dp</item>
         <item name="android:paddingBottom">10dp</item>
     </style>
 

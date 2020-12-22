@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/tile_CARD_card"
     style="@style/TileCard"
-    android:layout_height="140dp">
+    android:layout_height="120dp">
 
 
     <RelativeLayout
@@ -16,7 +15,6 @@
         <ImageView
             android:id="@id/tile_IMG_icon"
             style="@style/TileIcon"
-            android:layout_alignParentTop="true"
             android:contentDescription="@string/settings_icon"
             android:visibility="gone"
             />
@@ -29,14 +27,39 @@
             tools:ignore="IncludeLayoutParam" />
 
 
-        <SeekBar
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="4dp"
             android:layout_toEndOf="@id/tile_IMG_icon"
-            android:id="@id/tile_SB_seekbar"
             android:layout_below="@id/tile_INC_text"
-            />
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:weightSum="1"
+            >
+
+            <SeekBar
+                android:layout_width="0dp"
+                android:layout_weight="0.825"
+                android:layout_height="match_parent"
+                android:id="@id/tile_SB_seekbar"
+
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textSize="16sp"
+                android:gravity="center|start"
+                android:padding="4dp"
+                android:layout_gravity="center_vertical"
+                android:includeFontPadding="false"
+                android:layout_weight="0.175"
+                android:text="n"
+                />
+
+        </LinearLayout>
+
 
     </RelativeLayout>
 

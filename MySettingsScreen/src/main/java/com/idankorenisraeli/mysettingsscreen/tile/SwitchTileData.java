@@ -1,15 +1,14 @@
 package com.idankorenisraeli.mysettingsscreen.tile;
 
-import android.view.View;
 import android.widget.CompoundButton;
 
 import androidx.annotation.Nullable;
 
 
-public class SwitchTileData extends ClickableTileData {
+public class SwitchTileData extends SettingsTileData<SwitchTileData> {
 
     @Override
-    protected ClickableTileData build() {
+    protected SwitchTileData build() {
         return this;
     }
 
@@ -28,6 +27,6 @@ public class SwitchTileData extends ClickableTileData {
 
     public SwitchTileData setOnChange(@Nullable CompoundButton.OnCheckedChangeListener onChange) {
         this.onChange = onChange;
-        return this;
+        return build();
     }
 }

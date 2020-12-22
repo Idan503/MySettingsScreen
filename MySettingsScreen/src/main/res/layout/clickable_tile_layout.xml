@@ -20,6 +20,7 @@
             style="@style/IncludeTileText"
             layout="@layout/text_inner_tile_layout"
             android:id="@id/tile_INC_text"
+
             />
 
     </RelativeLayout>

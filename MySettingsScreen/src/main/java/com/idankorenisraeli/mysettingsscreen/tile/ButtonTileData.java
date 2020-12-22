@@ -2,16 +2,16 @@ package com.idankorenisraeli.mysettingsscreen.tile;
 import android.view.View;
 
 
-public class ClickableTileData extends SettingsTileData<ClickableTileData> {
+public class ButtonTileData extends SettingsTileData<ButtonTileData> {
 
     @Override
-    protected ClickableTileData build() {
+    protected ButtonTileData build() {
         return this;
     }
 
     protected View.OnClickListener onClick;
 
-    public ClickableTileData(String title, String description) {
+    public ButtonTileData(String title, String description) {
         super(title, description);
     }
 
@@ -20,7 +20,7 @@ public class ClickableTileData extends SettingsTileData<ClickableTileData> {
         return onClick;
     }
 
-    public ClickableTileData setOnClick(View.OnClickListener onClick) {
+    public ButtonTileData setOnClick(View.OnClickListener onClick) {
         this.onClick = onClick;
         return this;
     }
