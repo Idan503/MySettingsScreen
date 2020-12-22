@@ -33,11 +33,11 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int MULTI_CHOICE=6;
     public static final int GROUP=7;
 
-    private List<SettingsTileData> tilesData;
+    private List<SettingsTileData<?>> tilesData;
     private LayoutInflater mInflater;
 
     // data is passed into the constructor
-    public SettingsRecyclerAdapter(Context context, List<SettingsTileData> data) {
+    public SettingsRecyclerAdapter(Context context, List<SettingsTileData<?>> data) {
         this.mInflater = LayoutInflater.from(context);
         this.tilesData = data;
     }

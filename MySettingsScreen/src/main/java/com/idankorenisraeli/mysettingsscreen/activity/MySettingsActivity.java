@@ -6,17 +6,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.CompoundButton;
 import android.widget.SeekBar;
-import android.widget.Toast;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.tile.ClickableTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.TitleTileData;
 
 import java.util.ArrayList;
@@ -36,10 +32,10 @@ public class MySettingsActivity extends AppCompatActivity {
         setActionBar(actionBar);
 
 
-        ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
+        ArrayList<SettingsTileData<?>> dataTiles = new ArrayList<>();
         dataTiles.add(new ClickableTileData("Hey", "This is a simple tile")
                 .setIconId(android.R.drawable.ic_menu_add));
-        dataTiles.add(new TitleTileData("This Title", "Description of a title no icon"));
+        dataTiles.add(new TitleTileData("This Title", "Description of a title no icon").setInvisibleIcon(true));
         dataTiles.add(new SeekbarTileData("This Title", "Description of a title no icon")
             .setOnChange(new SeekBar.OnSeekBarChangeListener() {
                 @Override

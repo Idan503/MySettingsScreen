@@ -15,8 +15,11 @@ public abstract class SettingsTileData<T> implements Serializable {
     private String description;
     private @Nullable Integer iconId;
 
+    public static final int INVISIBLE_ICON_ID = -1;
+
     
     public SettingsTileData(){
+
     }
 
     public SettingsTileData(String title, String description) {
@@ -54,6 +57,11 @@ public abstract class SettingsTileData<T> implements Serializable {
      */
     public T setIconId(@Nullable Integer iconId) {
         this.iconId = iconId;
+        return build();
+    }
+
+    public T setInvisibleIcon(boolean iconPaddingOnly){
+        this.iconId = (iconPaddingOnly) ? INVISIBLE_ICON_ID : iconId;
         return build();
     }
 }

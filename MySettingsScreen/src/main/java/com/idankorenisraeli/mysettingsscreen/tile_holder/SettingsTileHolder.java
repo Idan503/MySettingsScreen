@@ -31,7 +31,7 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
     }
 
 
-    protected void setData(SettingsTileData tileObject){
+    protected void setData(SettingsTileData<?> tileObject){
         this.setTitleText(tileObject.getTitle());
         this.setDescriptionText(tileObject.getDescription());
         this.setIconDrawable(tileObject.getIconId());
@@ -46,7 +46,11 @@ public abstract class SettingsTileHolder extends RecyclerView.ViewHolder {
     }
     private void setIconDrawable(Integer id){
         if(id!=null) {
-            Drawable icon = ContextCompat.getDrawable(itemView.getContext(), id);
+            Drawable icon;
+            if(id==SettingsTileData.INVISIBLE_ICON_ID){
+                icon = ContextCompat.getDrawable(itemView.getContext(), android.R.color.transparent);
+            } else
+                icon = ContextCompat.getDrawable(itemView.getContext(), id);
             iconImage.setImageDrawable(icon);
             iconImage.setVisibility(View.VISIBLE);
         }

@@ -34,12 +34,13 @@
 
     <!-- Inner Layout of Tiles -->
 
-    <style name="TileLayout">
+    <style name="InnerTileLayout">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center_vertical</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_centerVertical">true</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingStart">8dp</item>
         <item name="android:paddingEnd">2dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">10dp</item>

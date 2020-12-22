@@ -19,7 +19,7 @@
 
         <LinearLayout
             android:id="@id/tile_LAY_text"
-            style="@style/TileLayout"
+            style="@style/InnerTileLayout"
             android:layout_toEndOf="@id/tile_IMG_icon">
 
             <TextView

@@ -28,7 +28,7 @@ public class SeekbarTileHolder extends SettingsTileHolder{
     }
 
     @Override
-    public void setData(SettingsTileData tileObject) {
+    public void setData(SettingsTileData<?> tileObject) {
         super.setData(tileObject);
         SeekbarTileData mData = (SeekbarTileData) tileObject;
         tileSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
