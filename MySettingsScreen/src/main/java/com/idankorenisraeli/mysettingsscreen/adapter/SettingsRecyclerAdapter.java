@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
+import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.ButtonTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioTileHolder;
@@ -24,13 +25,13 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int CLICKABLE =1;
     public static final int SWITCH=2;
     public static final int SEEKBAR=3;
-    public static final int DROPDOWN=4;
-    public static final int RADIO_CHOICE=5;
+    public static final int RADIO_DROPDOWN =4;
+    public static final int RADIO_DIALOG =5;
     public static final int MULTI_CHOICE=6;
     public static final int GROUP=7;
 
-    private List<SettingsTileData<?>> tilesData;
-    private LayoutInflater mInflater;
+    final private List<SettingsTileData<?>> tilesData;
+    final private LayoutInflater mInflater;
 
     // data is passed into the constructor
     public SettingsRecyclerAdapter(Context context, List<SettingsTileData<?>> data) {
@@ -57,7 +58,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case SEEKBAR:
                 view = mInflater.inflate(R.layout.seekbar_tile_layout, parent, false);
                 return new SeekbarTileHolder(view);
-            case RADIO_CHOICE:
+            case RADIO_DIALOG:
                 view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
                 return new RadioTileHolder(view);
             default:
@@ -69,7 +70,6 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
         SettingsTileData<?> item = getItem(position);
 
         switch (getItemViewType(position)){
@@ -85,7 +85,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case SEEKBAR:
                 ((SeekbarTileHolder)holder).setData(item);
                 break;
-            case RADIO_CHOICE:
+            case RADIO_DIALOG:
                 ((RadioTileHolder)holder).setData(item);
                 break;
         }
@@ -102,6 +102,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemViewType(int position) {
+        SettingsTileData<?> data = getItem(position);
         switch (getItem(position).getClass().getSimpleName()){
             case "ButtonTileData":
                 return CLICKABLE;
@@ -112,7 +113,10 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case "SeekbarTileData":
                 return SEEKBAR;
             case "RadioTileData":
-                return RADIO_CHOICE;
+                RadioTileData radioData = (RadioTileData) data;
+                return radioData.isDropDown() ? RADIO_DROPDOWN : RADIO_DIALOG;
+            case "MultiChoiceTileData":
+                return MULTI_CHOICE;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + getItem(position).getClass());

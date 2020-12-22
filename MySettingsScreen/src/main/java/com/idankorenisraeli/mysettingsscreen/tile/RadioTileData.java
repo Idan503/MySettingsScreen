@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 public class RadioTileData extends SettingsTileData<RadioTileData> {
 
+    private boolean dropDown;
     private CompoundButton.OnCheckedChangeListener onChanged;
     private ArrayList<String> options;
     //Outer layout click functionality implemented inside holder object
@@ -37,6 +38,15 @@ public class RadioTileData extends SettingsTileData<RadioTileData> {
 
     public RadioTileData setOptions(ArrayList<String> options) {
         this.options = options;
+        return build();
+    }
+
+    public boolean isDropDown() {
+        return dropDown;
+    }
+
+    public RadioTileData setDropDown(boolean dropDown) {
+        this.dropDown = dropDown;
         return build();
     }
 }
