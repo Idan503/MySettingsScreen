@@ -30,6 +30,7 @@ public class DividerTileHolder extends RecyclerView.ViewHolder implements Settin
     public void setData(SettingsTileData tileData) {
 
         DividerTileData mData = (DividerTileData) tileData;
+        validateData(mData);
 
         ViewGroup.LayoutParams params = divider.getLayoutParams();
         params.height = mData.getHeight();

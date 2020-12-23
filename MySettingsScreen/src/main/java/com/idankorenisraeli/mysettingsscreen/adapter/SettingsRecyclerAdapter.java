@@ -13,6 +13,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.ButtonTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.DividerTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.MultiChoiceDialogTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDialogTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDropdownTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SeekbarTileHolder;
@@ -68,6 +69,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case RADIO_DROPDOWN:
                 view = mInflater.inflate(R.layout.dropdown_tile_layout, parent, false);
                 return new RadioDropdownTileHolder(view);
+            case MULTI_CHOICE:
+                view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
+                return new MultiChoiceDialogTileHolder(view);
             case DIVIDER:
                 view = mInflater.inflate(R.layout.divider_tile_layout, parent, false);
                 return new DividerTileHolder(view);

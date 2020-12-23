@@ -43,7 +43,7 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
             spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    mData.getOnSelected().onOptionSelected(mData.getOptions().get(position));
+                    mData.getOnSelected().onRadioSelect(mData.getOptions().get(position));
                 }
 
                 @Override

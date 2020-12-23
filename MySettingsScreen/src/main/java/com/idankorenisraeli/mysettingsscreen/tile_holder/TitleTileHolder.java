@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.TitleTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.TextIconTileData;
 
 public class TitleTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
 
@@ -42,10 +42,9 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
     /**
      * Checks the data of the holder, shows warnings/errors in needed
      * @param tileObject the data that is set to the holder
-     * @return False if there was an error
      */
     protected void validateData(SettingsTileData tileObject){
-        TitleTileData<?> mData = (TitleTileData<?>) tileObject;
+        TextIconTileData<?> mData = (TextIconTileData<?>) tileObject;
 
         if(mData.getTitle()==null) {
             Log.w(TAG, "Settings Tile is missing \"Title\" attribute.");
@@ -57,11 +56,10 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
      * This function applies a certain data to the tile that should hold it
      * If there is a major issue with the TileData object, it will do nothing.
      * @param tileObject data of this tile holder
-     * @return True when data was set successfully
      */
     public void setData(SettingsTileData tileObject){
         validateData(tileObject);
-        TitleTileData<?> mData = (TitleTileData<?>) tileObject;
+        TextIconTileData<?> mData = (TextIconTileData<?>) tileObject;
 
         this.setTitleText(mData.getTitle());
         this.setDescriptionText(mData.getDescription());
@@ -81,7 +79,7 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
     private void setIconDrawable(Integer id){
         if(id!=null) {
             Drawable icon;
-            if(id==TitleTileData.INVISIBLE_ICON_ID){
+            if(id== TextIconTileData.INVISIBLE_ICON_ID){
                 icon = ContextCompat.getDrawable(itemView.getContext(), android.R.color.transparent);
             } else
                 icon = ContextCompat.getDrawable(itemView.getContext(), id);

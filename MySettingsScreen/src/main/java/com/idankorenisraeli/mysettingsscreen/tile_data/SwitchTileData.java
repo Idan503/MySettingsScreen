@@ -5,7 +5,7 @@ import android.widget.CompoundButton;
 import androidx.annotation.Nullable;
 
 
-public class SwitchTileData extends TitleTileData<SwitchTileData> {
+public class SwitchTileData extends TextIconTileData<SwitchTileData> {
 
     @Override
     public SwitchTileData build() {

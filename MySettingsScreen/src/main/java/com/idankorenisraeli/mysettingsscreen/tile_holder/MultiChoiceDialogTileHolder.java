@@ -7,14 +7,15 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.List;
 
-public class RadioDialogTileHolder extends TitleTileHolder {
+public class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
-    public RadioDialogTileHolder(View itemView) {
+    public MultiChoiceDialogTileHolder(View itemView) {
         super(itemView);
     }
 
@@ -22,9 +23,8 @@ public class RadioDialogTileHolder extends TitleTileHolder {
     @Override
     public void setData(SettingsTileData tileObject) {
         super.setData(tileObject);
-        RadioTileData mData = (RadioTileData) tileObject;
+        MultiChoiceTileData mData = (MultiChoiceTileData) tileObject;
 
-        if (mData.getOnSelected() != null)
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -35,19 +35,24 @@ public class RadioDialogTileHolder extends TitleTileHolder {
 
     }
 
-    private void buildRadioAlertDialog(RadioTileData mData){
-        RadioGroup radioGroup = createRadioGroup(mData.getOptions(), mData.getDefaultOption());
+    private void buildRadioAlertDialog(MultiChoiceTileData mData){
+
+        CharSequence[] options = (CharSequence[]) mData.getOptions().toArray();
+
+        boolean[] checked = new boolean[mData.getChecked().size()];
+
+        for(int n = 0; n < checked.length; n++)
+        {
+            checked[n] = mData.getChecked().get(n);
+        }
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
                 .setTitle(mData.getTitle())
-                .setView(radioGroup)
+                .setMultiChoiceItems(options, checked,null)
                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        int selectedId = radioGroup.getCheckedRadioButtonId();
-                        // find the radiobutton by returned id to get its string value
-                        RadioButton radioButton = radioGroup.findViewById(selectedId);
-                        mData.getOnSelected().onRadioSelect(radioButton.getText().toString());
+
                     }
                 });
         builder.show();
@@ -57,13 +62,13 @@ public class RadioDialogTileHolder extends TitleTileHolder {
 
     @Override
     protected void validateData(SettingsTileData tileData){
-        RadioTileData mData = (RadioTileData) tileData;
+/*        RadioTileData mData = (RadioTileData) tileData;
         if(mData.getOptions().size() == 0){
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
         }
         if(mData.getDefaultOption() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
-        }
+        }*/
     }
 
     private RadioGroup createRadioGroup(List<String> options, String defaultOption) {

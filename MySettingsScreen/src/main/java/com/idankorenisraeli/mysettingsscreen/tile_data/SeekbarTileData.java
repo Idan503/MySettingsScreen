@@ -3,7 +3,7 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
 import android.widget.SeekBar;
 
 
-public class SeekbarTileData extends TitleTileData<SeekbarTileData> {
+public class SeekbarTileData extends TextIconTileData<SeekbarTileData> {
 
 
     private SeekBar.OnSeekBarChangeListener onChange;

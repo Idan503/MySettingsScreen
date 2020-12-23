@@ -2,7 +2,7 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
 import android.view.View;
 
 
-public class ButtonTileData extends TitleTileData<ButtonTileData> {
+public class ButtonTileData extends TextIconTileData<ButtonTileData> {
 
     @Override
     public ButtonTileData build() {

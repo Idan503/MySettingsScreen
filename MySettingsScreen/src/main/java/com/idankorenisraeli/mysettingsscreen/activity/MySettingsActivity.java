@@ -7,18 +7,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CompoundButton;
-import android.widget.SeekBar;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
-import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectedListener;
+import com.idankorenisraeli.mysettingsscreen.callback.OnRadioSelectListener;
 import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SwitchTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.TitleTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.TextIconTileData;
 
 import java.util.ArrayList;
 
@@ -46,20 +46,20 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(new ButtonTileData("Hey", "This is a simple tile")
                 .setIconId(android.R.drawable.ic_menu_add));
         dataTiles.add(new ButtonTileData("This Title", "Description of a title no icon")
-                .setIconId(TitleTileData.INVISIBLE_ICON_ID));
+                .setIconId(TextIconTileData.INVISIBLE_ICON_ID));
 
         dataTiles.add(new RadioTileData("Radio", "This is a radio type")
                 .setDropDown(false)
                 .setOptions(options)
-                .setIconId(TitleTileData.INVISIBLE_ICON_ID)
-                .setOnSelected(new OnOptionSelectedListener() {
+                .setIconId(TextIconTileData.INVISIBLE_ICON_ID)
+                .setOnSelected(new OnRadioSelectListener() {
                     @Override
-                    public void onOptionSelected(String option) {
+                    public void onRadioSelect(String option) {
                         Log.i("pttt", "OPTION SELECETD: " + option);
                     }
                 }));
         dataTiles.add(new SwitchTileData("SwitchTile", "This is a switch tile data")
-                .setIconId(TitleTileData.INVISIBLE_ICON_ID)
+                .setIconId(TextIconTileData.INVISIBLE_ICON_ID)
                 .setOnChange(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -71,9 +71,9 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(new RadioTileData("Radio Dropdown", "This dropdown here right")
                 .setDropDown(true)
                 .setOptions(options)
-                .setOnSelected(new OnOptionSelectedListener() {
+                .setOnSelected(new OnRadioSelectListener() {
                     @Override
-                    public void onOptionSelected(String option) {
+                    public void onRadioSelect(String option) {
                         Log.i("pttt", "Selected new dropdown " + option);
                     }
                 })
@@ -91,6 +91,22 @@ public class MySettingsActivity extends AppCompatActivity {
                 .setIconId(android.R.drawable.ic_btn_speak_now));
 
         dataTiles.add(new RadioTileData("Radio Dropdown", "Description").setDropDown(true).setOptions(options));
+
+        ArrayList<String> opt = new ArrayList<>();
+        opt.add("opt a");
+        opt.add("opt b");
+        opt.add("opt c");
+        opt.add("opt d");
+
+        ArrayList<Boolean> chck = new ArrayList<>();
+        chck.add(false);
+        chck.add(false);
+        chck.add(false);
+        chck.add(false);
+
+
+        dataTiles.add(new MultiChoiceTileData("Multi", "Description")
+        .setOptions(opt).setChecked(chck));
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));

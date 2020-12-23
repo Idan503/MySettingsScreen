@@ -1,16 +1,16 @@
 package com.idankorenisraeli.mysettingsscreen.tile_data;
 
-import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectedListener;
+import com.idankorenisraeli.mysettingsscreen.callback.OnRadioSelectListener;
 
 import java.util.InputMismatchException;
 import java.util.List;
 
 
-public class RadioTileData extends TitleTileData<RadioTileData> {
+public class RadioTileData extends TextIconTileData<RadioTileData> {
 
     private String defaultOption;
     private boolean dropDown;
-    private OnOptionSelectedListener onSelected;
+    private OnRadioSelectListener onSelected;
     private List<String> options;
     //Outer layout click functionality implemented inside holder object
 
@@ -25,11 +25,11 @@ public class RadioTileData extends TitleTileData<RadioTileData> {
         super(title, description);
     }
 
-    public OnOptionSelectedListener getOnSelected() {
+    public OnRadioSelectListener getOnSelected() {
         return onSelected;
     }
 
-    public RadioTileData setOnSelected(OnOptionSelectedListener onSelected) {
+    public RadioTileData setOnSelected(OnRadioSelectListener onSelected) {
         this.onSelected = onSelected;
         return build();
     }
