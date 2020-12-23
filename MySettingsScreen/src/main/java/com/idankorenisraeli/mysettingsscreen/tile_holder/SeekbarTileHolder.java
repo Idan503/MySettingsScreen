@@ -1,13 +1,14 @@
 package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.SeekBar;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile.SeekbarTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-public class SeekbarTileHolder extends SettingsTileHolder{
+public class SeekbarTileHolder extends TitleTileHolder{
 
     SeekBar tileSeekBar;
 
@@ -28,8 +29,8 @@ public class SeekbarTileHolder extends SettingsTileHolder{
     }
 
     @Override
-    public boolean setData(SettingsTileData<?> tileObject) {
-        if(!super.setData(tileObject)) return false;
+    public void setData(SettingsTileData tileObject) {
+        super.setData(tileObject);
         SeekbarTileData mData = (SeekbarTileData) tileObject;
         tileSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
@@ -52,11 +53,34 @@ public class SeekbarTileHolder extends SettingsTileHolder{
                     mData.getOnChange().onStopTrackingTouch(seekBar);
             }
 
-
         });
 
 
+        tileSeekBar.setMin(mData.getMinValue());
+        tileSeekBar.setMax(mData.getMaxValue());
+        tileSeekBar.setProgress(mData.getDefaultValue());
 
-        return true;
+
     }
+
+    @Override
+    protected void validateData(SettingsTileData mData) {
+        super.validateData(mData);
+
+        SeekbarTileData data = (SeekbarTileData) mData;
+        if(data.getMinValue() == null){
+            Log.w(TAG, "Seekbar Settings Tile is missing \"MinValue\" attribute.");
+            data.setMinValue(0);
+        }
+        if(data.getMaxValue() == null){
+            Log.w(TAG, "Seekbar Settings Tile is missing \"MaxValue\" attribute.");
+            data.setMaxValue(100);
+        }
+        if(data.getDefaultValue() == null){
+            Log.w(TAG, "Seekbar Settings Tile is missing \"DefaultValue\" attribute.");
+            data.setDefaultValue(50);
+        }
+
+    }
+
 }

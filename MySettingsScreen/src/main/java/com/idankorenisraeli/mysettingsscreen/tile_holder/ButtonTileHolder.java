@@ -2,10 +2,10 @@ package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
 import android.view.View;
 
-import com.idankorenisraeli.mysettingsscreen.tile.ButtonTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-public class ButtonTileHolder extends SettingsTileHolder{
+public class ButtonTileHolder extends TitleTileHolder{
 
     public ButtonTileHolder(View itemView) {
         super(itemView);
@@ -13,8 +13,8 @@ public class ButtonTileHolder extends SettingsTileHolder{
 
 
     @Override
-    public boolean setData(SettingsTileData<?> tileObject) {
-        if(!super.setData(tileObject)) return false;
+    public void setData(SettingsTileData tileObject) {
+        super.setData(tileObject);
 
         ButtonTileData mData = (ButtonTileData) tileObject;
 
@@ -30,6 +30,5 @@ public class ButtonTileHolder extends SettingsTileHolder{
             this.itemView.setOnClickListener(tileClickListener);
         }
 
-        return true;
     }
 }

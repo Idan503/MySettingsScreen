@@ -14,5 +14,6 @@
     <item name="tile_SW_switch" type="id"/>
     <item name="tile_SB_seekbar" type="id"/>
     <item name="tile_SPN_spinner" type="id"/>
+    <item name="tile_VIEW_divider" type="id"/>
 
 </resources>

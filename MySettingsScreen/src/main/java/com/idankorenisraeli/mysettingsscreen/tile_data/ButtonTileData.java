@@ -1,11 +1,11 @@
-package com.idankorenisraeli.mysettingsscreen.tile;
+package com.idankorenisraeli.mysettingsscreen.tile_data;
 import android.view.View;
 
 
-public class ButtonTileData extends SettingsTileData<ButtonTileData> {
+public class ButtonTileData extends TitleTileData<ButtonTileData> {
 
     @Override
-    protected ButtonTileData build() {
+    public ButtonTileData build() {
         return this;
     }
 
@@ -22,6 +22,6 @@ public class ButtonTileData extends SettingsTileData<ButtonTileData> {
 
     public ButtonTileData setOnClick(View.OnClickListener onClick) {
         this.onClick = onClick;
-        return this;
+        return build();
     }
 }

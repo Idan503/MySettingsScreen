@@ -1,7 +1,6 @@
 package com.idankorenisraeli.mysettingsscreen.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.ButtonTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_holder.DividerTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDialogTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDropdownTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_holder.SeekbarTileHolder;
@@ -32,12 +32,13 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int RADIO_DIALOG =5;
     public static final int MULTI_CHOICE=6;
     public static final int GROUP=7;
+    public static final int DIVIDER=8;
 
-    final private List<SettingsTileData<?>> tilesData;
+    final private List<SettingsTileData> tilesData;
     final private LayoutInflater mInflater;
 
     // data is passed into the constructor
-    public SettingsRecyclerAdapter(Context context, List<SettingsTileData<?>> data) {
+    public SettingsRecyclerAdapter(Context context, List<SettingsTileData> data) {
         this.mInflater = LayoutInflater.from(context);
         this.tilesData = data;
     }
@@ -67,6 +68,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case RADIO_DROPDOWN:
                 view = mInflater.inflate(R.layout.dropdown_tile_layout, parent, false);
                 return new RadioDropdownTileHolder(view);
+            case DIVIDER:
+                view = mInflater.inflate(R.layout.divider_tile_layout, parent, false);
+                return new DividerTileHolder(view);
             default:
                 view = mInflater.inflate(R.layout.title_tile_layout, parent, false);
                 return new TitleTileHolder(view);
@@ -76,12 +80,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     // binds the data to the TextView in each row
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        SettingsTileData<?> item = getItem(position);
+        SettingsTileData item = getItem(position);
 
-        Log.i("pttt", "POSITION " + position);
         ((SettingsTileHolder)holder).setData(item);
-
-
 
     }
 
@@ -93,7 +94,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
 
     @Override
     public int getItemViewType(int position) {
-        SettingsTileData<?> data = getItem(position);
+        SettingsTileData data = getItem(position);
         switch (getItem(position).getClass().getSimpleName()){
             case "ButtonTileData":
                 return CLICKABLE;
@@ -108,6 +109,10 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return radioData.isDropDown() ? RADIO_DROPDOWN : RADIO_DIALOG;
             case "MultiChoiceTileData":
                 return MULTI_CHOICE;
+            case "GroupTileData":
+                return GROUP;
+            case "DividerTileData":
+                return DIVIDER;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + getItem(position).getClass());
@@ -116,7 +121,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     // convenience method for getting data at click position
-    SettingsTileData<?> getItem(int id) {
+    SettingsTileData getItem(int id) {
         return tilesData.get(id);
     }
 

@@ -1,12 +1,11 @@
-package com.idankorenisraeli.mysettingsscreen.tile;
+package com.idankorenisraeli.mysettingsscreen.tile_data;
 
 import android.content.DialogInterface;
-import android.widget.CompoundButton;
 
 import java.util.ArrayList;
 
 
-public class MultiChoiceTileData extends SettingsTileData<MultiChoiceTileData> {
+public class MultiChoiceTileData extends TitleTileData<MultiChoiceTileData> {
 
     private DialogInterface.OnMultiChoiceClickListener onChanged;
     private ArrayList<String> options;
@@ -15,7 +14,7 @@ public class MultiChoiceTileData extends SettingsTileData<MultiChoiceTileData> {
     // TODO - MIN VALUE, MAX VALUE, SP LINK
 
     @Override
-    protected MultiChoiceTileData build() {
+    public MultiChoiceTileData build() {
         return this;
     }
 

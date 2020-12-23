@@ -1,6 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile;
-
-import android.widget.CompoundButton;
+package com.idankorenisraeli.mysettingsscreen.tile_data;
 
 import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectedListener;
 
@@ -8,7 +6,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 
-public class RadioTileData extends SettingsTileData<RadioTileData> {
+public class RadioTileData extends TitleTileData<RadioTileData> {
 
     private String defaultOption;
     private boolean dropDown;
@@ -19,7 +17,7 @@ public class RadioTileData extends SettingsTileData<RadioTileData> {
     // TODO - MIN VALUE, MAX VALUE, SP LINK
 
     @Override
-    protected RadioTileData build() {
+    public RadioTileData build() {
         return this;
     }
 

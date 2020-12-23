@@ -1,15 +1,11 @@
-package com.idankorenisraeli.mysettingsscreen.tile;
+package com.idankorenisraeli.mysettingsscreen.tile_data;
 
-import android.graphics.drawable.Drawable;
-
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.io.Serializable;
 
-public abstract class SettingsTileData<T> implements Serializable {
+public abstract class TitleTileData<T> implements Serializable, SettingsTileData {
 
-    protected abstract T build();
 
     private String title;
     private String description;
@@ -17,12 +13,13 @@ public abstract class SettingsTileData<T> implements Serializable {
 
     public static final int INVISIBLE_ICON_ID = -1;
 
-    
-    public SettingsTileData(){
+    protected abstract T build();
+
+    public TitleTileData(){
 
     }
 
-    public SettingsTileData(String title, String description) {
+    public TitleTileData(String title, String description) {
         this.title = title;
         this.description = description;
     }

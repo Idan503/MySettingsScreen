@@ -6,15 +6,13 @@ import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
-import androidx.appcompat.app.AlertDialog;
-
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.List;
 
-public class RadioDialogTileHolder extends SettingsTileHolder {
+public class RadioDialogTileHolder extends TitleTileHolder {
 
     public RadioDialogTileHolder(View itemView) {
         super(itemView);
@@ -22,8 +20,8 @@ public class RadioDialogTileHolder extends SettingsTileHolder {
 
 
     @Override
-    public boolean setData(SettingsTileData<?> tileObject) {
-        if(!super.setData(tileObject)) return false;
+    public void setData(SettingsTileData tileObject) {
+        super.setData(tileObject);
         RadioTileData mData = (RadioTileData) tileObject;
 
         if (mData.getOnSelected() != null)
@@ -35,11 +33,9 @@ public class RadioDialogTileHolder extends SettingsTileHolder {
                 }
             });
 
-        return true;
     }
 
     private void buildRadioAlertDialog(RadioTileData mData){
-        if(!validateData(mData)) return;
         RadioGroup radioGroup = createRadioGroup(mData.getOptions(), mData.getDefaultOption());
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
@@ -59,17 +55,15 @@ public class RadioDialogTileHolder extends SettingsTileHolder {
     }
 
 
-    private boolean validateData(RadioTileData mData) {
+    @Override
+    protected void validateData(SettingsTileData tileData){
+        RadioTileData mData = (RadioTileData) tileData;
         if(mData.getOptions().size() == 0){
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
-            return false;
         }
         if(mData.getDefaultOption() == null) {
-            mData.setDefaultOption(mData.getOptions().get(0));
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
         }
-
-        return true;
     }
 
     private RadioGroup createRadioGroup(List<String> options, String defaultOption) {

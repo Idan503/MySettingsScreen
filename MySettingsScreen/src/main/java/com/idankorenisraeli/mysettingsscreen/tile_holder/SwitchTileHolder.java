@@ -3,14 +3,12 @@ package com.idankorenisraeli.mysettingsscreen.tile_holder;
 import android.view.View;
 import android.widget.CompoundButton;
 
-import androidx.appcompat.widget.SwitchCompat;
-
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SwitchTileData;
 
-public class SwitchTileHolder extends SettingsTileHolder{
+public class SwitchTileHolder extends TitleTileHolder{
 
 
     SwitchMaterial switchMaterial;
@@ -30,8 +28,8 @@ public class SwitchTileHolder extends SettingsTileHolder{
     }
 
     @Override
-    public boolean setData(SettingsTileData<?> tileObject) {
-        if(!super.setData(tileObject)) return false;
+    public void setData(SettingsTileData tileObject) {
+        super.setData(tileObject);
         SwitchTileData mData = (SwitchTileData) tileObject;
 
         if(mData.getOnChange()!=null) {
@@ -54,6 +52,12 @@ public class SwitchTileHolder extends SettingsTileHolder{
             }
         });
 
-        return true;
     }
+
+    protected void validateData(SettingsTileData mData) {
+        super.validateData(mData);
+
+
+    }
+
 }

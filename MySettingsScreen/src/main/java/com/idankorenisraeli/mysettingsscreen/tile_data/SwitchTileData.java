@@ -1,14 +1,14 @@
-package com.idankorenisraeli.mysettingsscreen.tile;
+package com.idankorenisraeli.mysettingsscreen.tile_data;
 
 import android.widget.CompoundButton;
 
 import androidx.annotation.Nullable;
 
 
-public class SwitchTileData extends SettingsTileData<SwitchTileData> {
+public class SwitchTileData extends TitleTileData<SwitchTileData> {
 
     @Override
-    protected SwitchTileData build() {
+    public SwitchTileData build() {
         return this;
     }
 

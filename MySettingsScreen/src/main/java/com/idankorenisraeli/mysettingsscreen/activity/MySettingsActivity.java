@@ -12,11 +12,13 @@ import android.widget.SeekBar;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectedListener;
-import com.idankorenisraeli.mysettingsscreen.tile.ButtonTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SeekbarTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SwitchTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SwitchTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.TitleTileData;
 
 import java.util.ArrayList;
 
@@ -40,34 +42,16 @@ public class MySettingsActivity extends AppCompatActivity {
             options.add("Option " + i);
         }
 
-        ArrayList<SettingsTileData<?>> dataTiles = new ArrayList<>();
+        ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
         dataTiles.add(new ButtonTileData("Hey", "This is a simple tile")
                 .setIconId(android.R.drawable.ic_menu_add));
         dataTiles.add(new ButtonTileData("This Title", "Description of a title no icon")
-                .setIconId(SettingsTileData.INVISIBLE_ICON_ID));
-        dataTiles.add(new SeekbarTileData("This Title", "Description of a title no icon")
-                .setOnChange(new SeekBar.OnSeekBarChangeListener() {
-                    @Override
-                    public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                        Log.i("pttt", progress + "");
-                    }
+                .setIconId(TitleTileData.INVISIBLE_ICON_ID));
 
-                    @Override
-                    public void onStartTrackingTouch(SeekBar seekBar) {
-                        Log.i("pttt", "started");
-                    }
-
-                    @Override
-                    public void onStopTrackingTouch(SeekBar seekBar) {
-                        Log.i("pttt", "finished");
-                    }
-                })
-                .setIconId(android.R.drawable.ic_menu_call)
-        );
         dataTiles.add(new RadioTileData("Radio", "This is a radio type")
                 .setDropDown(false)
                 .setOptions(options)
-                .setIconId(SettingsTileData.INVISIBLE_ICON_ID)
+                .setIconId(TitleTileData.INVISIBLE_ICON_ID)
                 .setOnSelected(new OnOptionSelectedListener() {
                     @Override
                     public void onOptionSelected(String option) {
@@ -75,7 +59,7 @@ public class MySettingsActivity extends AppCompatActivity {
                     }
                 }));
         dataTiles.add(new SwitchTileData("SwitchTile", "This is a switch tile data")
-                .setIconId(SettingsTileData.INVISIBLE_ICON_ID)
+                .setIconId(TitleTileData.INVISIBLE_ICON_ID)
                 .setOnChange(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -94,6 +78,19 @@ public class MySettingsActivity extends AppCompatActivity {
                     }
                 })
                 .setDefaultOption(options.get(4)));
+
+        dataTiles.add(new DividerTileData().setHeight(2));
+
+        dataTiles.add(new SeekbarTileData("Seek Bar Title", "Seek Bar Very Long Description Description Description")
+                .setIconId(android.R.drawable.ic_menu_add)
+        .setMinValue(15)
+        .setMaxValue(100)
+        .setDefaultValue(25));
+
+        dataTiles.add(new SwitchTileData("Switch Tile", "Switch tile data description test")
+                .setIconId(android.R.drawable.ic_btn_speak_now));
+
+        dataTiles.add(new RadioTileData("Radio Dropdown", "Description").setDropDown(true).setOptions(options));
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));

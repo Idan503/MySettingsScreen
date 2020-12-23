@@ -1,24 +1,19 @@
 package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
-import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 
 import androidx.appcompat.widget.AppCompatSpinner;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class RadioDropdownTileHolder extends SettingsTileHolder {
+public class RadioDropdownTileHolder extends TitleTileHolder {
 
     private AppCompatSpinner spinner;
 
@@ -36,8 +31,8 @@ public class RadioDropdownTileHolder extends SettingsTileHolder {
     }
 
     @Override
-    public boolean setData(SettingsTileData<?> tileObject) {
-        if (!super.setData(tileObject)) return false;
+    public void setData(SettingsTileData tileObject) {
+        super.setData(tileObject);
         RadioTileData mData = (RadioTileData) tileObject;
 
         buildDropdown(mData);
@@ -57,8 +52,13 @@ public class RadioDropdownTileHolder extends SettingsTileHolder {
                 }
             });
 
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                spinner.performClick();
+            }
+        });
 
-        return true;
     }
 
     private void buildDropdown(RadioTileData mData) {
@@ -72,18 +72,16 @@ public class RadioDropdownTileHolder extends SettingsTileHolder {
 
 
     @Override
-    protected boolean validateData(SettingsTileData<?> mData) {
+    protected void validateData(SettingsTileData mData) {
+        super.validateData(mData);
         RadioTileData tileData = (RadioTileData) mData;
         if (tileData.getOptions().size() == 0) {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
-            return false;
         }
         if (tileData.getDefaultOption() == null) {
-            tileData.setDefaultOption(tileData.getOptions().get(0));
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
         }
 
-        return true;
     }
 
 }
