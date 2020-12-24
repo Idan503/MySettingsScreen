@@ -35,6 +35,7 @@
             android:layout_marginEnd="16dp"
             app:switchMinWidth="55dp"
             android:gravity="center_vertical"
+
             android:layout_alignParentEnd="true"
             android:layout_toEndOf="@id/tile_LAY_text"
             tools:ignore="UnknownId" />

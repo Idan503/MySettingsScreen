@@ -8,6 +8,13 @@
             android:screenOrientation="portrait"
 
             />
+
+        <provider
+            android:name=".common.MySettingsScreenContentProvider"
+            android:authorities="${applicationId}.LibraryInitProvider"
+            android:exported="false"
+            android:enabled="true"
+            />
     </application>
 
 </manifest>

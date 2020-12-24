@@ -33,11 +33,11 @@ public class SwitchTileHolder extends TitleTileHolder{
         super.setData(tileObject);
         SwitchTileData mData = (SwitchTileData) tileObject;
 
-        if(mData.getOnChange()!=null) {
+        if(mData.getOnChangeListener()!=null) {
             switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    mData.getOnChange().onCheckedChanged(buttonView, isChecked);
+                    mData.getOnChangeListener().onCheckedChanged(buttonView, isChecked);
 
                     //SP Management should be implemented here
                 }

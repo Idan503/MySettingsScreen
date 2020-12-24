@@ -2,7 +2,7 @@
 <resources>
 
     <style name="Theme.MySettingsScreen" parent="Theme.MaterialComponents.DayNight">
-        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimary">@color/background_primary</item>
         <item name="android:textColorPrimary">@color/text_primary</item>
         <item name="android:textColorSecondary">@color/text_secondary</item>
         
@@ -31,7 +31,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
         <item name="cardCornerRadius">0dp</item>
-        <item name="cardBackgroundColor">@color/primary</item>
+        <item name="cardBackgroundColor">@color/background_primary</item>
     </style>
 
     <style name="TileCard.Clickable" parent="TileCard">

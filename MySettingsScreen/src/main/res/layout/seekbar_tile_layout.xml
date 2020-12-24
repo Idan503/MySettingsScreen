@@ -52,10 +52,12 @@
                 android:textSize="16sp"
                 android:gravity="center|start"
                 android:padding="4dp"
+                android:paddingStart="8dp"
+                android:paddingEnd="2dp"
                 android:layout_gravity="center_vertical"
                 android:includeFontPadding="false"
                 android:layout_weight="0.175"
-                android:text="n"
+                android:id="@id/tile_seekbar_LBL_indicator"
                 />
 
         </LinearLayout>

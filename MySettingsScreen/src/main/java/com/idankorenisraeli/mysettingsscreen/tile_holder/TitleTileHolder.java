@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.TextIconTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.BasicTileData;
 
 public class TitleTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
 
@@ -44,7 +44,7 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
      * @param tileObject the data that is set to the holder
      */
     protected void validateData(SettingsTileData tileObject){
-        TextIconTileData<?> mData = (TextIconTileData<?>) tileObject;
+        BasicTileData<?> mData = (BasicTileData<?>) tileObject;
 
         if(mData.getTitle()==null) {
             Log.w(TAG, "Settings Tile is missing \"Title\" attribute.");
@@ -59,7 +59,7 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
      */
     public void setData(SettingsTileData tileObject){
         validateData(tileObject);
-        TextIconTileData<?> mData = (TextIconTileData<?>) tileObject;
+        BasicTileData<?> mData = (BasicTileData<?>) tileObject;
 
         this.setTitleText(mData.getTitle());
         this.setDescriptionText(mData.getDescription());
@@ -79,7 +79,7 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
     private void setIconDrawable(Integer id){
         if(id!=null) {
             Drawable icon;
-            if(id== TextIconTileData.INVISIBLE_ICON_ID){
+            if(id== BasicTileData.INVISIBLE_ICON_ID){
                 icon = ContextCompat.getDrawable(itemView.getContext(), android.R.color.transparent);
             } else
                 icon = ContextCompat.getDrawable(itemView.getContext(), id);

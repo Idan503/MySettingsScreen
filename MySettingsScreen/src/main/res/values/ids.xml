@@ -15,5 +15,6 @@
     <item name="tile_SB_seekbar" type="id"/>
     <item name="tile_SPN_spinner" type="id"/>
     <item name="tile_VIEW_divider" type="id"/>
+    <item name="tile_seekbar_LBL_indicator" type="id"/>
 
 </resources>

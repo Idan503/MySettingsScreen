@@ -25,7 +25,7 @@ public class RadioDialogTileHolder extends TitleTileHolder {
         super.setData(tileObject);
         RadioTileData mData = (RadioTileData) tileObject;
 
-        if (mData.getOnSelected() != null)
+        if (mData.getOnSelectedListener() != null)
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -37,7 +37,7 @@ public class RadioDialogTileHolder extends TitleTileHolder {
     }
 
     private void buildRadioAlertDialog(RadioTileData mData){
-        RadioGroup radioGroup = createRadioGroup(mData.getOptions(), mData.getDefaultOption());
+        RadioGroup radioGroup = createRadioGroup(mData.getOptionsList(), mData.getDefaultOption());
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
                 .setTitle(mData.getTitle())
@@ -48,8 +48,8 @@ public class RadioDialogTileHolder extends TitleTileHolder {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         // find the radiobutton by returned id to get its string value
                         RadioButton radioButton = radioGroup.findViewById(selectedId);
-                        if(mData.getOnSelected()!=null)
-                            mData.getOnSelected().onRadioSelect(radioButton.getText().toString());
+                        if(mData.getOnSelectedListener()!=null)
+                            mData.getOnSelectedListener().onRadioSelect(radioButton.getText().toString());
                     }
                 });
         builder.show();
@@ -60,15 +60,15 @@ public class RadioDialogTileHolder extends TitleTileHolder {
     @Override
     protected void validateData(SettingsTileData tileData){
         RadioTileData mData = (RadioTileData) tileData;
-        if(mData.getOptions() == null){
+        if(mData.getOptionsList() == null){
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
             ArrayList<String> demoList =  new ArrayList<>();
             demoList.add("");
-            mData.setOptions(demoList);
+            mData.setOptionsList(demoList);
         }
         if(mData.getDefaultOption() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
-            mData.setDefaultOption(mData.getOptions().get(0));
+            mData.setDefaultOption(mData.getOptionsList().get(0));
         }
     }
 

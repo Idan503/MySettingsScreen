@@ -33,7 +33,7 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
     }
 
     private void buildMultiChoiceAlertDialog(MultiChoiceTileData mData){
-        CharSequence[] options = mData.getOptions().toArray(new CharSequence[mData.getOptions().size()]);
+        CharSequence[] options = mData.getOptionsList().toArray(new CharSequence[mData.getOptionsList().size()]);
 
         boolean[] checked = new boolean[mData.getDefaultChecked().size()];
 
@@ -59,7 +59,7 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
     @Override
     protected void validateData(SettingsTileData tileData){
         MultiChoiceTileData mData = (MultiChoiceTileData) tileData;
-        if(mData.getOptions() == null){
+        if(mData.getOptionsList() == null){
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
             ArrayList<String> demoList =  new ArrayList<>();
             demoList.add("");
@@ -68,7 +68,7 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
         if(mData.getDefaultChecked() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Checked\" attribute.");
             ArrayList<Boolean> demoList =  new ArrayList<>();
-            for (int i = 0; i < mData.getOptions().size(); i++) {
+            for (int i = 0; i < mData.getOptionsList().size(); i++) {
                 demoList.add(false);
             }
             mData.setDefaultChecked(demoList);

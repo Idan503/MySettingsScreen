@@ -6,15 +6,15 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 
-public class RadioTileData extends TextIconTileData<RadioTileData> {
+public class RadioTileData extends BasicTileData<RadioTileData> {
 
     private String defaultOption;
-    private boolean dropDown;
-    private OnRadioSelectListener onSelected;
-    private List<String> options;
+    private boolean dropDown = false;
+    private OnRadioSelectListener onSelectedListener;
+    private List<String> optionsList;
     //Outer layout click functionality implemented inside holder object
 
-    // TODO - MIN VALUE, MAX VALUE, SP LINK
+    // TODO - SP LINK
 
     @Override
     public RadioTileData build() {
@@ -25,21 +25,21 @@ public class RadioTileData extends TextIconTileData<RadioTileData> {
         super(title, description);
     }
 
-    public OnRadioSelectListener getOnSelected() {
-        return onSelected;
+    public OnRadioSelectListener getOnSelectedListener() {
+        return onSelectedListener;
     }
 
-    public RadioTileData setOnSelected(OnRadioSelectListener onSelected) {
-        this.onSelected = onSelected;
+    public RadioTileData withOnSelectedListener(OnRadioSelectListener onSelectedListener) {
+        this.onSelectedListener = onSelectedListener;
         return build();
     }
 
-    public List<String> getOptions() {
-        return options;
+    public List<String> getOptionsList() {
+        return optionsList;
     }
 
-    public RadioTileData setOptions(List<String> options) {
-        this.options = options;
+    public RadioTileData withOptionsList(List<String> optionsList) {
+        this.optionsList = optionsList;
         return build();
     }
 
@@ -47,7 +47,7 @@ public class RadioTileData extends TextIconTileData<RadioTileData> {
         return dropDown;
     }
 
-    public RadioTileData setDropDown(boolean dropDown) {
+    public RadioTileData withDropDown(boolean dropDown) {
         this.dropDown = dropDown;
         return build();
     }
@@ -56,10 +56,26 @@ public class RadioTileData extends TextIconTileData<RadioTileData> {
         return defaultOption;
     }
 
-    public RadioTileData setDefaultOption(String defaultOption) {
-        if(!options.contains(defaultOption))
+    public RadioTileData withDefaultOption(String defaultOption) {
+        if(!optionsList.contains(defaultOption))
             throw new InputMismatchException("Options list must contain the Default Option");
         this.defaultOption = defaultOption;
         return build();
+    }
+
+    public void setDefaultOption(String defaultOption) {
+        this.defaultOption = defaultOption;
+    }
+
+    public void setDropDown(boolean dropDown) {
+        this.dropDown = dropDown;
+    }
+
+    public void setOnSelectedListener(OnRadioSelectListener onSelectedListener) {
+        this.onSelectedListener = onSelectedListener;
+    }
+
+    public void setOptionsList(List<String> optionsList) {
+        this.optionsList = optionsList;
     }
 }

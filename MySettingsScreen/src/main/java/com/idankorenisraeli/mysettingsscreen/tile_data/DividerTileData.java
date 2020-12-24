@@ -2,6 +2,10 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
 
 import java.io.Serializable;
 
+
+/**
+ * A horizontal line that will divide the tile before and the tile after this one visually
+ */
 public class DividerTileData implements Serializable, SettingsTileData {
 
     private Integer height;
@@ -18,12 +22,16 @@ public class DividerTileData implements Serializable, SettingsTileData {
         return height;
     }
 
-    public DividerTileData setHeight(int height) {
+    public DividerTileData withHeight(int height) {
         this.height = height;
-        return this;
+        return build();
     }
 
     public DividerTileData build() {
         return this;
+    }
+
+    public void setHeight(Integer height) {
+        this.height = height;
     }
 }

@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 /**
  * Settings tile that contains a single switch
  */
-public class SwitchTileData extends TextIconTileData<SwitchTileData> {
+public class SwitchTileData extends BasicTileData<SwitchTileData> {
 
     @Override
     public SwitchTileData build() {
@@ -15,7 +15,7 @@ public class SwitchTileData extends TextIconTileData<SwitchTileData> {
     }
 
     private Boolean defaultValue = false;
-    private @Nullable CompoundButton.OnCheckedChangeListener onChange;
+    private @Nullable CompoundButton.OnCheckedChangeListener onChangeListener;
     //Outer layout click functionality implemented inside holder object
 
 
@@ -24,12 +24,12 @@ public class SwitchTileData extends TextIconTileData<SwitchTileData> {
     }
 
     @Nullable
-    public CompoundButton.OnCheckedChangeListener getOnChange() {
-        return onChange;
+    public CompoundButton.OnCheckedChangeListener getOnChangeListener() {
+        return onChangeListener;
     }
 
-    public SwitchTileData setOnChange(@Nullable CompoundButton.OnCheckedChangeListener onChange) {
-        this.onChange = onChange;
+    public SwitchTileData withOnChangeListener(@Nullable CompoundButton.OnCheckedChangeListener onChangeListener) {
+        this.onChangeListener = onChangeListener;
         return build();
     }
 
@@ -37,8 +37,16 @@ public class SwitchTileData extends TextIconTileData<SwitchTileData> {
         return defaultValue;
     }
 
-    public SwitchTileData setDefaultValue(boolean defaultValue) {
+    public SwitchTileData withDefaultValue(boolean defaultValue) {
         this.defaultValue = defaultValue;
         return build();
+    }
+
+    public void setDefaultValue(Boolean defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
+    public void setOnChangeListener(@Nullable CompoundButton.OnCheckedChangeListener onChangeListener) {
+        this.onChangeListener = onChangeListener;
     }
 }

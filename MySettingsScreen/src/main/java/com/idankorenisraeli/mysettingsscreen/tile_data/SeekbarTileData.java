@@ -3,10 +3,10 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
 import android.widget.SeekBar;
 
 
-public class SeekbarTileData extends TextIconTileData<SeekbarTileData> {
+public class SeekbarTileData extends BasicTileData<SeekbarTileData> {
 
 
-    private SeekBar.OnSeekBarChangeListener onChange;
+    private SeekBar.OnSeekBarChangeListener onChangeListener;
     //Outer layout click functionality implemented inside holder object
 
     private Integer minValue;
@@ -26,12 +26,12 @@ public class SeekbarTileData extends TextIconTileData<SeekbarTileData> {
     }
 
 
-    public SeekBar.OnSeekBarChangeListener getOnChange() {
-        return onChange;
+    public SeekBar.OnSeekBarChangeListener getOnChangeListener() {
+        return onChangeListener;
     }
 
-    public SeekbarTileData setOnChange(SeekBar.OnSeekBarChangeListener onChange) {
-        this.onChange = onChange;
+    public SeekbarTileData withOnChangeListener(SeekBar.OnSeekBarChangeListener onChangeListener) {
+        this.onChangeListener = onChangeListener;
         return this;
     }
 
@@ -39,7 +39,7 @@ public class SeekbarTileData extends TextIconTileData<SeekbarTileData> {
         return minValue;
     }
 
-    public SeekbarTileData setMinValue(Integer minValue) {
+    public SeekbarTileData withMinValue(Integer minValue) {
         this.minValue = minValue;
         return build();
     }
@@ -48,7 +48,7 @@ public class SeekbarTileData extends TextIconTileData<SeekbarTileData> {
         return maxValue;
     }
 
-    public SeekbarTileData setMaxValue(Integer maxValue) {
+    public SeekbarTileData withMaxValue(Integer maxValue) {
         this.maxValue = maxValue;
         return build();
     }
@@ -57,8 +57,24 @@ public class SeekbarTileData extends TextIconTileData<SeekbarTileData> {
         return defaultValue;
     }
 
-    public SeekbarTileData setDefaultValue(Integer defaultValue) {
+    public SeekbarTileData withDefaultValue(Integer defaultValue) {
         this.defaultValue = defaultValue;
         return build();
+    }
+
+    public void setOnChangeListener(SeekBar.OnSeekBarChangeListener onChangeListener) {
+        this.onChangeListener = onChangeListener;
+    }
+
+    public void setMinValue(Integer minValue) {
+        this.minValue = minValue;
+    }
+
+    public void setMaxValue(Integer maxValue) {
+        this.maxValue = maxValue;
+    }
+
+    public void setDefaultValue(Integer defaultValue) {
+        this.defaultValue = defaultValue;
     }
 }
