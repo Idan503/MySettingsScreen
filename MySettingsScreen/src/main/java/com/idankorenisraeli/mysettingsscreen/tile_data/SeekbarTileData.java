@@ -3,7 +3,7 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
 import android.widget.SeekBar;
 
 
-public class SeekbarTileData extends BasicTileData<SeekbarTileData> {
+public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {
 
 
     private SeekBar.OnSeekBarChangeListener onChangeListener;

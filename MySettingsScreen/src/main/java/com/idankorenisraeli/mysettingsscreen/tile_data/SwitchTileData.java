@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 /**
  * Settings tile that contains a single switch
  */
-public class SwitchTileData extends BasicTileData<SwitchTileData> {
+public class SwitchTileData extends SavableTileData<Boolean,SwitchTileData> {
 
     @Override
     public SwitchTileData build() {

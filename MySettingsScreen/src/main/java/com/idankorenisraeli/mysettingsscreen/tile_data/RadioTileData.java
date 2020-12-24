@@ -6,15 +6,15 @@ import java.util.InputMismatchException;
 import java.util.List;
 
 
-public class RadioTileData extends BasicTileData<RadioTileData> {
-
-    private String defaultOption;
+public class RadioTileData extends SavableTileData<String, RadioTileData> {
     private boolean dropDown = false;
     private OnRadioSelectListener onSelectedListener;
     private List<String> optionsList;
+
     //Outer layout click functionality implemented inside holder object
 
     // TODO - SP LINK
+
 
     @Override
     public RadioTileData build() {
@@ -52,20 +52,15 @@ public class RadioTileData extends BasicTileData<RadioTileData> {
         return build();
     }
 
-    public String getDefaultOption() {
-        return defaultOption;
-    }
 
-    public RadioTileData withDefaultOption(String defaultOption) {
+    @Override
+    public RadioTileData withDefaultValue(String defaultOption) {
         if(!optionsList.contains(defaultOption))
             throw new InputMismatchException("Options list must contain the Default Option");
-        this.defaultOption = defaultOption;
+        this.defaultValue = defaultOption;
         return build();
     }
 
-    public void setDefaultOption(String defaultOption) {
-        this.defaultOption = defaultOption;
-    }
 
     public void setDropDown(boolean dropDown) {
         this.dropDown = dropDown;

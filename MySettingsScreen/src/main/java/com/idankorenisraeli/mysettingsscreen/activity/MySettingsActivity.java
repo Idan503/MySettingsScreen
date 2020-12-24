@@ -8,6 +8,7 @@ import android.os.Bundle;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
@@ -34,6 +35,8 @@ public class MySettingsActivity extends AppCompatActivity {
 
         ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
 
+
+        RadioTileData tile = new RadioTileData("Title", "Description");
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, dataTiles));

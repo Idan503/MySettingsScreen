@@ -32,6 +32,8 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
     }
 
+
+
     private void buildMultiChoiceAlertDialog(MultiChoiceTileData mData){
         CharSequence[] options = mData.getOptionsList().toArray(new CharSequence[mData.getOptionsList().size()]);
 
@@ -63,7 +65,7 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
             ArrayList<String> demoList =  new ArrayList<>();
             demoList.add("");
-            mData.setOptions(demoList);
+            mData.setOptionsList(demoList);
         }
         if(mData.getDefaultChecked() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Checked\" attribute.");
