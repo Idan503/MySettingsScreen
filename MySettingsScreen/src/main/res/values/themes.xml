@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <style name="Theme.MySettingsScreen" parent="Theme.MaterialComponents.DayNight">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+        
+    </style>
+
+
     <style name="CustomTheme.switchState" parent="Theme.AppCompat.Light">
         <item name="colorControlActivated">@color/cardview_light_background</item>
         <item name="android:textOn">On</item>
         <item name="android:textOff">Off</item>
     </style>
-
-
 
     <!-- Icon of Tile -->
     <style name="TileIcon">
@@ -25,6 +31,7 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">80dp</item>
         <item name="cardCornerRadius">0dp</item>
+        <item name="cardBackgroundColor">@color/primary</item>
     </style>
 
     <style name="TileCard.Clickable" parent="TileCard">
@@ -63,13 +70,13 @@
     </style>
 
     <style name="TextView.TileTitle" parent="TextView.TileText">
-        <item name="android:textColor">@android:color/darker_gray</item> <!-- SHOULD BE DECLARED IN 'COLORS'-->
+        <item name="android:textColor">@color/text_primary</item>
         <item name="android:textSize">16sp</item>
     </style>
 
     <style name="TextView.TileDescription" parent="TextView.TileText">
         <item name="android:paddingTop">2dp</item>
-        <item name="android:textColor">@android:color/darker_gray</item> <!-- SHOULD BE DECLARED IN 'COLORS'-->
+        <item name="android:textColor">@color/text_secondary</item>
         <item name="android:textSize">14sp</item>
     </style>
 

@@ -1,6 +1,7 @@
 package com.idankorenisraeli.mysettingsscreen.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int TITLE =0;
     public static final int CLICKABLE =1;
     public static final int SWITCH=2;
-    public static final int SEEKBAR=3;
+    public static final int SEEK_BAR =3;
     public static final int RADIO_DROPDOWN =4;
     public static final int RADIO_DIALOG =5;
     public static final int MULTI_CHOICE=6;
@@ -60,7 +61,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case SWITCH:
                 view = mInflater.inflate(R.layout.switch_tile_layout, parent, false);
                 return new SwitchTileHolder(view);
-            case SEEKBAR:
+            case SEEK_BAR:
                 view = mInflater.inflate(R.layout.seekbar_tile_layout, parent, false);
                 return new SeekbarTileHolder(view);
             case RADIO_DIALOG:
@@ -103,11 +104,12 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case "ButtonTileData":
                 return CLICKABLE;
             case "TitleTileData":
+                Log.i("pttt", "Createadd new title at " + position);
                 return TITLE;
             case "SwitchTileData":
                 return SWITCH;
             case "SeekbarTileData":
-                return SEEKBAR;
+                return SEEK_BAR;
             case "RadioTileData":
                 RadioTileData radioData = (RadioTileData) data;
                 return radioData.isDropDown() ? RADIO_DROPDOWN : RADIO_DIALOG;

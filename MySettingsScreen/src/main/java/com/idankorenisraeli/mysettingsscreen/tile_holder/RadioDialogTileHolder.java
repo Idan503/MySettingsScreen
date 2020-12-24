@@ -48,7 +48,8 @@ public class RadioDialogTileHolder extends TitleTileHolder {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         // find the radiobutton by returned id to get its string value
                         RadioButton radioButton = radioGroup.findViewById(selectedId);
-                        mData.getOnSelected().onRadioSelect(radioButton.getText().toString());
+                        if(mData.getOnSelected()!=null)
+                            mData.getOnSelected().onRadioSelect(radioButton.getText().toString());
                     }
                 });
         builder.show();
@@ -61,10 +62,13 @@ public class RadioDialogTileHolder extends TitleTileHolder {
         RadioTileData mData = (RadioTileData) tileData;
         if(mData.getOptions() == null){
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
-            mData.setOptions(new ArrayList<>());
+            ArrayList<String> demoList =  new ArrayList<>();
+            demoList.add("");
+            mData.setOptions(demoList);
         }
         if(mData.getDefaultOption() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
+            mData.setDefaultOption(mData.getOptions().get(0));
         }
     }
 

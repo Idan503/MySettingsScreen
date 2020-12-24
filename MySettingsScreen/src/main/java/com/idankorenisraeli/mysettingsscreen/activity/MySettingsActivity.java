@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.CompoundButton;
+import android.widget.SeekBar;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.adapter.SettingsRecyclerAdapter;
@@ -19,6 +20,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SwitchTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.TextIconTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.TitleTileData;
 
 import java.util.ArrayList;
 
@@ -47,6 +49,8 @@ public class MySettingsActivity extends AppCompatActivity {
                 .setIconId(android.R.drawable.ic_menu_add));
         dataTiles.add(new ButtonTileData("This Title", "Description of a title no icon")
                 .setIconId(TextIconTileData.INVISIBLE_ICON_ID));
+
+        dataTiles.add(new TitleTileData("Title", "Not clickable tile").setIconId(android.R.drawable.ic_media_next));
 
         dataTiles.add(new RadioTileData("Radio", "This is a radio type")
                 .setDropDown(false)
@@ -85,7 +89,23 @@ public class MySettingsActivity extends AppCompatActivity {
                 .setIconId(android.R.drawable.ic_menu_add)
         .setMinValue(15)
         .setMaxValue(100)
-        .setDefaultValue(25));
+        .setDefaultValue(25)
+        .setOnChange(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                Log.i("pttt", "Progress " + progress);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        }));
 
         dataTiles.add(new SwitchTileData("Switch Tile", "Switch tile data description test")
                 .setIconId(android.R.drawable.ic_btn_speak_now));

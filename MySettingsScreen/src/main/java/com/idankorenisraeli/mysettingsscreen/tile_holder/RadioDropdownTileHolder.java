@@ -77,10 +77,13 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
         RadioTileData mData = (RadioTileData) tileData;
         if (mData.getOptions() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
-            mData.setOptions(new ArrayList<>());
+            ArrayList<String> demoList =  new ArrayList<>();
+            demoList.add("");
+            mData.setOptions(demoList);
         }
         if (mData.getDefaultOption() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
+            mData.setDefaultOption(mData.getOptions().get(0));
         }
 
     }

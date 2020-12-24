@@ -16,7 +16,6 @@ public abstract class TextIconTileData<T> implements Serializable, SettingsTileD
     public abstract T build();
 
     public TextIconTileData(){
-
     }
 
     public TextIconTileData(String title, String description) {

@@ -30,7 +30,6 @@ public class ButtonTileHolder extends TitleTileHolder{
             this.itemView.setClickable(true);
             this.itemView.setOnClickListener(tileClickListener);
         }
-
     }
 
     @Override
