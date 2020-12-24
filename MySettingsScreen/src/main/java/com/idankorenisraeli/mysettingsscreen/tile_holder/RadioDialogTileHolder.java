@@ -10,6 +10,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RadioDialogTileHolder extends TitleTileHolder {
@@ -58,8 +59,9 @@ public class RadioDialogTileHolder extends TitleTileHolder {
     @Override
     protected void validateData(SettingsTileData tileData){
         RadioTileData mData = (RadioTileData) tileData;
-        if(mData.getOptions().size() == 0){
+        if(mData.getOptions() == null){
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
+            mData.setOptions(new ArrayList<>());
         }
         if(mData.getDefaultOption() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");

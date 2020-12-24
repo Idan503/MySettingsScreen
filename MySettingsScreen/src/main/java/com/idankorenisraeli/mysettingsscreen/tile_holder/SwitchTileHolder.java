@@ -1,5 +1,6 @@
 package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
+import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 
@@ -54,8 +55,16 @@ public class SwitchTileHolder extends TitleTileHolder{
 
     }
 
-    protected void validateData(SettingsTileData mData) {
-        super.validateData(mData);
+    @Override
+    protected void validateData(SettingsTileData tileData) {
+        super.validateData(tileData);
+        
+        SwitchTileData mData = (SwitchTileData) tileData;
+
+        if(mData.getDefaultValue() == null){
+            Log.w(TAG, "Switch Settings Tile is missing \"Default Value\" attribute.");
+            mData.setDefaultValue(false);
+        }
 
 
     }

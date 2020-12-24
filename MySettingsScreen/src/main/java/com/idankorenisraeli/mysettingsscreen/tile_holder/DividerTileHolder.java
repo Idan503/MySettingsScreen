@@ -40,8 +40,10 @@ public class DividerTileHolder extends RecyclerView.ViewHolder implements Settin
     }
 
     private void validateData(DividerTileData data){
-        if(data.getHeight()==null)
-            Log.w(TAG, "Seekbar Settings Tile is missing \"MinValue\" attribute.");
+        if(data.getHeight()==null) {
+            Log.w(TAG, "Seekbar Settings Tile is missing \"Height\" attribute.");
+            data.setHeight(2);
+        }
     }
 
 }

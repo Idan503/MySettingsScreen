@@ -1,7 +1,5 @@
 package com.idankorenisraeli.mysettingsscreen.tile_data;
 
-import android.content.DialogInterface;
-
 import com.idankorenisraeli.mysettingsscreen.callback.OnMultiSelectListener;
 
 import java.util.ArrayList;
@@ -11,7 +9,7 @@ public class MultiChoiceTileData extends TextIconTileData<MultiChoiceTileData> {
 
     private OnMultiSelectListener onChanged;
     private ArrayList<String> options;
-    private ArrayList<Boolean> checked;
+    private ArrayList<Boolean> defaultChecked;
     //Outer layout click functionality implemented inside holder object
 
     // TODO - SP LINK
@@ -45,12 +43,12 @@ public class MultiChoiceTileData extends TextIconTileData<MultiChoiceTileData> {
         return build();
     }
 
-    public ArrayList<Boolean> getChecked() {
-        return checked;
+    public ArrayList<Boolean> getDefaultChecked() {
+        return defaultChecked;
     }
 
-    public MultiChoiceTileData setChecked(ArrayList<Boolean> checked) {
-        this.checked = checked;
-        return this;
+    public MultiChoiceTileData setDefaultChecked(ArrayList<Boolean> defaultChecked) {
+        this.defaultChecked = defaultChecked;
+        return build();
     }
 }

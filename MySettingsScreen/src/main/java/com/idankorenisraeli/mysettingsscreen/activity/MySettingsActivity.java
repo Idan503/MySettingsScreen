@@ -106,7 +106,7 @@ public class MySettingsActivity extends AppCompatActivity {
 
 
         dataTiles.add(new MultiChoiceTileData("Multi", "Description")
-        .setOptions(opt).setChecked(chck));
+        .setOptions(opt).setDefaultChecked(chck));
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));

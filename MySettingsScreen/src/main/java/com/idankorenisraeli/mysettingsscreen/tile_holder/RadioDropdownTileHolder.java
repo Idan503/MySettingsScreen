@@ -72,13 +72,14 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
 
 
     @Override
-    protected void validateData(SettingsTileData mData) {
-        super.validateData(mData);
-        RadioTileData tileData = (RadioTileData) mData;
-        if (tileData.getOptions().size() == 0) {
+    protected void validateData(SettingsTileData tileData) {
+        super.validateData(tileData);
+        RadioTileData mData = (RadioTileData) tileData;
+        if (mData.getOptions() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
+            mData.setOptions(new ArrayList<>());
         }
-        if (tileData.getDefaultOption() == null) {
+        if (mData.getDefaultOption() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
         }
 

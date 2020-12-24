@@ -1,5 +1,6 @@
 package com.idankorenisraeli.mysettingsscreen.tile_holder;
 
+import android.util.Log;
 import android.view.View;
 
 import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
@@ -30,5 +31,16 @@ public class ButtonTileHolder extends TitleTileHolder{
             this.itemView.setOnClickListener(tileClickListener);
         }
 
+    }
+
+    @Override
+    protected void validateData(SettingsTileData tileObject) {
+        super.validateData(tileObject);
+
+        ButtonTileData mData = (ButtonTileData) tileObject;
+
+        if(mData.getOnClick() == null){
+            Log.w(TAG, "Radio Group Settings is missing \"On Click\" attribute.");
+        }
     }
 }

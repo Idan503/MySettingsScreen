@@ -13,7 +13,7 @@ public abstract class TextIconTileData<T> implements Serializable, SettingsTileD
 
     public static final int INVISIBLE_ICON_ID = -1;
 
-    protected abstract T build();
+    public abstract T build();
 
     public TextIconTileData(){
 

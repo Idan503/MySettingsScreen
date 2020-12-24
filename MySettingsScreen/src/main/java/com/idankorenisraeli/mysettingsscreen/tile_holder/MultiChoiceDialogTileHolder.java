@@ -8,9 +8,9 @@ import android.widget.RadioGroup;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MultiChoiceDialogTileHolder extends TitleTileHolder {
@@ -39,11 +39,11 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
         CharSequence[] options = (CharSequence[]) mData.getOptions().toArray();
 
-        boolean[] checked = new boolean[mData.getChecked().size()];
+        boolean[] checked = new boolean[mData.getDefaultChecked().size()];
 
         for(int n = 0; n < checked.length; n++)
         {
-            checked[n] = mData.getChecked().get(n);
+            checked[n] = mData.getDefaultChecked().get(n);
         }
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
@@ -62,13 +62,15 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
     @Override
     protected void validateData(SettingsTileData tileData){
-/*        RadioTileData mData = (RadioTileData) tileData;
-        if(mData.getOptions().size() == 0){
+        MultiChoiceTileData mData = (MultiChoiceTileData) tileData;
+        if(mData.getOptions() == null){
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
+            mData.setOptions(new ArrayList<>());
         }
-        if(mData.getDefaultOption() == null) {
-            Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
-        }*/
+        if(mData.getDefaultChecked() == null) {
+            Log.w(TAG, "Radio Group Settings is missing \"Default Checked\" attribute.");
+            mData.setDefaultChecked(new ArrayList<>());
+        }
     }
 
     private RadioGroup createRadioGroup(List<String> options, String defaultOption) {

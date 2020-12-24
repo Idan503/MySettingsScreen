@@ -4,7 +4,9 @@ import android.widget.CompoundButton;
 
 import androidx.annotation.Nullable;
 
-
+/**
+ * Settings tile that contains a single switch
+ */
 public class SwitchTileData extends TextIconTileData<SwitchTileData> {
 
     @Override
@@ -12,7 +14,7 @@ public class SwitchTileData extends TextIconTileData<SwitchTileData> {
         return this;
     }
 
-    private boolean defaultValue = false;
+    private Boolean defaultValue = false;
     private @Nullable CompoundButton.OnCheckedChangeListener onChange;
     //Outer layout click functionality implemented inside holder object
 
@@ -31,7 +33,7 @@ public class SwitchTileData extends TextIconTileData<SwitchTileData> {
         return build();
     }
 
-    public boolean isDefaultValue() {
+    public Boolean getDefaultValue() {
         return defaultValue;
     }
 
