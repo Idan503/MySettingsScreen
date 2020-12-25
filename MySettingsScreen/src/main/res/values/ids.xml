@@ -16,5 +16,6 @@
     <item name="tile_SPN_spinner" type="id"/>
     <item name="tile_VIEW_divider" type="id"/>
     <item name="tile_seekbar_LBL_indicator" type="id"/>
+    <item name="tile_radio_LBL_selected" type="id"/>
 
 </resources>

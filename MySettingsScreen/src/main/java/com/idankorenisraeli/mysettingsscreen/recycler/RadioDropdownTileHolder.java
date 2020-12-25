@@ -67,7 +67,7 @@ class RadioDropdownTileHolder extends TitleTileHolder {
     private void buildDropdown(RadioTileData mData) {
 
         ArrayAdapter<CharSequence> adapter =
-                new ArrayAdapter<>(itemView.getContext(), android.R.layout.simple_spinner_dropdown_item,
+                new ArrayAdapter<>(itemView.getContext(), R.layout.support_simple_spinner_dropdown_item,
                         new ArrayList<>(mData.getOptionsList()));
 
         spinner.setAdapter(adapter);

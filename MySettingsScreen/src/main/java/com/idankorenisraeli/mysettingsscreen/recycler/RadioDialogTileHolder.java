@@ -5,9 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
@@ -15,15 +18,30 @@ import java.util.List;
 
 class RadioDialogTileHolder extends TitleTileHolder {
 
+    TextView selectedLabel;
+
     public RadioDialogTileHolder(View itemView) {
         super(itemView);
+        findViews();
     }
 
+    @Override
+    public void findViews(){
+        super.findViews();
+        selectedLabel = itemView.findViewById(R.id.tile_radio_LBL_selected);
+
+    }
 
     @Override
     public void setData(SettingsTileData tileObject) {
         super.setData(tileObject);
         RadioTileData mData = (RadioTileData) tileObject;
+
+        // Vanishing the text if it is not a labeled setting
+        if(mData.getRadioType() != RadioType.DIALOG_LABELED)
+            selectedLabel.setVisibility(View.GONE);
+        else
+            selectedLabel.setText(mData.getSavedValue());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,11 +64,14 @@ class RadioDialogTileHolder extends TitleTileHolder {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         // find the radiobutton by returned id to get its string value
                         RadioButton radioButton = radioGroup.findViewById(selectedId);
-                        mData.saveValue(radioButton.getText().toString());
+                        String selectedString =radioButton.getText().toString();
+                        selectedLabel.setText(selectedString);
+                        mData.saveValue(selectedString);
                         if(mData.getOnSelectedListener()!=null) {
                             mData.getOnSelectedListener().onRadioSelect(radioButton.getText().toString());
 
                         }
+
                     }
                 });
         builder.show();

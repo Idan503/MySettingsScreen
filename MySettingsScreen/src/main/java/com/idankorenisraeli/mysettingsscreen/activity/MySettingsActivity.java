@@ -5,12 +5,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
-import android.widget.Switch;
 import android.widget.Toast;
 
 import com.idankorenisraeli.mysettingsscreen.R;
@@ -20,6 +17,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SwitchTileData;
@@ -112,18 +110,25 @@ public class MySettingsActivity extends AppCompatActivity {
 
 
         RadioTileData radioDropdownTileData = new RadioTileData("Radio Dropdown", "Select an option from a dropdown")
-                .withDropDown(true)
+                .withRadioType(RadioType.DROP_DOWN)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(2))
                 .withIconId(BasicTileData.INVISIBLE_ICON_ID);
 
-        RadioTileData radioDialogTileData = new RadioTileData("Radio Dialog Tile", "Select an option from a dialog")
-                .withDropDown(false)
+        RadioTileData radioLabeledDialogTileData = new RadioTileData("Radio Labeled Dialog", "Select an option from a dialog")
+                .withRadioType(RadioType.DIALOG_LABELED)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(2))
                 .withIconId(BasicTileData.INVISIBLE_ICON_ID);
 
-        MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi-Choice Tile", "Select multiple options from a dialog")
+        RadioTileData radioDialogTileData = new RadioTileData("Radio Dialog", "Select an option from a dialog")
+                .withRadioType(RadioType.DIALOG)
+                .withOptionsList(options)
+                .withDefaultValue(options.get(2))
+                .withIconId(BasicTileData.INVISIBLE_ICON_ID);
+
+
+        MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi Choice Tile", "Select multiple options from a dialog")
                 .withOptionsList(options)
                 .withDefaultValue(checkedOptions)
                 .withIconId(BasicTileData.INVISIBLE_ICON_ID);
@@ -141,6 +146,7 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(switchTileData);
         dataTiles.add(seekbarTileData);
         dataTiles.add(radioDropdownTileData);
+        dataTiles.add(radioLabeledDialogTileData);
         dataTiles.add(radioDialogTileData);
         dataTiles.add(multiTileData);
 

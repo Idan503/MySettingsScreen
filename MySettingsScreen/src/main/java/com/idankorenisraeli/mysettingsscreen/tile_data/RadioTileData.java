@@ -5,9 +5,8 @@ import com.idankorenisraeli.mysettingsscreen.callback.OnRadioSelectListener;
 import java.util.InputMismatchException;
 import java.util.List;
 
-
 public class RadioTileData extends SavableTileData<String, RadioTileData> {
-    private boolean dropDown = false;
+    private RadioType radioType = RadioType.DIALOG_LABELED;
     private OnRadioSelectListener onSelectedListener;
     private List<String> optionsList;
 
@@ -43,12 +42,10 @@ public class RadioTileData extends SavableTileData<String, RadioTileData> {
         return build();
     }
 
-    public boolean isDropDown() {
-        return dropDown;
-    }
 
-    public RadioTileData withDropDown(boolean dropDown) {
-        this.dropDown = dropDown;
+
+    public RadioTileData withRadioType(RadioType type) {
+        this.radioType = type;
         return build();
     }
 
@@ -61,9 +58,12 @@ public class RadioTileData extends SavableTileData<String, RadioTileData> {
         return build();
     }
 
+    public RadioType getRadioType() {
+        return radioType;
+    }
 
-    protected void setDropDown(boolean dropDown) {
-        this.dropDown = dropDown;
+    public void setRadioType(RadioType radioType) {
+        this.radioType = radioType;
     }
 
     protected void setOnSelectedListener(OnRadioSelectListener onSelectedListener) {

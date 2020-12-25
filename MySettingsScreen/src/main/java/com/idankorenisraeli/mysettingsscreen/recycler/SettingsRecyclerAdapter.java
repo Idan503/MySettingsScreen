@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.List;
@@ -61,7 +62,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 view = mInflater.inflate(R.layout.seekbar_tile_layout, parent, false);
                 return new SeekbarTileHolder(view);
             case RADIO_DIALOG:
-                view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
+                view = mInflater.inflate(R.layout.option_selected_tile_layout, parent, false);
                 return new RadioDialogTileHolder(view);
             case RADIO_DROPDOWN:
                 view = mInflater.inflate(R.layout.dropdown_tile_layout, parent, false);
@@ -108,7 +109,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case "RadioTileData":
                 //Checking weather the radio tile data is dropdown type or dialog type
                 RadioTileData radioData = (RadioTileData) data;
-                return radioData.isDropDown() ? RADIO_DROPDOWN : RADIO_DIALOG;
+                return radioData.getRadioType() == RadioType.DROP_DOWN ? RADIO_DROPDOWN : RADIO_DIALOG;
             case "MultiChoiceTileData":
                 return MULTI_CHOICE;
             case "GroupTileData":
