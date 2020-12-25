@@ -43,7 +43,7 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      */
     @SuppressWarnings("unchecked")
     public T getSavedValue(){
-
+        Log.i("pttt", "This class is " + getClass().getSimpleName());
         T result = null;
         String key = getSharedPrefsKey();
         switch (getSaveTypeName()){
@@ -70,7 +70,7 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 if(optionsArrayData.equals("-1"))
                     result = defaultValue; // List was never saved
                 else
-                    result = (T) strToCheckedList(optionsArrayData);
+                    result = (T) stringToCheckedList(optionsArrayData);
             default:
                 Log.w("MySettingsScreen", "Could not save settings of type " + getSaveTypeName());
         }
@@ -149,10 +149,18 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      * @return Key string that matches the title text of the tile
      */
     protected String getSharedPrefsKey(){
-        return SharedPrefsManager.KEYS.SP_KEY_PREFIX + title.replace(' ', '_').toUpperCase();
+        return SharedPrefsManager.KEYS.SP_KEY_PREFIX + title
+                .replace(' ', '_')
+                .replace('-', '_')
+                .toUpperCase();
     }
 
 
+    /**
+     * Used for saving multi choice tiles
+     * @param checkedList ArrayList of the choices if checked by order
+     * @return String that represent check with 1 and uncheck with 0
+     */
     private String checkedListToString(ArrayList<Boolean> checkedList){
         StringBuilder stringBuilder = new StringBuilder(checkedList.size());
 
@@ -163,7 +171,13 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
         return stringBuilder.toString();
     }
 
-    private ArrayList<Boolean> strToCheckedList(String str){
+    /**
+     * Used for saving multi choice tiles
+     * @param str String that represents multi choice check by 0s and 1s in order
+     * @return Array that contains true and false for check and uncheck options
+     */
+
+    private ArrayList<Boolean> stringToCheckedList(String str){
         ArrayList<Boolean> arr = new ArrayList<>(str.length());
 
         for (int i = 0; i < str.length(); i++) {

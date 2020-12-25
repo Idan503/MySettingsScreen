@@ -62,15 +62,15 @@ public class RadioTileData extends SavableTileData<String, RadioTileData> {
     }
 
 
-    public void setDropDown(boolean dropDown) {
+    protected void setDropDown(boolean dropDown) {
         this.dropDown = dropDown;
     }
 
-    public void setOnSelectedListener(OnRadioSelectListener onSelectedListener) {
+    protected void setOnSelectedListener(OnRadioSelectListener onSelectedListener) {
         this.onSelectedListener = onSelectedListener;
     }
 
-    public void setOptionsList(List<String> optionsList) {
+    protected void setOptionsList(List<String> optionsList) {
         this.optionsList = optionsList;
     }
 }

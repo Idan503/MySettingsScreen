@@ -76,11 +76,11 @@ class SeekbarTileHolder extends TitleTileHolder{
         SeekbarTileData data = (SeekbarTileData) mData;
         if(data.getMinValue() == null){
             Log.w(TAG, "Seekbar Settings Tile is missing \"MinValue\" attribute.");
-            data.setMinValue(0);
+            data.withMinValue(0);
         }
         if(data.getMaxValue() == null){
             Log.w(TAG, "Seekbar Settings Tile is missing \"MaxValue\" attribute.");
-            data.setMaxValue(100);
+            data.withMaxValue(100);
         }
         if(data.getDefaultValue() == null){
             Log.w(TAG, "Seekbar Settings Tile is missing \"DefaultValue\" attribute.");

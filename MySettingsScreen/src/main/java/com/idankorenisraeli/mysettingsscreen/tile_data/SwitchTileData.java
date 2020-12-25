@@ -32,7 +32,7 @@ public class SwitchTileData extends SavableTileData<Boolean,SwitchTileData> {
         return build();
     }
 
-    public void setOnChangeListener(@Nullable CompoundButton.OnCheckedChangeListener onChangeListener) {
+    protected void setOnChangeListener(@Nullable CompoundButton.OnCheckedChangeListener onChangeListener) {
         this.onChangeListener = onChangeListener;
     }
 }

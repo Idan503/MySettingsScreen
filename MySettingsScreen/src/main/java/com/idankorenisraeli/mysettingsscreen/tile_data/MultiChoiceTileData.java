@@ -50,11 +50,11 @@ public class MultiChoiceTileData extends SavableTileData<ArrayList<Boolean>,Mult
         return build();
     }
 
-    public void setOnChangedListener(OnMultiSelectListener onChangedListener) {
+    protected void setOnChangedListener(OnMultiSelectListener onChangedListener) {
         this.onChangedListener = onChangedListener;
     }
 
-    public void setOptionsList(ArrayList<String> optionsList) {
+    protected void setOptionsList(ArrayList<String> optionsList) {
         this.optionsList = optionsList;
     }
 

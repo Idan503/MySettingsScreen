@@ -28,6 +28,8 @@ class RadioDropdownTileHolder extends TitleTileHolder {
 
         spinner = itemView.findViewById(R.id.tile_SPN_spinner);
 
+
+
     }
 
     @Override
@@ -67,6 +69,7 @@ class RadioDropdownTileHolder extends TitleTileHolder {
         ArrayAdapter<CharSequence> adapter =
                 new ArrayAdapter<>(itemView.getContext(), android.R.layout.simple_spinner_dropdown_item,
                         new ArrayList<>(mData.getOptionsList()));
+
         spinner.setAdapter(adapter);
         spinner.setSelection(mData.getOptionsList().indexOf(mData.getSavedValue()));
         // Setting value of the spinner
@@ -82,7 +85,7 @@ class RadioDropdownTileHolder extends TitleTileHolder {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
             ArrayList<String> demoList = new ArrayList<>();
             demoList.add("");
-            mData.setOptionsList(demoList);
+            mData.withOptionsList(demoList);
         }
         if (mData.getDefaultValue() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");

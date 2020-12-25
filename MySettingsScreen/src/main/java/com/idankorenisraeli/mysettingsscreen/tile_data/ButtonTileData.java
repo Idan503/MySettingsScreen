@@ -35,7 +35,7 @@ public class ButtonTileData extends BasicTileData<ButtonTileData> {
         return build();
     }
 
-    public void setOnClickListener(View.OnClickListener onClickListener) {
+    protected void setOnClickListener(View.OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
     }
 }

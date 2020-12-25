@@ -50,15 +50,15 @@ public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {
     }
 
 
-    public void setOnChangeListener(SeekBar.OnSeekBarChangeListener onChangeListener) {
+    protected void setOnChangeListener(SeekBar.OnSeekBarChangeListener onChangeListener) {
         this.onChangeListener = onChangeListener;
     }
 
-    public void setMinValue(Integer minValue) {
+    protected void setMinValue(Integer minValue) {
         this.minValue = minValue;
     }
 
-    public void setMaxValue(Integer maxValue) {
+    protected void setMaxValue(Integer maxValue) {
         this.maxValue = maxValue;
     }
 

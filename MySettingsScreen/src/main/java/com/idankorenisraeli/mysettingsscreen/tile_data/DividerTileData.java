@@ -31,7 +31,7 @@ public class DividerTileData implements Serializable, SettingsTileData {
         return this;
     }
 
-    public void setHeight(Integer height) {
+    protected void setHeight(Integer height) {
         this.height = height;
     }
 }

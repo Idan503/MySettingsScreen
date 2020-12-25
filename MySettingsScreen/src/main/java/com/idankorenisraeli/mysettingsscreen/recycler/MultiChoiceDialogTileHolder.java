@@ -8,16 +8,14 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
     public MultiChoiceDialogTileHolder(View itemView) {
         super(itemView);
     }
-
 
     @Override
     public void setData(SettingsTileData tileObject) {
@@ -65,6 +63,10 @@ class MultiChoiceDialogTileHolder extends TitleTileHolder {
                             currentChecked.add(b);
                         }
                         mData.saveValue(currentChecked);
+
+                        if(mData.getOnChangedListener()!=null){
+                            mData.getOnChangedListener().onMultiSelect(mData.getOptionsList(), currentChecked);
+                        }
                     }
                 });
         builder.show();
@@ -79,7 +81,7 @@ class MultiChoiceDialogTileHolder extends TitleTileHolder {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
             ArrayList<String> demoList =  new ArrayList<>();
             demoList.add("");
-            mData.setOptionsList(demoList);
+            mData.withOptionsList(demoList);
         }
         if(mData.getDefaultValue() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Value\" attribute.");

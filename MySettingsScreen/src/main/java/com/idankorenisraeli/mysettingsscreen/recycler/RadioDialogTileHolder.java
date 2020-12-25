@@ -65,7 +65,7 @@ class RadioDialogTileHolder extends TitleTileHolder {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
             ArrayList<String> demoList =  new ArrayList<>();
             demoList.add("");
-            mData.setOptionsList(demoList);
+            mData.withOptionsList(demoList);
         }
         if(mData.getDefaultValue() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
