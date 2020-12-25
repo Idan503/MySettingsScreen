@@ -10,7 +10,7 @@ import androidx.annotation.Nullable;
 public class SwitchTileData extends SavableTileData<Boolean,SwitchTileData> {
 
     @Override
-    public SwitchTileData build() {
+    protected SwitchTileData build() {
         return this;
     }
 

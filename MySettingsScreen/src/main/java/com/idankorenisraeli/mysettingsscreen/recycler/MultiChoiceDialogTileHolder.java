@@ -9,6 +9,8 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 
 class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
@@ -20,11 +22,13 @@ class MultiChoiceDialogTileHolder extends TitleTileHolder {
     @Override
     public void setData(SettingsTileData tileObject) {
         super.setData(tileObject);
+        Log.i("pttt", " Setting Multi dialog data");
         MultiChoiceTileData mData = (MultiChoiceTileData) tileObject;
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    Log.i("pttt", "Clicked ItemView Dialog should open");
                     buildMultiChoiceAlertDialog(mData);
 
                 }
@@ -37,21 +41,30 @@ class MultiChoiceDialogTileHolder extends TitleTileHolder {
     private void buildMultiChoiceAlertDialog(MultiChoiceTileData mData){
         CharSequence[] options = mData.getOptionsList().toArray(new CharSequence[mData.getOptionsList().size()]);
 
-
-        boolean[] checked = new boolean[0]; //mData.getDefaultValue().size()
+        ArrayList<Boolean> savedValue = mData.getSavedValue();
+        boolean[] checked = new boolean[savedValue.size()];
 
         for(int n = 0; n < checked.length; n++)
         {
-            //checked[n] = mData.getDefaultChecked().get(n);
+            checked[n] = savedValue.get(n);
         }
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
                 .setTitle(mData.getTitle())
-                .setMultiChoiceItems(options, checked,null)
-                .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+                .setMultiChoiceItems(options, checked, new DialogInterface.OnMultiChoiceClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which, boolean isChecked) {
+                        checked[which] = isChecked;
+                    }
+                })
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-
+                        ArrayList<Boolean> currentChecked = new ArrayList<>();
+                        for (boolean b : checked) {
+                            currentChecked.add(b);
+                        }
+                        mData.saveValue(currentChecked);
                     }
                 });
         builder.show();
@@ -74,7 +87,7 @@ class MultiChoiceDialogTileHolder extends TitleTileHolder {
             for (int i = 0; i < mData.getOptionsList().size(); i++) {
                 demoList.add(false);
             }
-            //mData.setDefaultValue(new boolean[]{false});
+            mData.setDefaultValue(demoList);
         }
     }
 

@@ -66,8 +66,11 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 result = (T) (Object) SharedPrefsManager.getInstance().getFloat(key, (Float) defaultValue);
                 break;
             case "ArrayList<Boolean>":
-                String optionsArrayData =  SharedPrefsManager.getInstance().getString(key, (String) "0");
-                result = (T) strToCheckedList(optionsArrayData);
+                String optionsArrayData =  SharedPrefsManager.getInstance().getString(key, "-1");
+                if(optionsArrayData.equals("-1"))
+                    result = defaultValue; // List was never saved
+                else
+                    result = (T) strToCheckedList(optionsArrayData);
             default:
                 Log.w("MySettingsScreen", "Could not save settings of type " + getSaveTypeName());
         }
@@ -83,12 +86,8 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
     @SuppressWarnings("unchecked")
     public void saveValue(T value){
         Log.i("pttt", "SavableTileData" + " Saving " + value);
-        Class<T> persistentClass = (Class<T>)
-                ((ParameterizedType)getClass().getGenericSuperclass())
-                        .getActualTypeArguments()[0];
-        String typeName =persistentClass.getSimpleName();
         String key = getSharedPrefsKey();
-        switch (typeName){
+        switch (getSaveTypeName()){
             case "String":
                 SharedPrefsManager.getInstance().putString(key, (String) value);
                 break;
@@ -107,8 +106,11 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
             case "Float":
                 SharedPrefsManager.getInstance().putFloat(key, (Float) value);
                 break;
+            case "ArrayList<Boolean>":
+                SharedPrefsManager.getInstance().putString(key, checkedListToString((ArrayList<Boolean>) value));
+                break;
             default:
-                Log.w("MySettingsScreen", "Could not save a setting of type " + typeName);
+                Log.w("MySettingsScreen", "Could not save a setting of type " + getSaveTypeName());
         }
     }
 
@@ -126,7 +128,6 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
             typeName = "ArrayList";
             if(defaultValue!=null) {
                 Object item = ((List<?>) defaultValue).get(0);
-
                 typeName += "<" + item.getClass().getSimpleName() + ">";
             }else
                 Log.w(getClass().getSimpleName(), "Could not get value type for tile " + title + ". please provide a default value.");
@@ -152,8 +153,8 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
     }
 
 
-    private String checkedListToStr(boolean[] checkedList){
-        StringBuilder stringBuilder = new StringBuilder(checkedList.length);
+    private String checkedListToString(ArrayList<Boolean> checkedList){
+        StringBuilder stringBuilder = new StringBuilder(checkedList.size());
 
         for (boolean b : checkedList) {
             char toAppend = b ? '1' : '0';

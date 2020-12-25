@@ -15,7 +15,7 @@ public class ButtonTileData extends BasicTileData<ButtonTileData> {
      */
 
     @Override
-    public ButtonTileData build() {
+    protected ButtonTileData build() {
         return this;
     }
 

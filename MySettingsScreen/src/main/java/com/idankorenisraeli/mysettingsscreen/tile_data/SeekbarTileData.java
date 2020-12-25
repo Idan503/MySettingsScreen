@@ -13,7 +13,7 @@ public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {
     private Integer maxValue;
 
     @Override
-    public SeekbarTileData build() {
+    protected SeekbarTileData build() {
         return this;
     }
 

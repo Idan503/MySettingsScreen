@@ -5,7 +5,7 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
  */
 public class TitleTileData extends BasicTileData<TitleTileData> {
     @Override
-    public TitleTileData build() {
+    protected TitleTileData build() {
         return this;
     }
 

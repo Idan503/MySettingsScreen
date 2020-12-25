@@ -27,7 +27,7 @@ public class DividerTileData implements Serializable, SettingsTileData {
         return build();
     }
 
-    public DividerTileData build() {
+    protected DividerTileData build() {
         return this;
     }
 

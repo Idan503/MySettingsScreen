@@ -68,6 +68,11 @@ public class MySettingsActivity extends AppCompatActivity {
 
         ArrayList<Boolean> checkedOptions = new ArrayList<Boolean>();
         checkedOptions.add(false);
+        checkedOptions.add(false);
+        checkedOptions.add(false);
+        checkedOptions.add(true);
+        checkedOptions.add(false);
+
         MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi-Choice", "Description of Multi Choice")
                 .withOptionsList(options)
                 .withDefaultValue(checkedOptions);

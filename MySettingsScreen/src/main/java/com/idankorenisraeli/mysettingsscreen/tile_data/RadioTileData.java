@@ -17,7 +17,7 @@ public class RadioTileData extends SavableTileData<String, RadioTileData> {
 
 
     @Override
-    public RadioTileData build() {
+    protected RadioTileData build() {
         return this;
     }
 
