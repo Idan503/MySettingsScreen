@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_holder;
+package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.content.DialogInterface;
 import android.util.Log;
@@ -13,7 +13,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RadioDialogTileHolder extends TitleTileHolder {
+class RadioDialogTileHolder extends TitleTileHolder {
 
     public RadioDialogTileHolder(View itemView) {
         super(itemView);

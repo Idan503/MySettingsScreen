@@ -9,10 +9,10 @@ public class MultiChoiceTileData extends BasicTileData<MultiChoiceTileData> {
 
     private OnMultiSelectListener onChangedListener;
     private ArrayList<String> optionsList;
-    private ArrayList<Boolean> defaultChecked;
+    //private ArrayList<Boolean> defaultChecked;
     //Outer layout click functionality implemented inside holder object
 
-    // TODO - SP LINK
+    // TODO - Change Default Checked to type that can be saved as sp
 
     @Override
     public MultiChoiceTileData build() {
@@ -43,6 +43,7 @@ public class MultiChoiceTileData extends BasicTileData<MultiChoiceTileData> {
         return build();
     }
 
+    /*
     public ArrayList<Boolean> getDefaultChecked() {
         return defaultChecked;
     }
@@ -51,6 +52,10 @@ public class MultiChoiceTileData extends BasicTileData<MultiChoiceTileData> {
         this.defaultChecked = defaultChecked;
         return build();
     }
+        public void setDefaultChecked(ArrayList<Boolean> defaultChecked) {
+        this.defaultChecked = defaultChecked;
+    }
+     */
 
     public void setOnChangedListener(OnMultiSelectListener onChangedListener) {
         this.onChangedListener = onChangedListener;
@@ -60,7 +65,5 @@ public class MultiChoiceTileData extends BasicTileData<MultiChoiceTileData> {
         this.optionsList = optionsList;
     }
 
-    public void setDefaultChecked(ArrayList<Boolean> defaultChecked) {
-        this.defaultChecked = defaultChecked;
-    }
+
 }

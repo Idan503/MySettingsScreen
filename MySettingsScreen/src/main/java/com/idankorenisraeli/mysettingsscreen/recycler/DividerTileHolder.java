@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_holder;
+package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.util.Log;
 import android.view.View;
@@ -11,7 +11,7 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-public class DividerTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
+class DividerTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
 
     View divider;
 

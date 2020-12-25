@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_holder;
+package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.util.Log;
 import android.view.View;
@@ -6,7 +6,7 @@ import android.view.View;
 import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-public class ButtonTileHolder extends TitleTileHolder{
+class ButtonTileHolder extends TitleTileHolder{
 
     public ButtonTileHolder(View itemView) {
         super(itemView);

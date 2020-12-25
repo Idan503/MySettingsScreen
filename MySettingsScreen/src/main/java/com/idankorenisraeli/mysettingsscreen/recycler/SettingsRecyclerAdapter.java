@@ -1,7 +1,6 @@
-package com.idankorenisraeli.mysettingsscreen.adapter;
+package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,18 +11,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.ButtonTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.DividerTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.MultiChoiceDialogTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDialogTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.RadioDropdownTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.SeekbarTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.SettingsTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.SwitchTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_holder.TitleTileHolder;
 
 import java.util.List;
 
+/**
+ * This is the adapter that will manager the recyclerview
+ * which will represent the settings screen itself.
+ *
+ * Each type of settings tile data gets its layout inflated here.
+ */
 public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     public static final int TITLE =0;
@@ -104,13 +100,13 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case "ButtonTileData":
                 return CLICKABLE;
             case "TitleTileData":
-                Log.i("pttt", "Createadd new title at " + position);
                 return TITLE;
             case "SwitchTileData":
                 return SWITCH;
             case "SeekbarTileData":
                 return SEEK_BAR;
             case "RadioTileData":
+                //Checking weather the radio tile data is dropdown type or dialog type
                 RadioTileData radioData = (RadioTileData) data;
                 return radioData.isDropDown() ? RADIO_DROPDOWN : RADIO_DIALOG;
             case "MultiChoiceTileData":

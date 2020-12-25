@@ -69,7 +69,7 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
             default:
                 Log.w("MySettingsScreen", "Could not save a setting of type " + typeName);
         }
-
+        Log.i("pttt", "SavableTileData" + " Getting " + result);
         return result;
     }
 
@@ -79,6 +79,7 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      */
     @SuppressWarnings("unchecked")
     public void saveValue(T value){
+        Log.i("pttt", "SavableTileData" + " Saving " + value);
         Class<T> persistentClass = (Class<T>)
                 ((ParameterizedType)getClass().getGenericSuperclass())
                         .getActualTypeArguments()[0];

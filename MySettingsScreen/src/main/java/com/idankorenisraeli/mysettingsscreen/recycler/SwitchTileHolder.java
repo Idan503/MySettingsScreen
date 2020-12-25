@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_holder;
+package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.util.Log;
 import android.view.View;
@@ -9,7 +9,7 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SwitchTileData;
 
-public class SwitchTileHolder extends TitleTileHolder{
+class SwitchTileHolder extends TitleTileHolder{
 
 
     SwitchMaterial switchMaterial;
@@ -33,18 +33,24 @@ public class SwitchTileHolder extends TitleTileHolder{
         super.setData(tileObject);
         SwitchTileData mData = (SwitchTileData) tileObject;
 
-        if(mData.getOnChangeListener()!=null) {
-            switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+
+        switchMaterial.setChecked(mData.getSavedValue());
+
+        switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                    mData.getOnChangeListener().onCheckedChanged(buttonView, isChecked);
+
+                    mData.saveValue(isChecked);
+
+                    if(mData.getOnChangeListener()!=null)
+                        mData.getOnChangeListener().onCheckedChanged(buttonView, isChecked);
 
                     //SP Management should be implemented here
                 }
             });
 
 
-        }
+
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

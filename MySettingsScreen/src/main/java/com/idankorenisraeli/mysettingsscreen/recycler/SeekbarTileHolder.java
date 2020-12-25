@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_holder;
+package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -10,12 +10,10 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-public class SeekbarTileHolder extends TitleTileHolder{
+class SeekbarTileHolder extends TitleTileHolder{
 
     SeekBar tileSeekBar;
     TextView textIndicator;
-
-    // TODO - MIN VALUE, MAX VALUE, SP LINK
 
     public SeekbarTileHolder(View itemView) {
         super(itemView);
@@ -46,7 +44,6 @@ public class SeekbarTileHolder extends TitleTileHolder{
                 if(textIndicator!=null)
                     textIndicator.setText(progress + "");
 
-                //TODO - SP Management should be implemented here
             }
 
             @Override
@@ -57,6 +54,7 @@ public class SeekbarTileHolder extends TitleTileHolder{
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
+                mData.saveValue(seekBar.getProgress());
                 if(mData.getOnChangeListener()!=null)
                     mData.getOnChangeListener().onStopTrackingTouch(seekBar);
             }
@@ -66,7 +64,7 @@ public class SeekbarTileHolder extends TitleTileHolder{
 
         tileSeekBar.setMin(mData.getMinValue());
         tileSeekBar.setMax(mData.getMaxValue());
-        tileSeekBar.setProgress(mData.getDefaultValue());
+        tileSeekBar.setProgress(mData.getSavedValue());
 
 
     }

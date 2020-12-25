@@ -12,10 +12,6 @@ public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {
     private Integer minValue;
     private Integer maxValue;
 
-    private Integer defaultValue;
-
-    // TODO - SP LINK
-
     @Override
     public SeekbarTileData build() {
         return this;
@@ -53,14 +49,6 @@ public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {
         return build();
     }
 
-    public Integer getDefaultValue() {
-        return defaultValue;
-    }
-
-    public SeekbarTileData withDefaultValue(Integer defaultValue) {
-        this.defaultValue = defaultValue;
-        return build();
-    }
 
     public void setOnChangeListener(SeekBar.OnSeekBarChangeListener onChangeListener) {
         this.onChangeListener = onChangeListener;
@@ -74,7 +62,4 @@ public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {
         this.maxValue = maxValue;
     }
 
-    public void setDefaultValue(Integer defaultValue) {
-        this.defaultValue = defaultValue;
-    }
 }

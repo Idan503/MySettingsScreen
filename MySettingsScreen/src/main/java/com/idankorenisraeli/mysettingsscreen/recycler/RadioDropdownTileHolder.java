@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_holder;
+package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.util.Log;
 import android.view.View;
@@ -13,7 +13,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
 
-public class RadioDropdownTileHolder extends TitleTileHolder {
+class RadioDropdownTileHolder extends TitleTileHolder {
 
     private AppCompatSpinner spinner;
 
@@ -36,21 +36,22 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
         RadioTileData mData = (RadioTileData) tileObject;
 
         buildDropdown(mData);
-        spinner.setSelection(mData.getOptionsList().lastIndexOf(mData.getDefaultValue()));
-        //Setting default value by position in list provided
 
-        if (mData.getOnSelectedListener() != null)
-            spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (mData.getOnSelectedListener() != null)
                     mData.getOnSelectedListener().onRadioSelect(mData.getOptionsList().get(position));
-                }
 
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
+                mData.saveValue(mData.getOptionsList().get(position));
+            }
 
-                }
-            });
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,6 +68,8 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
                 new ArrayAdapter<>(itemView.getContext(), android.R.layout.simple_spinner_dropdown_item,
                         new ArrayList<>(mData.getOptionsList()));
         spinner.setAdapter(adapter);
+        spinner.setSelection(mData.getOptionsList().indexOf(mData.getSavedValue()));
+        // Setting value of the spinner
 
     }
 
@@ -77,7 +80,7 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
         RadioTileData mData = (RadioTileData) tileData;
         if (mData.getOptionsList() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
-            ArrayList<String> demoList =  new ArrayList<>();
+            ArrayList<String> demoList = new ArrayList<>();
             demoList.add("");
             mData.setOptionsList(demoList);
         }
