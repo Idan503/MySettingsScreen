@@ -5,6 +5,8 @@ import android.util.Log;
 import com.idankorenisraeli.mysettingsscreen.common.SharedPrefsManager;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @param <T> Type of data that will be saved on device
@@ -41,13 +43,10 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      */
     @SuppressWarnings("unchecked")
     public T getSavedValue(){
+
         T result = null;
-        Class<T> persistentClass = (Class<T>)
-                ((ParameterizedType)getClass().getGenericSuperclass())
-                        .getActualTypeArguments()[0];
-        String typeName =persistentClass.getSimpleName();
         String key = getSharedPrefsKey();
-        switch (typeName){
+        switch (getSaveTypeName()){
             case "String":
                 result = (T) SharedPrefsManager.getInstance().getString(key, (String) defaultValue);
                 break;
@@ -66,12 +65,16 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
             case "Float":
                 result = (T) (Object) SharedPrefsManager.getInstance().getFloat(key, (Float) defaultValue);
                 break;
+            case "ArrayList<Boolean>":
+                String optionsArrayData =  SharedPrefsManager.getInstance().getString(key, (String) "0");
+                result = (T) strToCheckedList(optionsArrayData);
             default:
-                Log.w("MySettingsScreen", "Could not save a setting of type " + typeName);
+                Log.w("MySettingsScreen", "Could not save settings of type " + getSaveTypeName());
         }
         Log.i("pttt", "SavableTileData" + " Getting " + result);
         return result;
     }
+
 
     /**
      * Saving the data of the settings tile to shared prefs
@@ -109,6 +112,36 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
         }
     }
 
+    /**
+     * Parameter type T is generic
+     * Therefore this function will detect the concrete type
+     * This is used for sharedprefs saving purpose
+     * @return name of the real type of genetic T
+     */
+    @SuppressWarnings("unchecked")
+    private String getSaveTypeName(){
+        String typeName;
+
+        if(defaultValue instanceof List<?>){
+            typeName = "ArrayList";
+            if(defaultValue!=null) {
+                Object item = ((List<?>) defaultValue).get(0);
+
+                typeName += "<" + item.getClass().getSimpleName() + ">";
+            }else
+                Log.w(getClass().getSimpleName(), "Could not get value type for tile " + title + ". please provide a default value.");
+        }
+        else {
+            Class<T> persistentClass = (Class<T>)
+                    ((ParameterizedType) getClass().getGenericSuperclass())
+                            .getActualTypeArguments()[0];
+
+            typeName = persistentClass.getSimpleName();
+        }
+
+        return typeName;
+    }
+
 
     /**
      * Generates a key for saving the data of the tile to shared preferences.
@@ -116,6 +149,28 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      */
     protected String getSharedPrefsKey(){
         return SharedPrefsManager.KEYS.SP_KEY_PREFIX + title.replace(' ', '_').toUpperCase();
+    }
+
+
+    private String checkedListToStr(boolean[] checkedList){
+        StringBuilder stringBuilder = new StringBuilder(checkedList.length);
+
+        for (boolean b : checkedList) {
+            char toAppend = b ? '1' : '0';
+            stringBuilder.append(toAppend);
+        }
+        return stringBuilder.toString();
+    }
+
+    private ArrayList<Boolean> strToCheckedList(String str){
+        ArrayList<Boolean> arr = new ArrayList<>(str.length());
+
+        for (int i = 0; i < str.length(); i++) {
+            arr.add(str.charAt(i) == '1');
+            // false for 0, true for 1
+        }
+
+        return arr;
     }
 
 }

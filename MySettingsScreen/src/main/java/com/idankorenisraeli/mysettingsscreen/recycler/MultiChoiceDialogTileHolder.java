@@ -37,11 +37,12 @@ class MultiChoiceDialogTileHolder extends TitleTileHolder {
     private void buildMultiChoiceAlertDialog(MultiChoiceTileData mData){
         CharSequence[] options = mData.getOptionsList().toArray(new CharSequence[mData.getOptionsList().size()]);
 
-        boolean[] checked = new boolean[mData.getDefaultChecked().size()];
+
+        boolean[] checked = new boolean[0]; //mData.getDefaultValue().size()
 
         for(int n = 0; n < checked.length; n++)
         {
-            checked[n] = mData.getDefaultChecked().get(n);
+            //checked[n] = mData.getDefaultChecked().get(n);
         }
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
@@ -67,13 +68,13 @@ class MultiChoiceDialogTileHolder extends TitleTileHolder {
             demoList.add("");
             mData.setOptionsList(demoList);
         }
-        if(mData.getDefaultChecked() == null) {
-            Log.w(TAG, "Radio Group Settings is missing \"Default Checked\" attribute.");
+        if(mData.getDefaultValue() == null) {
+            Log.w(TAG, "Radio Group Settings is missing \"Default Value\" attribute.");
             ArrayList<Boolean> demoList =  new ArrayList<>();
             for (int i = 0; i < mData.getOptionsList().size(); i++) {
                 demoList.add(false);
             }
-            mData.setDefaultChecked(demoList);
+            //mData.setDefaultValue(new boolean[]{false});
         }
     }
 

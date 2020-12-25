@@ -3,9 +3,17 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
 import com.idankorenisraeli.mysettingsscreen.callback.OnMultiSelectListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
-public class MultiChoiceTileData extends BasicTileData<MultiChoiceTileData> {
+/**
+ *
+ *
+ * String savable type will represent the checked values from options by
+ * a single string which contains 1s and 0s in the same order of checked/unchecked in list
+ *
+ */
+public class MultiChoiceTileData extends SavableTileData<ArrayList<Boolean>,MultiChoiceTileData> {
 
     private OnMultiSelectListener onChangedListener;
     private ArrayList<String> optionsList;
@@ -64,6 +72,22 @@ public class MultiChoiceTileData extends BasicTileData<MultiChoiceTileData> {
     public void setOptionsList(ArrayList<String> optionsList) {
         this.optionsList = optionsList;
     }
+
+    /*
+    public void saveValue(boolean[] checkedList) {
+        super.saveValue(checkedListToStr(checkedList));
+    }
+
+
+    public boolean[] getSavedValue(){
+        return strToCheckedList(super.getSavedValue());
+    }
+
+     */
+
+
+
+
 
 
 }

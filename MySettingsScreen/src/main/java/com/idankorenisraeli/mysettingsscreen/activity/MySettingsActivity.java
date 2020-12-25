@@ -12,6 +12,7 @@ import android.widget.CompoundButton;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.recycler.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
@@ -42,7 +43,7 @@ public class MySettingsActivity extends AppCompatActivity {
         ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
 
 
-        RadioTileData tileRadio = new RadioTileData("Radio", "Description of radio");
+/*        RadioTileData tileRadio = new RadioTileData("Radio", "Description of radio");
         tileRadio.withOptionsList(options)
                 .withDropDown(true)
                 .withDefaultValue("Option 3")
@@ -62,13 +63,19 @@ public class MySettingsActivity extends AppCompatActivity {
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         Log.i("pttt", "Switch is now " + isChecked);
                     }
-                });
+                });*/
 
 
-        dataTiles.add(tileRadio);
+        ArrayList<Boolean> checkedOptions = new ArrayList<Boolean>();
+        checkedOptions.add(false);
+        MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi-Choice", "Description of Multi Choice")
+                .withOptionsList(options)
+                .withDefaultValue(checkedOptions);
+
+        multiTileData.getSavedValue();
+
         dataTiles.add(new DividerTileData().withHeight(1));
-        dataTiles.add(tileSeekbar);
-        dataTiles.add(switchTileData);
+        dataTiles.add(multiTileData);
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, dataTiles));
