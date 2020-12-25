@@ -25,19 +25,17 @@ public class RadioDialogTileHolder extends TitleTileHolder {
         super.setData(tileObject);
         RadioTileData mData = (RadioTileData) tileObject;
 
-        if (mData.getOnSelectedListener() != null)
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    buildRadioAlertDialog(mData);
-
-                }
-            });
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                buildRadioAlertDialog(mData);
+            }
+        });
 
     }
 
     private void buildRadioAlertDialog(RadioTileData mData){
-        RadioGroup radioGroup = createRadioGroup(mData.getOptionsList(), mData.getDefaultOption());
+        RadioGroup radioGroup = createRadioGroup(mData.getOptionsList(), mData.getSavedValue());
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
                 .setTitle(mData.getTitle())
@@ -48,8 +46,11 @@ public class RadioDialogTileHolder extends TitleTileHolder {
                         int selectedId = radioGroup.getCheckedRadioButtonId();
                         // find the radiobutton by returned id to get its string value
                         RadioButton radioButton = radioGroup.findViewById(selectedId);
-                        if(mData.getOnSelectedListener()!=null)
+                        mData.saveValue(radioButton.getText().toString());
+                        if(mData.getOnSelectedListener()!=null) {
                             mData.getOnSelectedListener().onRadioSelect(radioButton.getText().toString());
+
+                        }
                     }
                 });
         builder.show();
@@ -66,24 +67,25 @@ public class RadioDialogTileHolder extends TitleTileHolder {
             demoList.add("");
             mData.setOptionsList(demoList);
         }
-        if(mData.getDefaultOption() == null) {
+        if(mData.getDefaultValue() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
-            mData.setDefaultOption(mData.getOptionsList().get(0));
+            mData.setDefaultValue(mData.getOptionsList().get(0));
         }
     }
 
-    private RadioGroup createRadioGroup(List<String> options, String defaultOption) {
+    private RadioGroup createRadioGroup(List<String> options, String selectedOption) {
         final RadioButton[] innerButtons = new RadioButton[options.size()];
         RadioGroup radioGroup = new RadioGroup(itemView.getContext()); //create the RadioGroup
         radioGroup.setOrientation(RadioGroup.VERTICAL);
 
         int defaultSelectedId = 0;
+        // Iterating the list of options to find selected by its value, while creating the buttons
         for(int i=0; i<options.size(); i++){
             innerButtons[i]  = new RadioButton(itemView.getContext());
             radioGroup.addView(innerButtons[i]); //the RadioButtons are added to the radioGroup
             innerButtons[i].setText(options.get(i));
             innerButtons[i].setTextSize(18);
-            if(options.get(i).equals(defaultOption))
+            if(options.get(i).equals(selectedOption))
                 defaultSelectedId = innerButtons[i].getId();
             innerButtons[i].setPadding(25,15,10,15);
         }

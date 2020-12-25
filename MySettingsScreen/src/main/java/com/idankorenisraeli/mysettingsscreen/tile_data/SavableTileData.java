@@ -21,6 +21,10 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
         return defaultValue;
     }
 
+    /**
+     * Updating the default value of this tile.
+     * @param defaultValue the new default value of this tile
+     */
     public void setDefaultValue(T defaultValue){
         this.defaultValue = defaultValue;
     }
@@ -31,6 +35,10 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
     }
 
 
+    /**
+     * Getting the data of this settings tile from shared prefs
+     * @return Latest value that user assign to this tile
+     */
     @SuppressWarnings("unchecked")
     public T getSavedValue(){
         T result = null;
@@ -41,32 +49,36 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
         String key = getSharedPrefsKey();
         switch (typeName){
             case "String":
-                SharedPrefsManager.getInstance().getString(key, (String) defaultValue);
+                result = (T) SharedPrefsManager.getInstance().getString(key, (String) defaultValue);
                 break;
             case "Integer":
-                SharedPrefsManager.getInstance().getInt(key, (Integer) defaultValue);
+                result = (T) (Object) SharedPrefsManager.getInstance().getInt(key, (Integer) defaultValue);
                 break;
             case "Boolean":
-                SharedPrefsManager.getInstance().getBoolean(key, (Boolean) defaultValue);
+                result = (T) (Object) SharedPrefsManager.getInstance().getBoolean(key, (Boolean) defaultValue);
                 break;
             case "Double":
-                SharedPrefsManager.getInstance().getDouble(key, (Double) defaultValue);
+                result = (T) (Object) SharedPrefsManager.getInstance().getDouble(key, (Double) defaultValue);
                 break;
             case "Long":
-                SharedPrefsManager.getInstance().getLong(key, (Long) defaultValue);
+                result = (T) (Object) SharedPrefsManager.getInstance().getLong(key, (Long) defaultValue);
                 break;
             case "Float":
-                SharedPrefsManager.getInstance().getFloat(key, (Float) defaultValue);
+                result = (T) (Object) SharedPrefsManager.getInstance().getFloat(key, (Float) defaultValue);
                 break;
             default:
                 Log.w("MySettingsScreen", "Could not save a setting of type " + typeName);
         }
-        
+
         return result;
     }
 
+    /**
+     * Saving the data of the settings tile to shared prefs
+     * @param value the value that will be saved
+     */
     @SuppressWarnings("unchecked")
-    protected void saveValue(T value){
+    public void saveValue(T value){
         Class<T> persistentClass = (Class<T>)
                 ((ParameterizedType)getClass().getGenericSuperclass())
                         .getActualTypeArguments()[0];

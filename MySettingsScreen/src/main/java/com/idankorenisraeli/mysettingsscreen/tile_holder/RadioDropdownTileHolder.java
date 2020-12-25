@@ -36,7 +36,7 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
         RadioTileData mData = (RadioTileData) tileObject;
 
         buildDropdown(mData);
-        spinner.setSelection(mData.getOptionsList().lastIndexOf(mData.getDefaultOption()));
+        spinner.setSelection(mData.getOptionsList().lastIndexOf(mData.getDefaultValue()));
         //Setting default value by position in list provided
 
         if (mData.getOnSelectedListener() != null)
@@ -81,9 +81,9 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
             demoList.add("");
             mData.setOptionsList(demoList);
         }
-        if (mData.getDefaultOption() == null) {
+        if (mData.getDefaultValue() == null) {
             Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
-            mData.setDefaultOption(mData.getOptionsList().get(0));
+            mData.setDefaultValue(mData.getOptionsList().get(0));
         }
 
     }

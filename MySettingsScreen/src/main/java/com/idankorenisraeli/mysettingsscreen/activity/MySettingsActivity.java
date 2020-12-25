@@ -37,6 +37,12 @@ public class MySettingsActivity extends AppCompatActivity {
 
 
         RadioTileData tile = new RadioTileData("Title", "Description");
+        tile.withOptionsList(options)
+                .withDropDown(false)
+                .withDefaultValue("Option 3")
+                .build();
+
+        dataTiles.add(tile);
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, dataTiles));
