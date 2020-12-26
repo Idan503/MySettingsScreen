@@ -9,6 +9,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
+import com.idankorenisraeli.mysettingsscreen.tile_data.EditTextTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
@@ -30,7 +31,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int RADIO_DROPDOWN =4;
     public static final int RADIO_DIALOG =5;
     public static final int MULTI_CHOICE=6;
-    public static final int GROUP=7;
+    public static final int EDIT_TEXT=7;
     public static final int DIVIDER=8;
 
     final private List<SettingsTileData> tilesData;
@@ -70,6 +71,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case MULTI_CHOICE:
                 view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
                 return new MultiChoiceDialogTileHolder(view);
+            case EDIT_TEXT:
+                view = mInflater.inflate(R.layout.option_selected_tile_layout, parent, false);
+                return new EditTextTileHolder(view);
             case DIVIDER:
                 view = mInflater.inflate(R.layout.divider_tile_layout, parent, false);
                 return new DividerTileHolder(view);
@@ -112,8 +116,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return radioData.getRadioType() == RadioType.DROP_DOWN ? RADIO_DROPDOWN : RADIO_DIALOG;
             case "MultiChoiceTileData":
                 return MULTI_CHOICE;
-            case "GroupTileData":
-                return GROUP;
+            case "EditTextTileData":
+                return EDIT_TEXT;
             case "DividerTileData":
                 return DIVIDER;
 

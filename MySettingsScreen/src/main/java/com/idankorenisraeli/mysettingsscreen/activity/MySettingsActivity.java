@@ -15,6 +15,7 @@ import com.idankorenisraeli.mysettingsscreen.recycler.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.tile_data.BasicTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.EditTextTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
@@ -84,7 +85,7 @@ public class MySettingsActivity extends AppCompatActivity {
                         Toast.makeText(MySettingsActivity.this,msg, Toast.LENGTH_SHORT).show();
                     }
                 })
-                .withIconId(BasicTileData.INVISIBLE_ICON_ID);
+                .withIconId(BasicTileData.IC_INVISIBLE);
 
         SeekbarTileData seekbarTileData = new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
                 .withDefaultValue(50)
@@ -106,32 +107,36 @@ public class MySettingsActivity extends AppCompatActivity {
                         Toast.makeText(MySettingsActivity.this, "Progress set to " + seekBar.getProgress(), Toast.LENGTH_SHORT).show();
                     }
                 })
-                .withIconId(BasicTileData.INVISIBLE_ICON_ID);
+                .withIconId(BasicTileData.IC_INVISIBLE);
 
 
         RadioTileData radioDropdownTileData = new RadioTileData("Radio Dropdown", "Select an option from a dropdown")
                 .withRadioType(RadioType.DROP_DOWN)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(2))
-                .withIconId(BasicTileData.INVISIBLE_ICON_ID);
+                .withIconId(BasicTileData.IC_INVISIBLE);
 
         RadioTileData radioLabeledDialogTileData = new RadioTileData("Radio Labeled Dialog", "Select an option from a dialog")
                 .withRadioType(RadioType.DIALOG_LABELED)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(2))
-                .withIconId(BasicTileData.INVISIBLE_ICON_ID);
+                .withIconId(BasicTileData.IC_INVISIBLE);
 
         RadioTileData radioDialogTileData = new RadioTileData("Radio Dialog", "Select an option from a dialog")
                 .withRadioType(RadioType.DIALOG)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(2))
-                .withIconId(BasicTileData.INVISIBLE_ICON_ID);
+                .withIconId(BasicTileData.IC_INVISIBLE);
+
+        EditTextTileData editTextTileData = new EditTextTileData("Edit Text", "Tap to edit this setting")
+                .withDefaultValue("MyOption")
+                .withIconId(BasicTileData.IC_INVISIBLE);
 
 
         MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi Choice Tile", "Select multiple options from a dialog")
                 .withOptionsList(options)
                 .withDefaultValue(checkedOptions)
-                .withIconId(BasicTileData.INVISIBLE_ICON_ID);
+                .withIconId(BasicTileData.IC_INVISIBLE);
 
 
 
@@ -148,6 +153,7 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(radioDropdownTileData);
         dataTiles.add(radioLabeledDialogTileData);
         dataTiles.add(radioDialogTileData);
+        dataTiles.add(editTextTileData);
         dataTiles.add(multiTileData);
 
 

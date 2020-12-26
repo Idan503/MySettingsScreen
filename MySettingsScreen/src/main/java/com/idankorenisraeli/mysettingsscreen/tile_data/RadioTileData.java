@@ -1,13 +1,13 @@
 package com.idankorenisraeli.mysettingsscreen.tile_data;
 
-import com.idankorenisraeli.mysettingsscreen.callback.OnRadioSelectListener;
+import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
 
 import java.util.InputMismatchException;
 import java.util.List;
 
 public class RadioTileData extends SavableTileData<String, RadioTileData> {
     private RadioType radioType = RadioType.DIALOG_LABELED;
-    private OnRadioSelectListener onSelectedListener;
+    private OnOptionSelectListener onSelectedListener;
     private List<String> optionsList;
 
     //Outer layout click functionality implemented inside holder object
@@ -24,11 +24,11 @@ public class RadioTileData extends SavableTileData<String, RadioTileData> {
         super(title, description);
     }
 
-    public OnRadioSelectListener getOnSelectedListener() {
+    public OnOptionSelectListener getOnSelectedListener() {
         return onSelectedListener;
     }
 
-    public RadioTileData withOnSelectedListener(OnRadioSelectListener onSelectedListener) {
+    public RadioTileData withOnSelectedListener(OnOptionSelectListener onSelectedListener) {
         this.onSelectedListener = onSelectedListener;
         return build();
     }
@@ -66,7 +66,7 @@ public class RadioTileData extends SavableTileData<String, RadioTileData> {
         this.radioType = radioType;
     }
 
-    protected void setOnSelectedListener(OnRadioSelectListener onSelectedListener) {
+    protected void setOnSelectedListener(OnOptionSelectListener onSelectedListener) {
         this.onSelectedListener = onSelectedListener;
     }
 

@@ -44,7 +44,7 @@ class RadioDropdownTileHolder extends TitleTileHolder {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (mData.getOnSelectedListener() != null)
-                    mData.getOnSelectedListener().onRadioSelect(mData.getOptionsList().get(position));
+                    mData.getOnSelectedListener().onOptionSelected(mData.getOptionsList().get(position));
 
                 mData.saveValue(mData.getOptionsList().get(position));
             }

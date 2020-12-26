@@ -68,7 +68,7 @@ class RadioDialogTileHolder extends TitleTileHolder {
                         selectedLabel.setText(selectedString);
                         mData.saveValue(selectedString);
                         if(mData.getOnSelectedListener()!=null) {
-                            mData.getOnSelectedListener().onRadioSelect(radioButton.getText().toString());
+                            mData.getOnSelectedListener().onOptionSelected(radioButton.getText().toString());
 
                         }
 

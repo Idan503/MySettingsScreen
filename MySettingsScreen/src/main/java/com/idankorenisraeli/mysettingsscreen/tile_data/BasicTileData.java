@@ -18,7 +18,7 @@ public abstract class BasicTileData<T> implements SettingsTileData {
     protected String description;
     protected  @Nullable Integer iconId;
 
-    public static final int INVISIBLE_ICON_ID = -1;
+    public static final int IC_INVISIBLE = -1;
 
     protected abstract T build();
 

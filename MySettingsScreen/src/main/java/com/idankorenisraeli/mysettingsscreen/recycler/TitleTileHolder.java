@@ -79,7 +79,7 @@ class TitleTileHolder extends RecyclerView.ViewHolder implements SettingsTileHol
     private void setIconDrawable(Integer id){
         if(id!=null) {
             Drawable icon;
-            if(id== BasicTileData.INVISIBLE_ICON_ID){
+            if(id== BasicTileData.IC_INVISIBLE){
                 icon = ContextCompat.getDrawable(itemView.getContext(), android.R.color.transparent);
             } else
                 icon = ContextCompat.getDrawable(itemView.getContext(), id);
