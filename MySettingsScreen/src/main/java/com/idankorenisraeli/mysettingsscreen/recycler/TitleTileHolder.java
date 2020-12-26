@@ -1,5 +1,7 @@
 package com.idankorenisraeli.mysettingsscreen.recycler;
 
+import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
 import android.view.View;
@@ -65,8 +67,9 @@ class TitleTileHolder extends RecyclerView.ViewHolder implements SettingsTileHol
         this.setDescriptionText(mData.getDescription());
         this.setIconDrawable(mData.getIconId());
 
-        if(mData.isSourceColorIcon())
-            this.iconImage.clearColorFilter(); //removing the auto-applied tint
+        if(mData.isSourceColorIcon()) {
+            iconImage.getDrawable().setTintList(null);
+        }
 
     }
 
