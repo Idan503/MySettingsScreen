@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -53,9 +54,17 @@ class EditTextTileHolder extends TitleTileHolder {
     private void buildEditTextDialog(EditTextTileData mData){
         EditText editText = createEditText(mData.getSavedValue());
 
+        LinearLayout innerLayout = new LinearLayout(itemView.getContext());
+        innerLayout.setOrientation(LinearLayout.VERTICAL);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        params.setMargins(40, 15, 40, 15);
+
+        innerLayout.addView(editText, params);
+
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(itemView.getContext())
                 .setTitle(mData.getTitle())
-                .setView(editText)
+                .setView(innerLayout)
                 .setNeutralButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -84,6 +93,7 @@ class EditTextTileHolder extends TitleTileHolder {
     private EditText createEditText(String selectedOption) {
         EditText editText = new EditText(itemView.getContext());
         editText.setText(selectedOption);
+        editText.setPadding(20,20,20,20);
         return editText;
     }
 

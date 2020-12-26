@@ -20,7 +20,8 @@
         <item name="android:layout_width">70dp</item>
         <item name="android:layout_height">70dp</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:padding">12dp</item>
+        <item name="android:padding">16dp</item>
+        <item name="android:tint">@color/icon_tint</item>
         <item name="android:layout_alignParentStart">true</item>
     </style>
 

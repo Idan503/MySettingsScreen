@@ -4,4 +4,5 @@
     <color name="background_primary">#FBFAFB</color>
     <color name="text_primary">#464446</color>
     <color name="text_secondary">#8F8E90</color>
+    <color name="icon_tint">#eeeeee</color>
 </resources>
