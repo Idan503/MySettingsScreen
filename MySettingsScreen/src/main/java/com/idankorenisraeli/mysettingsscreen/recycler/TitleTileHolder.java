@@ -65,6 +65,9 @@ class TitleTileHolder extends RecyclerView.ViewHolder implements SettingsTileHol
         this.setDescriptionText(mData.getDescription());
         this.setIconDrawable(mData.getIconId());
 
+        if(mData.isSourceColorIcon())
+            this.iconImage.clearColorFilter(); //removing the auto-applied tint
+
     }
 
 

@@ -16,7 +16,11 @@ public abstract class BasicTileData<T> implements SettingsTileData {
 
     protected String title;
     protected String description;
+
     protected  @Nullable Integer iconId;
+
+    protected boolean sourceColorIcon = false;
+    //By default, tint will be applied to the icon based on Day/Night theme
 
     public static final int IC_INVISIBLE = -1;
 
@@ -62,6 +66,19 @@ public abstract class BasicTileData<T> implements SettingsTileData {
     public T withIconId(@Nullable Integer iconId) {
         this.iconId = iconId;
         return build();
+    }
+
+    public T withSourceColorIcon(boolean sourceColorIcon){
+        this.sourceColorIcon = sourceColorIcon;
+        return build();
+    }
+
+    public boolean isSourceColorIcon() {
+        return sourceColorIcon;
+    }
+
+    public void setSourceColorIcon(boolean sourceColorIcon) {
+        this.sourceColorIcon = sourceColorIcon;
     }
 
     public void setTitle(String title) {

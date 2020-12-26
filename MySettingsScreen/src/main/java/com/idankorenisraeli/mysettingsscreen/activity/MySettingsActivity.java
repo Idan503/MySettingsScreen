@@ -70,7 +70,7 @@ public class MySettingsActivity extends AppCompatActivity {
                         Toast.makeText(MySettingsActivity.this,"Button tile clicked", Toast.LENGTH_SHORT).show();
                     }
                 })
-                .withIconId(android.R.drawable.radiobutton_off_background);
+                .withIconId(R.drawable.ic_baseline_radio_button_unchecked_24);
 
         DividerTileData dividerTileData = new DividerTileData().withHeight(1);
 
@@ -166,9 +166,9 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(switchTileData);
         dataTiles.add(checkboxTileData);
         dataTiles.add(seekbarTileData);
-        dataTiles.add(radioDropdownTileData);
-        dataTiles.add(radioLabeledDialogTileData);
         dataTiles.add(radioDialogTileData);
+        dataTiles.add(radioLabeledDialogTileData);
+        dataTiles.add(radioDropdownTileData);
         dataTiles.add(editTextTileData);
         dataTiles.add(multiTileData);
 
