@@ -9,10 +9,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile_data.EditTextTileData;
+import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
+import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.ToggleTileData;
 
 import java.util.List;
 
@@ -24,15 +25,16 @@ import java.util.List;
  */
 public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final int TITLE =0;
+    public static final int TITLE = 0;
     public static final int CLICKABLE =1;
-    public static final int SWITCH=2;
-    public static final int SEEK_BAR =3;
-    public static final int RADIO_DROPDOWN =4;
-    public static final int RADIO_DIALOG =5;
-    public static final int MULTI_CHOICE=6;
-    public static final int EDIT_TEXT=7;
-    public static final int DIVIDER=8;
+    public static final int TOGGLE_SWITCH=2;
+    public static final int TOGGLE_CHECKBOX=3;
+    public static final int SEEK_BAR = 4;
+    public static final int RADIO_DROPDOWN =5;
+    public static final int RADIO_DIALOG =6;
+    public static final int MULTI_CHOICE=7;
+    public static final int EDIT_TEXT=8;
+    public static final int DIVIDER=9;
 
     final private List<SettingsTileData> tilesData;
     final private LayoutInflater mInflater;
@@ -56,9 +58,12 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case CLICKABLE:
                 view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
                 return new ButtonTileHolder(view);
-            case SWITCH:
+            case TOGGLE_SWITCH:
                 view = mInflater.inflate(R.layout.switch_tile_layout, parent, false);
                 return new SwitchTileHolder(view);
+            case TOGGLE_CHECKBOX:
+                view = mInflater.inflate(R.layout.checkbox_tile_layout, parent, false);
+                return new CheckboxTileHolder(view);
             case SEEK_BAR:
                 view = mInflater.inflate(R.layout.seekbar_tile_layout, parent, false);
                 return new SeekbarTileHolder(view);
@@ -106,8 +111,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return CLICKABLE;
             case "TitleTileData":
                 return TITLE;
-            case "SwitchTileData":
-                return SWITCH;
+            case "ToggleTileData":
+                ToggleTileData toggleData = (ToggleTileData) data;
+                return toggleData.getToggleType() == ToggleType.CHECK_BOX ? TOGGLE_CHECKBOX : TOGGLE_SWITCH;
             case "SeekbarTileData":
                 return SEEK_BAR;
             case "RadioTileData":

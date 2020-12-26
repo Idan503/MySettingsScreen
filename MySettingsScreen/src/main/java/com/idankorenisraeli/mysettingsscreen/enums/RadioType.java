@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.enums;
 
 public enum RadioType{
     DROP_DOWN,

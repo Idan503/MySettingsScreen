@@ -13,5 +13,4 @@ public class TitleTileData extends BasicTileData<TitleTileData> {
         super(title,description);
     }
 
-
 }

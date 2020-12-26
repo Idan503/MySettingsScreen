@@ -1,6 +1,7 @@
 package com.idankorenisraeli.mysettingsscreen.tile_data;
 
 import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
+import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -11,10 +12,6 @@ public class RadioTileData extends SavableTileData<String, RadioTileData> {
     private List<String> optionsList;
 
     //Outer layout click functionality implemented inside holder object
-
-    // TODO - SP LINK
-
-
     @Override
     protected RadioTileData build() {
         return this;

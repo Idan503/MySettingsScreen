@@ -11,6 +11,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.idankorenisraeli.mysettingsscreen.R;
+import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
 import com.idankorenisraeli.mysettingsscreen.recycler.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.tile_data.BasicTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
@@ -18,10 +19,10 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.EditTextTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
+import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SwitchTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.ToggleTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.TitleTileData;
 
 import java.util.ArrayList;
@@ -75,8 +76,22 @@ public class MySettingsActivity extends AppCompatActivity {
 
         TitleTileData savableTile = new TitleTileData("Stateful Tiles", "Data is being auto-saved to SharedPrefs");
 
-        SwitchTileData switchTileData = new SwitchTileData("Switch Tile", "Can be toggled off/on")
+        ToggleTileData switchTileData = new ToggleTileData("Switch Tile", "Can be toggled off/on")
                 .withDefaultValue(true)
+                .withToggleType(ToggleType.SWITCH)
+                .withOnChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        String state = isChecked ? "on" : "off";
+                        String msg = "Switch is now toggled " + state;
+                        Toast.makeText(MySettingsActivity.this,msg, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .withIconId(BasicTileData.IC_INVISIBLE);
+
+        ToggleTileData checkboxTileData = new ToggleTileData("Checkbox Tile", "Can be toggled off/on")
+                .withDefaultValue(true)
+                .withToggleType(ToggleType.CHECK_BOX)
                 .withOnChangeListener(new CompoundButton.OnCheckedChangeListener() {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -149,6 +164,7 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(dividerTileData);
         dataTiles.add(savableTile);
         dataTiles.add(switchTileData);
+        dataTiles.add(checkboxTileData);
         dataTiles.add(seekbarTileData);
         dataTiles.add(radioDropdownTileData);
         dataTiles.add(radioLabeledDialogTileData);

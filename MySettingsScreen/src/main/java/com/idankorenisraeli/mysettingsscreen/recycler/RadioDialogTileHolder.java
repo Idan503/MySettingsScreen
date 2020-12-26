@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioType;
+import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;

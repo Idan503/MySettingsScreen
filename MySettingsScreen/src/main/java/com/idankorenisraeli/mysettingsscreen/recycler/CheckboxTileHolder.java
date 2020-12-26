@@ -2,19 +2,19 @@ package com.idankorenisraeli.mysettingsscreen.recycler;
 
 import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.ToggleTileData;
 
-class SwitchTileHolder extends TitleTileHolder{
+class CheckboxTileHolder extends TitleTileHolder{
 
 
-    SwitchMaterial switchMaterial;
+    CheckBox checkBox;
 
-    public SwitchTileHolder(View itemView) {
+    public CheckboxTileHolder(View itemView) {
         super(itemView);
         findViews();
 
@@ -25,7 +25,7 @@ class SwitchTileHolder extends TitleTileHolder{
     @Override
     protected void findViews() {
         super.findViews();
-        switchMaterial = itemView.findViewById(R.id.tile_SW_switch);
+        checkBox = itemView.findViewById(R.id.tile_CB_checkbox);
     }
 
     @Override
@@ -34,9 +34,9 @@ class SwitchTileHolder extends TitleTileHolder{
         ToggleTileData mData = (ToggleTileData) tileObject;
 
 
-        switchMaterial.setChecked(mData.getSavedValue());
+        checkBox.setChecked(mData.getSavedValue());
 
-        switchMaterial.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
@@ -55,7 +55,7 @@ class SwitchTileHolder extends TitleTileHolder{
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switchMaterial.performClick();
+                checkBox.performClick();
             }
         });
 
