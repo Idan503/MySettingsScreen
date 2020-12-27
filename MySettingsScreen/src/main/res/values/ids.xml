@@ -18,5 +18,6 @@
     <item name="tile_seekbar_LBL_indicator" type="id"/>
     <item name="tile_radio_LBL_selected" type="id"/>
     <item name="tile_CB_checkbox" type="id"/>
+    <item name="tile_LAY_toggle_group" type="id"/>
 
 </resources>

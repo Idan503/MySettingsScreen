@@ -164,7 +164,7 @@ public class SharedPrefsManager {
         prefs.edit().putString(KEY, json).apply();
     }
 
-    public <T> ArrayList<T> getArray(String KEY, TypeToken typeToken) {
+    public <T> ArrayList<T> getArray(String KEY, TypeToken typeToken, ArrayList<T> defaultValue) {
         // type token == new TypeToken<ArrayList<YOUR_CLASS>>() {}
         ArrayList<T> arr = null;
         try {
@@ -172,7 +172,7 @@ public class SharedPrefsManager {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
-        return arr;
+        return arr==null ? defaultValue : arr;
     }
 
     public <S, T> void putMap(String KEY, HashMap<S, T> map) {

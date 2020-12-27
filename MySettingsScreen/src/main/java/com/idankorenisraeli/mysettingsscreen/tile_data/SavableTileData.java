@@ -2,6 +2,7 @@ package com.idankorenisraeli.mysettingsscreen.tile_data;
 
 import android.util.Log;
 
+import com.google.gson.reflect.TypeToken;
 import com.idankorenisraeli.mysettingsscreen.common.SharedPrefsManager;
 
 import java.lang.reflect.ParameterizedType;
@@ -31,6 +32,12 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
         this.defaultValue = defaultValue;
     }
 
+    /**
+     * Setting a default value, that will be retrieved for the first time getting from sp
+     * NOTE: This function does not save any value into the device's sharedprefs
+     * @param defaultValue value for the first time
+     * @return updated object with the new default value applied
+     */
     public U withDefaultValue(T defaultValue){
         this.defaultValue = defaultValue;
         return build();
@@ -43,7 +50,6 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      */
     @SuppressWarnings("unchecked")
     public T getSavedValue(){
-        Log.i("pttt", "This class is " + getClass().getSimpleName());
         T result = null;
         String key = getSharedPrefsKey();
         switch (getSaveTypeName()){
@@ -66,11 +72,7 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 result = (T) (Object) SharedPrefsManager.getInstance().getFloat(key, (Float) defaultValue);
                 break;
             case "ArrayList<Boolean>":
-                String optionsArrayData =  SharedPrefsManager.getInstance().getString(key, "-1");
-                if(optionsArrayData.equals("-1"))
-                    result = defaultValue; // List was never saved
-                else
-                    result = (T) stringToCheckedList(optionsArrayData);
+                result = (T) SharedPrefsManager.getInstance().getArray(key,new TypeToken<ArrayList<Boolean>>(){},(ArrayList<Boolean>)defaultValue);
             default:
                 Log.w("MySettingsScreen", "Could not save settings of type " + getSaveTypeName());
         }
@@ -107,7 +109,7 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 SharedPrefsManager.getInstance().putFloat(key, (Float) value);
                 break;
             case "ArrayList<Boolean>":
-                SharedPrefsManager.getInstance().putString(key, checkedListToString((ArrayList<Boolean>) value));
+                SharedPrefsManager.getInstance().putArray(key,(ArrayList<Boolean>) value);
                 break;
             default:
                 Log.w("MySettingsScreen", "Could not save a setting of type " + getSaveTypeName());
@@ -153,39 +155,6 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 .replace(' ', '_')
                 .replace('-', '_')
                 .toUpperCase();
-    }
-
-
-    /**
-     * Used for saving multi choice tiles
-     * @param checkedList ArrayList of the choices if checked by order
-     * @return String that represent check with 1 and uncheck with 0
-     */
-    private String checkedListToString(ArrayList<Boolean> checkedList){
-        StringBuilder stringBuilder = new StringBuilder(checkedList.size());
-
-        for (boolean b : checkedList) {
-            char toAppend = b ? '1' : '0';
-            stringBuilder.append(toAppend);
-        }
-        return stringBuilder.toString();
-    }
-
-    /**
-     * Used for saving multi choice tiles
-     * @param str String that represents multi choice check by 0s and 1s in order
-     * @return Array that contains true and false for check and uncheck options
-     */
-
-    private ArrayList<Boolean> stringToCheckedList(String str){
-        ArrayList<Boolean> arr = new ArrayList<>(str.length());
-
-        for (int i = 0; i < str.length(); i++) {
-            arr.add(str.charAt(i) == '1');
-            // false for 0, true for 1
-        }
-
-        return arr;
     }
 
 }

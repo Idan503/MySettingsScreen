@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,16 +26,17 @@ import java.util.List;
  */
 public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    public static final int TITLE = 0;
-    public static final int CLICKABLE =1;
-    public static final int TOGGLE_SWITCH=2;
-    public static final int TOGGLE_CHECKBOX=3;
-    public static final int SEEK_BAR = 4;
-    public static final int RADIO_DROPDOWN =5;
-    public static final int RADIO_DIALOG =6;
-    public static final int MULTI_CHOICE=7;
-    public static final int EDIT_TEXT=8;
-    public static final int DIVIDER=9;
+    public static final int DIVIDER=0;
+    public static final int TITLE = 1;
+    public static final int CLICKABLE =2;
+    public static final int TOGGLE_SWITCH=3;
+    public static final int TOGGLE_CHECKBOX=4;
+    public static final int SEEK_BAR = 5;
+    public static final int RADIO_DROPDOWN =6;
+    public static final int RADIO_DIALOG =7;
+    public static final int TIME_PICKER = 8;
+    public static final int MULTI_CHOICE=9;
+    public static final int EDIT_TEXT=10;
 
     final private List<SettingsTileData> tilesData;
     final private LayoutInflater mInflater;
@@ -73,6 +75,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case RADIO_DROPDOWN:
                 view = mInflater.inflate(R.layout.dropdown_tile_layout, parent, false);
                 return new RadioDropdownTileHolder(view);
+            case TIME_PICKER:
+                view = mInflater.inflate(R.layout.option_selected_tile_layout, parent, false);
+                return new TimePickerTileHolder(view);
             case MULTI_CHOICE:
                 view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
                 return new MultiChoiceDialogTileHolder(view);
@@ -119,7 +124,15 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case "RadioTileData":
                 //Checking weather the radio tile data is dropdown type or dialog type
                 RadioTileData radioData = (RadioTileData) data;
-                return radioData.getRadioType() == RadioType.DROP_DOWN ? RADIO_DROPDOWN : RADIO_DIALOG;
+                switch (radioData.getRadioType()){
+                    case DROP_DOWN:
+                        return RADIO_DROPDOWN;
+                    case DIALOG:
+                    case DIALOG_LABELED:
+                        return RADIO_DIALOG;
+                }
+            case "TimePickerTileData":
+                return TIME_PICKER;
             case "MultiChoiceTileData":
                 return MULTI_CHOICE;
             case "EditTextTileData":

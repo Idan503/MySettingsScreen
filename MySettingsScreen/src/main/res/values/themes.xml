@@ -95,4 +95,9 @@
     </style>
 
 
+    <!-- Outline Button Style -->
+    <style name="ThemeOverlay.MyApp.OutlinedButton" parent="">
+        <item name="materialButtonStyle">@style/Widget.MaterialComponents.Button.OutlinedButton</item>
+    </style>
+
 </resources>

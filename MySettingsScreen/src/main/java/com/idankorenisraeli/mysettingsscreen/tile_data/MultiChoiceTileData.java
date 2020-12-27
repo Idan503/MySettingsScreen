@@ -58,20 +58,6 @@ public class MultiChoiceTileData extends SavableTileData<ArrayList<Boolean>,Mult
         this.optionsList = optionsList;
     }
 
-    /*
-    public void saveValue(boolean[] checkedList) {
-        super.saveValue(checkedListToStr(checkedList));
-    }
-
-
-    public boolean[] getSavedValue(){
-        return strToCheckedList(super.getSavedValue());
-    }
-
-     */
-
-
-
 
 
 

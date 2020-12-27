@@ -77,7 +77,7 @@ public class MySettingsActivity extends AppCompatActivity {
                 .withColor(Color.WHITE);
 
         DividerTileData grayDivider =  new DividerTileData().withHeight(1)
-                .withColor(Color.GRAY);
+                .withColor(Color.parseColor("#FF666666"));
 
         TitleTileData savableTile = new TitleTileData("Stateful Tiles", "Data is being auto-saved to SharedPrefs");
 
@@ -147,6 +147,7 @@ public class MySettingsActivity extends AppCompatActivity {
                 .withOptionsList(options)
                 .withDefaultValue(options.get(3))
                 .withIconId(R.drawable.ic_baseline_radio_button_checked_24);
+
 
         EditTextTileData editTextTileData = new EditTextTileData("Edit Text", "Tap to edit this setting")
                 .withDefaultValue("MyOption")
