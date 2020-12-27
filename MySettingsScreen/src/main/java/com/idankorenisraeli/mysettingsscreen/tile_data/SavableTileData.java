@@ -48,7 +48,7 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      * Getting the data of this settings tile from shared prefs
      * @return Latest value that user assign to this tile
      */
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"unchecked"})
     public T getSavedValue(){
         T result = null;
         String key = getSharedPrefsKey();

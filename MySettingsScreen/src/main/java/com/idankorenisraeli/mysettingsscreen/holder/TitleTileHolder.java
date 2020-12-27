@@ -47,7 +47,7 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
         BasicTileData<?> mData = (BasicTileData<?>) tileObject;
 
         if(mData.getTitle()==null) {
-            Log.w(TAG, "Settings Tile is missing \"Title\" attribute.");
+            logMissedAttribute(getClass().getSimpleName(),"Title");
             mData.setTitle("");
         }
     }
@@ -102,6 +102,10 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
         int end = view.getPaddingEnd();
         int bottom = view.getPaddingBottom();
         view.setPadding(NO_ICON_PADDING, top, end, bottom);
+    }
+
+    protected void logMissedAttribute(String className, String attrName){
+        Log.w(TAG, className + " is missing \"" + attrName +"\" list attribute.");
     }
 
 }

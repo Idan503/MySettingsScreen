@@ -79,8 +79,8 @@ public class EditTextTileHolder extends TitleTileHolder {
     protected void validateData(SettingsTileData tileData){
         EditTextTileData mData = (EditTextTileData) tileData;
         if(mData.getDefaultValue() == null) {
-            Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
-            mData.setDefaultValue(" ");
+            logMissedAttribute(getClass().getSimpleName(),"Default Option");
+            mData.setDefaultValue("Option");
         }
     }
 

@@ -68,7 +68,7 @@ public class CheckboxTileHolder extends TitleTileHolder{
         ToggleTileData mData = (ToggleTileData) tileData;
 
         if(mData.getDefaultValue() == null){
-            Log.w(TAG, "Switch Settings Tile is missing \"Default Value\" attribute.");
+            logMissedAttribute(getClass().getSimpleName(),"Default Value");
             mData.setDefaultValue(false);
         }
 

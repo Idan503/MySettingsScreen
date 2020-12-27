@@ -39,7 +39,7 @@ public class ButtonTileHolder extends TitleTileHolder{
         ButtonTileData mData = (ButtonTileData) tileObject;
 
         if(mData.getOnClickListener() == null){
-            Log.w(TAG, "Radio Group Settings is missing \"On Click\" attribute.");
+            logMissedAttribute(getClass().getSimpleName(),"On Click");
         }
     }
 }

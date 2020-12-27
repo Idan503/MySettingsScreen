@@ -9,6 +9,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
@@ -77,13 +78,11 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
     protected void validateData(SettingsTileData tileData){
         MultiChoiceTileData mData = (MultiChoiceTileData) tileData;
         if(mData.getOptionsList() == null){
-            Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
-            ArrayList<String> demoList =  new ArrayList<>();
-            demoList.add("");
-            mData.withOptionsList(demoList);
+            logMissedAttribute(getClass().getSimpleName(),"Options");
+            mData.withOptionsList(new ArrayList<>(Arrays.asList("Option 1", "Option2")));
         }
         if(mData.getDefaultValue() == null) {
-            Log.w(TAG, "Radio Group Settings is missing \"Default Value\" attribute.");
+            logMissedAttribute(getClass().getSimpleName(),"Default Value");
             ArrayList<Boolean> demoList =  new ArrayList<>();
             for (int i = 0; i < mData.getOptionsList().size(); i++) {
                 demoList.add(false);

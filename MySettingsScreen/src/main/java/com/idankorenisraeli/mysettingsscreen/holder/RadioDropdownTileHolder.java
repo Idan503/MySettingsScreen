@@ -11,7 +11,9 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class RadioDropdownTileHolder extends TitleTileHolder {
 
@@ -82,13 +84,11 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
         super.validateData(tileData);
         RadioTileData mData = (RadioTileData) tileData;
         if (mData.getOptionsList() == null) {
-            Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
-            ArrayList<String> demoList = new ArrayList<>();
-            demoList.add("");
-            mData.withOptionsList(demoList);
+            logMissedAttribute(getClass().getSimpleName(),"Options");
+            mData.withOptionsList(new ArrayList<>(Arrays.asList("Option 1", "Option 2")));
         }
         if (mData.getDefaultValue() == null) {
-            Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
+            logMissedAttribute(getClass().getSimpleName(),"Default Option");
             mData.setDefaultValue(mData.getOptionsList().get(0));
         }
 

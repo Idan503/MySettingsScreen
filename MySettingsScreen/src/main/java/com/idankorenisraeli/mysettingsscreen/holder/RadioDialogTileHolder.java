@@ -83,13 +83,13 @@ public class RadioDialogTileHolder extends TitleTileHolder {
     protected void validateData(SettingsTileData tileData){
         RadioTileData mData = (RadioTileData) tileData;
         if(mData.getOptionsList() == null){
-            Log.w(TAG, "Radio Group Settings is missing \"Options\" list attribute.");
+            logMissedAttribute(getClass().getSimpleName(),"Options");
             ArrayList<String> demoList =  new ArrayList<>();
             demoList.add("");
             mData.withOptionsList(demoList);
         }
         if(mData.getDefaultValue() == null) {
-            Log.w(TAG, "Radio Group Settings is missing \"Default Option\" attribute.");
+            logMissedAttribute(getClass().getSimpleName(),"Default Option");
             mData.setDefaultValue(mData.getOptionsList().get(0));
         }
     }

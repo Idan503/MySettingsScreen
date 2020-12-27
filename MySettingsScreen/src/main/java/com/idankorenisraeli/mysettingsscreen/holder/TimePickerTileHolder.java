@@ -1,28 +1,19 @@
 package com.idankorenisraeli.mysettingsscreen.holder;
 
-import android.app.TimePickerDialog;
-import android.content.DialogInterface;
-import android.util.Log;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.TimePickerTileData;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
 
 public class TimePickerTileHolder extends TitleTileHolder {
@@ -61,8 +52,8 @@ public class TimePickerTileHolder extends TitleTileHolder {
     private void buildTimePickerDialog(TimePickerTileData mData){
         MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
                 .setTimeFormat(TimeFormat.CLOCK_24H)
-                .setHour(mData.getDefaultValue().get(0))
-                .setMinute(mData.getDefaultValue().get(1))
+                .setHour(mData.getSavedValue().get(0))
+                .setMinute(mData.getSavedValue().get(1))
                 .setTitleText(mData.getTitle())
                 .build();
 
@@ -87,6 +78,16 @@ public class TimePickerTileHolder extends TitleTileHolder {
 
         materialTimePicker.show(fragmentManager, "TAG");
 
+
+    }
+
+    @Override
+    protected void validateData(SettingsTileData data){
+        TimePickerTileData mData = (TimePickerTileData) data;
+        if(mData.getDefaultValue()==null){
+            logMissedAttribute(getClass().getSimpleName(),"Default Time");
+            mData.setDefaultValue(new ArrayList<>(Arrays.asList(8,30)));
+        }
 
     }
 
