@@ -1,5 +1,7 @@
 package com.idankorenisraeli.mysettingsscreen.tile_data;
 
+import android.graphics.Color;
+
 import java.io.Serializable;
 
 
@@ -9,6 +11,9 @@ import java.io.Serializable;
 public class DividerTileData implements Serializable, SettingsTileData {
 
     private Integer height;
+    private int color = Color.WHITE;
+
+    public final static Integer DEFAULT_HEIGHT = 1;
 
     public DividerTileData(){
 
@@ -27,11 +32,24 @@ public class DividerTileData implements Serializable, SettingsTileData {
         return build();
     }
 
+    public DividerTileData withColor(int color) {
+        this.color = color;
+        return build();
+    }
+
     protected DividerTileData build() {
         return this;
     }
 
     protected void setHeight(Integer height) {
         this.height = height;
+    }
+
+    public int getColor() {
+        return color;
+    }
+
+    public void setColor(int color) {
+        this.color = color;
     }
 }

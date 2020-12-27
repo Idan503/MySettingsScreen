@@ -3,4 +3,5 @@
     android:layout_height="4dp"
     android:background="@android:color/white"
     android:id="@+id/tile_VIEW_divider"
-    xmlns:android="http://schemas.android.com/apk/res/android" />
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    />

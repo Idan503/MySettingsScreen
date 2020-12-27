@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -72,7 +73,11 @@ public class MySettingsActivity extends AppCompatActivity {
                 })
                 .withIconId(R.drawable.ic_baseline_radio_button_unchecked_24);
 
-        DividerTileData dividerTileData = new DividerTileData().withHeight(1);
+        DividerTileData whiteDivider = new DividerTileData().withHeight(1)
+                .withColor(Color.WHITE);
+
+        DividerTileData grayDivider =  new DividerTileData().withHeight(1)
+                .withColor(Color.GRAY);
 
         TitleTileData savableTile = new TitleTileData("Stateful Tiles", "Data is being auto-saved to SharedPrefs");
 
@@ -128,7 +133,7 @@ public class MySettingsActivity extends AppCompatActivity {
         RadioTileData radioDropdownTileData = new RadioTileData("Radio Dropdown", "Select an option from a dropdown")
                 .withRadioType(RadioType.DROP_DOWN)
                 .withOptionsList(options)
-                .withDefaultValue(options.get(2))
+                .withDefaultValue(options.get(1))
                 .withIconId(R.drawable.ic_baseline_arrow_drop_down_circle_24);
 
         RadioTileData radioLabeledDialogTileData = new RadioTileData("Radio Labeled Dialog", "Select an option from a dialog")
@@ -140,7 +145,7 @@ public class MySettingsActivity extends AppCompatActivity {
         RadioTileData radioDialogTileData = new RadioTileData("Radio Dialog", "Select an option from a dialog")
                 .withRadioType(RadioType.DIALOG)
                 .withOptionsList(options)
-                .withDefaultValue(options.get(2))
+                .withDefaultValue(options.get(3))
                 .withIconId(R.drawable.ic_baseline_radio_button_checked_24);
 
         EditTextTileData editTextTileData = new EditTextTileData("Edit Text", "Tap to edit this setting")
@@ -161,16 +166,19 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(nonSavableTile);
         dataTiles.add(titleTileData);
         dataTiles.add(buttonTileData);
-        dataTiles.add(dividerTileData);
+        dataTiles.add(whiteDivider);
         dataTiles.add(savableTile);
         dataTiles.add(switchTileData);
         dataTiles.add(checkboxTileData);
-        dataTiles.add(seekbarTileData);
+        dataTiles.add(grayDivider);
         dataTiles.add(radioDialogTileData);
         dataTiles.add(radioLabeledDialogTileData);
         dataTiles.add(radioDropdownTileData);
-        dataTiles.add(editTextTileData);
+        dataTiles.add(grayDivider);
         dataTiles.add(multiTileData);
+        dataTiles.add(seekbarTileData);
+        dataTiles.add(editTextTileData);
+
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));

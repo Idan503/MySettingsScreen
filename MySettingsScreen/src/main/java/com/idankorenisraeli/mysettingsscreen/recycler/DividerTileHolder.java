@@ -1,5 +1,7 @@
 package com.idankorenisraeli.mysettingsscreen.recycler;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,8 @@ class DividerTileHolder extends RecyclerView.ViewHolder implements SettingsTileH
         ViewGroup.LayoutParams params = divider.getLayoutParams();
         params.height = mData.getHeight();
 
+        divider.setBackgroundColor(mData.getColor());
+
         divider.setLayoutParams(params);
 
     }
@@ -42,7 +46,7 @@ class DividerTileHolder extends RecyclerView.ViewHolder implements SettingsTileH
     private void validateData(DividerTileData data){
         if(data.getHeight()==null) {
             Log.w(TAG, "Seekbar Settings Tile is missing \"Height\" attribute.");
-            data.withHeight(2);
+            data.withHeight(DividerTileData.DEFAULT_HEIGHT);
         }
     }
 
