@@ -4,15 +4,25 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TimePicker;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
+import com.idankorenisraeli.mysettingsscreen.holder.ButtonTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.CheckboxTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.DividerTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.EditTextTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.MultiChoiceDialogTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.RadioDialogTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.RadioDropdownTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.SeekbarTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.SettingsTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.SwitchTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.TimePickerTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.TitleTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.ToggleTileData;
 

@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.recycler;
+package com.idankorenisraeli.mysettingsscreen.holder;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
@@ -10,7 +10,7 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-class SeekbarTileHolder extends TitleTileHolder{
+public class SeekbarTileHolder extends TitleTileHolder{
 
     SeekBar tileSeekBar;
     TextView textIndicator;

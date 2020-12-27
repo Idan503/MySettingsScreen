@@ -1,7 +1,7 @@
-package com.idankorenisraeli.mysettingsscreen.recycler;
+package com.idankorenisraeli.mysettingsscreen.holder;
 
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-interface SettingsTileHolder {
+public interface SettingsTileHolder {
     void setData(SettingsTileData tileData);
 }

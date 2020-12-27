@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.recycler;
+package com.idankorenisraeli.mysettingsscreen.holder;
 
 import android.content.DialogInterface;
 import android.util.Log;
@@ -9,18 +9,18 @@ import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
 import java.util.List;
 
-class TimePickerTileHolder extends TitleTileHolder {
+public class RadioDialogTileHolder extends TitleTileHolder {
 
-    TextView timeSelectedLabel;
+    TextView selectedLabel;
 
-    public TimePickerTileHolder(View itemView) {
+    public RadioDialogTileHolder(View itemView) {
         super(itemView);
         findViews();
     }
@@ -28,7 +28,7 @@ class TimePickerTileHolder extends TitleTileHolder {
     @Override
     public void findViews(){
         super.findViews();
-        timeSelectedLabel = itemView.findViewById(R.id.tile_radio_LBL_selected);
+        selectedLabel = itemView.findViewById(R.id.tile_radio_LBL_selected);
 
     }
 
@@ -39,9 +39,9 @@ class TimePickerTileHolder extends TitleTileHolder {
 
         // Vanishing the text if it is not a labeled setting
         if(mData.getRadioType() != RadioType.DIALOG_LABELED)
-            timeSelectedLabel.setVisibility(View.GONE);
+            selectedLabel.setVisibility(View.GONE);
         else
-            timeSelectedLabel.setText(mData.getSavedValue());
+            selectedLabel.setText(mData.getSavedValue());
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -65,7 +65,7 @@ class TimePickerTileHolder extends TitleTileHolder {
                         // find the radiobutton by returned id to get its string value
                         RadioButton radioButton = radioGroup.findViewById(selectedId);
                         String selectedString =radioButton.getText().toString();
-                        timeSelectedLabel.setText(selectedString);
+                        selectedLabel.setText(selectedString);
                         mData.saveValue(selectedString);
                         if(mData.getOnSelectedListener()!=null) {
                             mData.getOnSelectedListener().onOptionSelected(radioButton.getText().toString());

@@ -73,6 +73,10 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 break;
             case "ArrayList<Boolean>":
                 result = (T) SharedPrefsManager.getInstance().getArray(key,new TypeToken<ArrayList<Boolean>>(){},(ArrayList<Boolean>)defaultValue);
+                break;
+            case "ArrayList<Integer>":
+                result = (T) SharedPrefsManager.getInstance().getArray(key,new TypeToken<ArrayList<Integer>>(){},(ArrayList<Integer>)defaultValue);
+                break;
             default:
                 Log.w("MySettingsScreen", "Could not save settings of type " + getSaveTypeName());
         }
@@ -109,7 +113,8 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 SharedPrefsManager.getInstance().putFloat(key, (Float) value);
                 break;
             case "ArrayList<Boolean>":
-                SharedPrefsManager.getInstance().putArray(key,(ArrayList<Boolean>) value);
+            case "ArrayList<Integer>":
+                SharedPrefsManager.getInstance().putArray(key,(ArrayList<?>) value);
                 break;
             default:
                 Log.w("MySettingsScreen", "Could not save a setting of type " + getSaveTypeName());

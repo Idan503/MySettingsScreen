@@ -1,7 +1,5 @@
-package com.idankorenisraeli.mysettingsscreen.recycler;
+package com.idankorenisraeli.mysettingsscreen.holder;
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +11,7 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.DividerTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-class DividerTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
+public class DividerTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
 
     View divider;
 

@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.recycler;
+package com.idankorenisraeli.mysettingsscreen.holder;
 
 import android.content.DialogInterface;
 import android.util.Log;
@@ -8,10 +8,9 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-class MultiChoiceDialogTileHolder extends TitleTileHolder {
+public class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
     public MultiChoiceDialogTileHolder(View itemView) {
         super(itemView);

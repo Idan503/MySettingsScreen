@@ -9,9 +9,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.SeekBar;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.idankorenisraeli.mysettingsscreen.R;
+import com.idankorenisraeli.mysettingsscreen.callback.OnTimeSelectedListener;
 import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
 import com.idankorenisraeli.mysettingsscreen.recycler.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.tile_data.BasicTileData;
@@ -23,6 +25,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.TimePickerTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.ToggleTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.TitleTileData;
 
@@ -154,6 +157,20 @@ public class MySettingsActivity extends AppCompatActivity {
                 .withIconId(R.drawable.ic_baseline_border_color_24);
 
 
+        ArrayList<Integer> defaultTime = new ArrayList<>();
+        defaultTime.add(8);
+        defaultTime.add(30);
+
+        TimePickerTileData timePickerData = new TimePickerTileData("Time Picker", "Tap to change selected time")
+                .withOnSelectedListener(new OnTimeSelectedListener() {
+                    @Override
+                    public void onTimeSelected(int hours, int minutes) {
+                        Toast.makeText(MySettingsActivity.this, "Time: " + hours + ":" + minutes, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .withDefaultValue(defaultTime)
+                .withIconId(android.R.drawable.btn_plus);
+
         MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi Choice Tile", "Select multiple options from a dialog")
                 .withOptionsList(options)
                 .withDefaultValue(checkedOptions)
@@ -179,6 +196,7 @@ public class MySettingsActivity extends AppCompatActivity {
         dataTiles.add(multiTileData);
         dataTiles.add(seekbarTileData);
         dataTiles.add(editTextTileData);
+        dataTiles.add(timePickerData);
 
 
 

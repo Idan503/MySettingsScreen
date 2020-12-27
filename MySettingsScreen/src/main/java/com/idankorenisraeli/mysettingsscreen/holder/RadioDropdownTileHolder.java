@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.recycler;
+package com.idankorenisraeli.mysettingsscreen.holder;
 
 import android.util.Log;
 import android.view.View;
@@ -13,7 +13,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
 import java.util.ArrayList;
 
-class RadioDropdownTileHolder extends TitleTileHolder {
+public class RadioDropdownTileHolder extends TitleTileHolder {
 
     private AppCompatSpinner spinner;
 

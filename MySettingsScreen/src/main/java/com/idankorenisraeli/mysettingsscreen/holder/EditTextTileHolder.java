@@ -1,24 +1,18 @@
-package com.idankorenisraeli.mysettingsscreen.recycler;
+package com.idankorenisraeli.mysettingsscreen.holder;
 
 import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.EditTextTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
 
-import java.util.ArrayList;
-import java.util.List;
-
-class EditTextTileHolder extends TitleTileHolder {
+public class EditTextTileHolder extends TitleTileHolder {
 
     TextView selectedLabel;
 
