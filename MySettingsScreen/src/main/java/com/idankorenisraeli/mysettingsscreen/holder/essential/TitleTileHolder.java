@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.essential;
 
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -11,8 +11,8 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.BasicTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.BasicTileData;
 
 public class TitleTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
 

@@ -1,7 +1,6 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.dialog;
 
 import android.content.DialogInterface;
-import android.util.Log;
 import android.view.View;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -9,9 +8,10 @@ import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.view.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
 import java.util.ArrayList;
 import java.util.List;

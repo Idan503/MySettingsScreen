@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.dialog;
 
 import android.view.View;
 import android.widget.TextView;
@@ -9,8 +9,9 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.timepicker.MaterialTimePicker;
 import com.google.android.material.timepicker.TimeFormat;
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.TimePickerTileData;
+import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.TimePickerTileData;
 
 import java.util.ArrayList;
 import java.util.Arrays;

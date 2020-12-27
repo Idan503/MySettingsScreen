@@ -1,6 +1,5 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.dialog;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -8,10 +7,10 @@ import android.widget.ArrayAdapter;
 import androidx.appcompat.widget.AppCompatSpinner;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile_data.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.view.RadioTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 

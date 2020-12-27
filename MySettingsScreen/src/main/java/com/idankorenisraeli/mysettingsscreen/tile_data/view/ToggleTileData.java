@@ -1,10 +1,11 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.view;
 
 import android.widget.CompoundButton;
 
 import androidx.annotation.Nullable;
 
 import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
 /**
  * Settings tile that contains a single switch

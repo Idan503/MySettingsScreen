@@ -1,10 +1,9 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.essential;
 
-import android.util.Log;
 import android.view.View;
 
-import com.idankorenisraeli.mysettingsscreen.tile_data.ButtonTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.ButtonTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
 public class ButtonTileHolder extends TitleTileHolder{
 

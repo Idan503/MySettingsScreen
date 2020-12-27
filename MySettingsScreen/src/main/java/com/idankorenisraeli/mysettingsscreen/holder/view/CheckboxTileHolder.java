@@ -1,15 +1,15 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.view;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.ToggleTileData;
+import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 
-public class CheckboxTileHolder extends TitleTileHolder{
+public class CheckboxTileHolder extends TitleTileHolder {
 
 
     CheckBox checkBox;

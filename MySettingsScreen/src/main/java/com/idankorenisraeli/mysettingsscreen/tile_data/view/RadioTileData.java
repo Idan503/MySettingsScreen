@@ -1,7 +1,8 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.view;
 
 import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
 import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
 import java.util.InputMismatchException;
 import java.util.List;

@@ -1,9 +1,7 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.dialog;
 
 import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
-
-import java.util.InputMismatchException;
-import java.util.List;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
 public class EditTextTileData extends SavableTileData<String, EditTextTileData> {
     private OnOptionSelectListener onSelectedListener;

@@ -8,10 +8,12 @@ import android.net.Uri;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.idankorenisraeli.mysettingsscreen.activity.MySettingsScreen;
+
 public class MySettingsScreenContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {
-        //Initiating the shared preferences manager singleton
+        //Initiating the shared preferences manager as singleton
         return SharedPrefsManager.initHelper(getContext())!=null;
     }
 

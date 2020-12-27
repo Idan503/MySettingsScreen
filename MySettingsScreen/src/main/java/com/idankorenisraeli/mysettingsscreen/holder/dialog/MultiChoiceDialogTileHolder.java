@@ -1,12 +1,13 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.dialog;
 
 import android.content.DialogInterface;
 import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.idankorenisraeli.mysettingsscreen.tile_data.MultiChoiceTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.MultiChoiceTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
 import java.util.ArrayList;
 import java.util.Arrays;

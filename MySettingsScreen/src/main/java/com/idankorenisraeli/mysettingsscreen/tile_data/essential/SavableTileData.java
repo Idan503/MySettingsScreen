@@ -1,9 +1,10 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.essential;
 
 import android.util.Log;
 
 import com.google.gson.reflect.TypeToken;
 import com.idankorenisraeli.mysettingsscreen.common.SharedPrefsManager;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.BasicTileData;
 
 import java.lang.reflect.ParameterizedType;
 import java.util.ArrayList;

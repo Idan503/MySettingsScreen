@@ -1,15 +1,15 @@
-package com.idankorenisraeli.mysettingsscreen.holder;
+package com.idankorenisraeli.mysettingsscreen.holder.view;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.CompoundButton;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.tile_data.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.ToggleTileData;
+import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 
-public class SwitchTileHolder extends TitleTileHolder{
+public class SwitchTileHolder extends TitleTileHolder {
 
 
     SwitchMaterial switchMaterial;

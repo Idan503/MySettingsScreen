@@ -1,6 +1,8 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.view;
 
 import android.widget.SeekBar;
+
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
 
 public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {

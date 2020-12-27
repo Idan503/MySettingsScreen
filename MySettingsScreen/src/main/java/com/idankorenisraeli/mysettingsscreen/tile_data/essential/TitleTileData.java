@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.essential;
 
 /**
  * Settings tile which only contains icon and text, not clickable.

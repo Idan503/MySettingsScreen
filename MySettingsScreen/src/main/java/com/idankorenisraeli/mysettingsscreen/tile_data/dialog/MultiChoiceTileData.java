@@ -1,9 +1,9 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.dialog;
 
 import com.idankorenisraeli.mysettingsscreen.callback.OnMultiSelectListener;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**

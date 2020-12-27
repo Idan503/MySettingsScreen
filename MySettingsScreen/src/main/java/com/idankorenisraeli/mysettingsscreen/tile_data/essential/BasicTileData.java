@@ -1,4 +1,4 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.essential;
 
 import androidx.annotation.Nullable;
 
@@ -11,7 +11,7 @@ import java.io.Serializable;
  * You can use TitleTileData.
  * @param <T> Concrete type of tile data (used for builder)
  */
-public abstract class BasicTileData<T> implements SettingsTileData {
+public abstract class BasicTileData<T> implements SettingsTileData, Serializable {
 
 
     protected String title;

@@ -1,12 +1,14 @@
-package com.idankorenisraeli.mysettingsscreen.tile_data;
+package com.idankorenisraeli.mysettingsscreen.tile_data.essential;
 import android.view.View;
+
+import java.io.Serializable;
 
 /**
  * The tile itself will look exactly like and regular title tile.
  * But it will a ripple effect when clicking on it
  * and a functionality when clicked can be implemented via @onClickListener
  */
-public class ButtonTileData extends BasicTileData<ButtonTileData> {
+public class ButtonTileData extends BasicTileData<ButtonTileData> implements Serializable {
 
     /**
      * Button doesn't have a state and therefore nothing is saved in SharedPreferences.
