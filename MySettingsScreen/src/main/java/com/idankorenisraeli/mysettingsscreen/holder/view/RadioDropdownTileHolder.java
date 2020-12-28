@@ -1,5 +1,7 @@
-package com.idankorenisraeli.mysettingsscreen.holder.dialog;
+package com.idankorenisraeli.mysettingsscreen.holder.view;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -17,6 +19,11 @@ import java.util.Arrays;
 public class RadioDropdownTileHolder extends TitleTileHolder {
 
     private AppCompatSpinner spinner;
+
+    // This var is for preventing a callback call when screen is being initialized
+    private boolean dataLoaded = false;
+    private static final int DELAY_FINISH_LOAD_TIME = 100; //in ms
+    //Time to enable callback calls to prevent unwanted calls when loading
 
     public RadioDropdownTileHolder(View itemView) {
         super(itemView);
@@ -44,7 +51,7 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if (mData.getOnSelectedListener() != null)
+                if (mData.getOnSelectedListener() != null && dataLoaded)
                     mData.getOnSelectedListener().onOptionSelected(mData.getOptionsList().get(position));
 
                 mData.saveValue(mData.getOptionsList().get(position));
@@ -60,6 +67,7 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
             @Override
             public void onClick(View v) {
                 spinner.performClick();
+                //Making the dropdown menu pop when user clicking on tile itself
             }
         });
 
@@ -72,8 +80,13 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
                         new ArrayList<>(mData.getOptionsList()));
 
         spinner.setAdapter(adapter);
+
         spinner.setSelection(mData.getOptionsList().indexOf(mData.getSavedValue()));
-        // Setting value of the spinner
+
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(() -> dataLoaded = true, DELAY_FINISH_LOAD_TIME);
+
+        // Setting value of the spinner to saved value
 
     }
 

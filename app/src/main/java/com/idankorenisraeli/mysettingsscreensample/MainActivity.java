@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.idankorenisraeli.mysettingsscreen.activity.MySettingsScreen;
+import com.idankorenisraeli.mysettingsscreen.callback.OnMultiSelectListener;
+import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
 import com.idankorenisraeli.mysettingsscreen.callback.OnTimeSelectedListener;
 import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
@@ -63,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 .withOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showToast("Button tile clicked");
+                        showToast("Button Tile Clicked");
                     }
                 })
                 .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_radio_button_unchecked_24);
@@ -83,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         String state = isChecked ? "on" : "off";
-                        String msg = "Switch is now toggled " + state;
+                        String msg = "Switch is toggled " + state;
                         showToast(msg);
                     }
                 })
@@ -96,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                         String state = isChecked ? "on" : "off";
-                        String msg = "Switch is now toggled " + state;
+                        String msg = "Checkbox is now toggled " + state;
                         showToast(msg);
                     }
                 })
@@ -129,24 +131,48 @@ public class MainActivity extends AppCompatActivity {
                 .withRadioType(RadioType.DROP_DOWN)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(1))
-                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_arrow_drop_down_circle_24);
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_arrow_drop_down_circle_24)
+                .withOnSelectedListener(new OnOptionSelectListener() {
+                    @Override
+                    public void onOptionSelected(String option) {
+                        showToast("Radio dropdown selected " + option);
+                    }
+                });
 
         RadioTileData radioLabeledDialogTileData = new RadioTileData("Radio Labeled Dialog", "Select an option from a dialog")
                 .withRadioType(RadioType.DIALOG_LABELED)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(2))
-                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_label_24);
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_label_24)
+                .withOnSelectedListener(new OnOptionSelectListener() {
+                    @Override
+                    public void onOptionSelected(String option) {
+                        showToast("Radio dialog selected " + option);
+                    }
+                });
 
         RadioTileData radioDialogTileData = new RadioTileData("Radio Dialog", "Select an option from a dialog")
                 .withRadioType(RadioType.DIALOG)
                 .withOptionsList(options)
                 .withDefaultValue(options.get(3))
-                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_radio_button_checked_24);
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_radio_button_checked_24)
+                .withOnSelectedListener(new OnOptionSelectListener() {
+                    @Override
+                    public void onOptionSelected(String option) {
+                        showToast("Radio dialog selected " + option);
+                    }
+                });
 
 
         EditTextTileData editTextTileData = new EditTextTileData("Edit Text", "Tap to edit this setting")
                 .withDefaultValue("MyOption")
-                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_border_color_24);
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_border_color_24)
+                .withOnSelectedListener(new OnOptionSelectListener() {
+                    @Override
+                    public void onOptionSelected(String option) {
+                        showToast("Text selected " + option);
+                    }
+                });
 
 
         ArrayList<Integer> defaultTime = new ArrayList<>();
@@ -157,16 +183,28 @@ public class MainActivity extends AppCompatActivity {
                 .withOnSelectedListener(new OnTimeSelectedListener() {
                     @Override
                     public void onTimeSelected(int hours, int minutes) {
-                        showToast("Time: " + hours + ":" + minutes);
+                        showToast("Time selected " + hours + ":" + minutes);
                     }
                 })
                 .withDefaultValue(defaultTime)
-                .withIconId(android.R.drawable.btn_plus);
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_access_time_24);
 
         MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi Choice Tile", "Select multiple options from a dialog")
                 .withOptionsList(options)
                 .withDefaultValue(checkedOptions)
-                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_rule_24);
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_rule_24)
+                .withOnChangedListener(new OnMultiSelectListener() {
+                    @Override
+                    public void onMultiSelect(ArrayList<String> options, ArrayList<Boolean> checked) {
+                        StringBuilder optionsSelected = new StringBuilder();
+                        for (int i = 0; i < options.size(); i++) {
+                            if(checked.get(i))
+                                optionsSelected.append(options.get(i)).append(", ");
+                        }
+                        String data = optionsSelected.substring(0,optionsSelected.length()-2);
+                        showToast("Multi-Choice selected: " + data);
+                    }
+                });
 
 
         dataTiles.add(nonSavableTile);
@@ -187,8 +225,6 @@ public class MainActivity extends AppCompatActivity {
         dataTiles.add(timePickerData);
 
 
-
-
         main_BTN_settings.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -196,8 +232,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
         );
-
-        main_BTN_settings.performClick();
 
 
     }

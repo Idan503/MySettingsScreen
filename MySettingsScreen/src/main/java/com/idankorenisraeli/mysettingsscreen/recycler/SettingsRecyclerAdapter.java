@@ -16,7 +16,7 @@ import com.idankorenisraeli.mysettingsscreen.holder.essential.DividerTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.dialog.EditTextTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.dialog.MultiChoiceDialogTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.dialog.RadioDialogTileHolder;
-import com.idankorenisraeli.mysettingsscreen.holder.dialog.RadioDropdownTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.view.RadioDropdownTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.view.SeekbarTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.essential.SettingsTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.view.SwitchTileHolder;

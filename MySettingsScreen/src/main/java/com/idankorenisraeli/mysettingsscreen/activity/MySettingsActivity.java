@@ -37,6 +37,8 @@ public class MySettingsActivity extends AppCompatActivity {
 
     public static final String TILE_LIST_KEY = "TILE_DATA_LIST";
 
+    private static boolean finishedLoading = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,7 @@ public class MySettingsActivity extends AppCompatActivity {
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, tilesData));
+        finishedLoading = true;
 
     }
 
