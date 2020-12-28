@@ -31,6 +31,14 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 
 import java.util.ArrayList;
 
+
+/**
+ * In this example we will create a settings screen
+ * which will include all the possible tiles that can be implemented
+ * using the library.
+ *
+ *
+ */
 public class MainActivity extends AppCompatActivity {
 
     MaterialButton main_BTN_settings;
@@ -43,11 +51,13 @@ public class MainActivity extends AppCompatActivity {
         findViews();
 
 
+        // Generic list for multi-options examples
         ArrayList<String> options = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             options.add("Option " + i);
         }
 
+        // Default options of the list above
         ArrayList<Boolean> checkedOptions = new ArrayList<>();
         checkedOptions.add(false);
         checkedOptions.add(false);
@@ -55,8 +65,16 @@ public class MainActivity extends AppCompatActivity {
         checkedOptions.add(true);
         checkedOptions.add(false);
 
+        // Default time
+        ArrayList<Integer> defaultTime = new ArrayList<>();
+        defaultTime.add(8);
+        defaultTime.add(30);
+
+        // This list will hold the tiles data which the activity will be built upon
         ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
 
+
+        //region Adding Tiles Data
         TitleTileData nonSavableTile = new TitleTileData("Stateless Tiles", "Data is not saved to device");
 
         TitleTileData titleTileData = new TitleTileData("Title Tile", "No functionality here, just a title")
@@ -176,9 +194,6 @@ public class MainActivity extends AppCompatActivity {
                 });
 
 
-        ArrayList<Integer> defaultTime = new ArrayList<>();
-        defaultTime.add(8);
-        defaultTime.add(30);
 
         TimePickerTileData timePickerData = new TimePickerTileData("Time Picker", "Tap to change selected time")
                 .withOnSelectedListener(new OnTimeSelectedListener() {
@@ -208,7 +223,10 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
 
+        //endregion
 
+
+        // Adding each tile data to the list
         dataTiles.add(nonSavableTile);
         dataTiles.add(titleTileData);
         dataTiles.add(buttonTileData);
@@ -230,12 +248,21 @@ public class MainActivity extends AppCompatActivity {
         main_BTN_settings.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, dataTiles, "My Settings Screen" );
+                        startMySettingsActivity(dataTiles);
                     }
                 }
         );
 
 
+    }
+
+    /**
+     * In this function we will use a sample call to the library
+     * which will include an appbar with a title "My Settings Screen"
+     * @param tiles List of tiles data to of the settings that will be in the screen
+     */
+    private void startMySettingsActivity(ArrayList<SettingsTileData> tiles){
+        MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, tiles, "My Settings Screen" );
     }
 
     private void findViews(){

@@ -41,12 +41,7 @@ public class TimePickerTileHolder extends TitleTileHolder {
         String str = generateTimeString(savedTime.get(0),savedTime.get(1), mData.getFormat());
         timeSelectedLabel.setText(str);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                buildTimePickerDialog(mData);
-            }
-        });
+        itemView.setOnClickListener(v -> buildTimePickerDialog(mData));
 
     }
 
