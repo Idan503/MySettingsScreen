@@ -1,5 +1,6 @@
 package com.idankorenisraeli.mysettingsscreen.tile_data.dialog;
 
+import com.google.android.material.timepicker.TimeFormat;
 import com.idankorenisraeli.mysettingsscreen.callback.OnTimeSelectedListener;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
@@ -13,6 +14,7 @@ import java.util.ArrayList;
  */
 public class TimePickerTileData extends SavableTileData<ArrayList<Integer>, TimePickerTileData> {
     private OnTimeSelectedListener onSelectedListener;
+    private @TimeFormat int format = TimeFormat.CLOCK_24H;
 
     //Outer layout click functionality implemented inside holder object
     @Override
@@ -33,4 +35,20 @@ public class TimePickerTileData extends SavableTileData<ArrayList<Integer>, Time
         return build();
     }
 
+    public TimePickerTileData withTimeFormat(@TimeFormat int format){
+        this.format = format;
+        return build();
+    }
+
+    public void setOnSelectedListener(OnTimeSelectedListener onSelectedListener) {
+        this.onSelectedListener = onSelectedListener;
+    }
+
+    public int getFormat() {
+        return format;
+    }
+
+    public void setFormat(int format) {
+        this.format = format;
+    }
 }

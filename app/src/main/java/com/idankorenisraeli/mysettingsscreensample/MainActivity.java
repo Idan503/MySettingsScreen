@@ -11,6 +11,7 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.timepicker.TimeFormat;
 import com.idankorenisraeli.mysettingsscreen.activity.MySettingsScreen;
 import com.idankorenisraeli.mysettingsscreen.callback.OnMultiSelectListener;
 import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
@@ -187,6 +188,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 })
                 .withDefaultValue(defaultTime)
+                .withTimeFormat(TimeFormat.CLOCK_12H)
                 .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_access_time_24);
 
         MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi Choice Tile", "Select multiple options from a dialog")
@@ -228,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
         main_BTN_settings.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, dataTiles, "My Settings Screen");
+                        MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, dataTiles, "My Settings Screen" );
                     }
                 }
         );

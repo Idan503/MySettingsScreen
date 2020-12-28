@@ -38,7 +38,7 @@ public class TimePickerTileHolder extends TitleTileHolder {
         super.setData(tileObject);
         TimePickerTileData mData = (TimePickerTileData) tileObject;
         ArrayList<Integer> savedTime = mData.getSavedValue();
-        String str = generateTimeString(savedTime.get(0),savedTime.get(1));
+        String str = generateTimeString(savedTime.get(0),savedTime.get(1), mData.getFormat());
         timeSelectedLabel.setText(str);
 
         itemView.setOnClickListener(new View.OnClickListener() {
@@ -52,7 +52,7 @@ public class TimePickerTileHolder extends TitleTileHolder {
 
     private void buildTimePickerDialog(TimePickerTileData mData){
         MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
-                .setTimeFormat(TimeFormat.CLOCK_24H)
+                .setTimeFormat(mData.getFormat())
                 .setHour(mData.getSavedValue().get(0))
                 .setMinute(mData.getSavedValue().get(1))
                 .setTitleText(mData.getTitle())
@@ -71,7 +71,7 @@ public class TimePickerTileHolder extends TitleTileHolder {
                 if(mData.getOnSelectedListener()!=null)
                     mData.getOnSelectedListener().onTimeSelected(newHour, newMinute);
 
-                timeSelectedLabel.setText(generateTimeString(newHour, newMinute));
+                timeSelectedLabel.setText(generateTimeString(newHour, newMinute, mData.getFormat()));
             }
         });
 
@@ -94,8 +94,34 @@ public class TimePickerTileHolder extends TitleTileHolder {
 
 
 
-    private String generateTimeString(int hours, int minutes){
-        return hours + ":" + minutes;
+    private String generateTimeString(int hours, int minutes, @TimeFormat int format){
+        String timeType = "";
+        if(TimeFormat.CLOCK_12H == format) {
+            if(hours <= 11) {
+                if (hours == 0) {
+                    hours = 12;
+                }
+                timeType = " AM";
+            }
+            else{ //hours >=12
+                hours-=12;
+                timeType = " PM";
+            }
+        }
+
+        String minutesString = reformatTimeNumber(minutes);
+        String hoursString = reformatTimeNumber(hours);
+        return hoursString + ":" + minutesString + timeType;
+    }
+
+    /**
+     * This will change the time integer to a time string
+     * for example meaning that a number of minutes like 7, will be converted to 07
+     * @param timeInt Numeric value of minutes or hours
+     * @return String representation of this value
+     */
+    private String reformatTimeNumber(int timeInt){
+        return (timeInt < 10)? "0"+timeInt : ""+timeInt;
     }
 
 }
