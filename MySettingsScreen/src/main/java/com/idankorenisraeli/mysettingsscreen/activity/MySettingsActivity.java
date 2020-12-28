@@ -4,29 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.SeekBar;
-import android.widget.Toast;
 
 import com.idankorenisraeli.mysettingsscreen.R;
-import com.idankorenisraeli.mysettingsscreen.callback.OnTimeSelectedListener;
-import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
 import com.idankorenisraeli.mysettingsscreen.recycler.SettingsRecyclerAdapter;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.ButtonTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.DividerTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.EditTextTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.MultiChoiceTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.view.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
-import com.idankorenisraeli.mysettingsscreen.tile_data.view.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.TimePickerTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.TitleTileData;
 
 import java.util.ArrayList;
 
@@ -35,9 +18,7 @@ public class MySettingsActivity extends AppCompatActivity {
     android.widget.Toolbar actionBar;
     RecyclerView settingsRecycler;
 
-    public static final String TILE_LIST_KEY = "TILE_DATA_LIST";
-
-    private static boolean finishedLoading = false;
+    public static final String APPBAR_TITLE = "APPBAR_TITLE";
 
 
     @Override
@@ -45,18 +26,36 @@ public class MySettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_settings);
         findViews();
-        setActionBar(actionBar);
+
+
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null) {
+            String title = extras.getString(APPBAR_TITLE);
+            if (title != null)
+                initActionBar(title);
+            else
+                hideActionBar();
+        }
+        else
+            hideActionBar();
+
 
         ArrayList<SettingsTileData> tilesData = MySettingsScreen.getInstance().getTilesData();
 
 
-        actionBar.setTitle("My Settings");
-
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, tilesData));
-        finishedLoading = true;
 
+    }
+
+    private void initActionBar(String title){
+        setActionBar(actionBar);
+        actionBar.setTitle(title);
+    }
+
+    private void hideActionBar(){
+        actionBar.setVisibility(View.GONE);
     }
 
 

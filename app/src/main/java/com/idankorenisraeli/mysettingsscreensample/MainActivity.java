@@ -228,7 +228,7 @@ public class MainActivity extends AppCompatActivity {
         main_BTN_settings.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, dataTiles);
+                        MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, dataTiles, "My Settings Screen");
                     }
                 }
         );

@@ -30,7 +30,6 @@ import java.util.ArrayList;
 public class MySettingsScreen {
 
 
-    private String appBarText;
     private static MySettingsScreen single_instance = null;
     private ArrayList<SettingsTileData> tilesData;
 
@@ -61,6 +60,13 @@ public class MySettingsScreen {
      */
     public void initSettingsScreen(Context context, ArrayList<SettingsTileData> tilesList){
         Intent intent = new Intent(context, MySettingsActivity.class);
+        tilesData = tilesList;
+        context.startActivity(intent);
+    }
+
+    public void initSettingsScreen(Context context, ArrayList<SettingsTileData> tilesList, String appBarTitle){
+        Intent intent = new Intent(context, MySettingsActivity.class);
+        intent.putExtra(MySettingsActivity.APPBAR_TITLE, appBarTitle);
         tilesData = tilesList;
         context.startActivity(intent);
     }
