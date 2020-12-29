@@ -7,6 +7,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.textfield.TextInputEditText;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.EditTextTileData;
@@ -46,7 +47,8 @@ public class EditTextTileHolder extends TitleTileHolder {
     }
 
     private void buildEditTextDialog(EditTextTileData mData){
-        EditText editText = createEditText(mData.getSavedValue());
+        TextInputEditText editText = createEditText(mData.getSavedValue());
+
 
         LinearLayout innerLayout = new LinearLayout(itemView.getContext());
         innerLayout.setOrientation(LinearLayout.VERTICAL);
@@ -84,8 +86,8 @@ public class EditTextTileHolder extends TitleTileHolder {
         }
     }
 
-    private EditText createEditText(String selectedOption) {
-        EditText editText = new EditText(itemView.getContext());
+    private TextInputEditText createEditText(String selectedOption) {
+        TextInputEditText editText = new TextInputEditText(itemView.getContext());
         editText.setText(selectedOption);
         editText.setPadding(20,20,20,20);
         return editText;
