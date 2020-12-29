@@ -40,7 +40,8 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
     }
 
     /**
-     * Checks the data of the holder, shows warnings/errors in needed
+     * Checks the data of the holder, shows warnings/errors if needed
+     * validate data will also set default values that will be shown on tiles, by its concrete object
      * @param tileObject the data that is set to the holder
      */
     protected void validateData(SettingsTileData tileObject){
@@ -104,6 +105,11 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
         view.setPadding(NO_ICON_PADDING, top, end, bottom);
     }
 
+    /**
+     * This method will print a missing attribute warning to the console
+     * @param className The type that is missing an attribute
+     * @param attrName The name of the attribute that is missing
+     */
     protected void logMissedAttribute(String className, String attrName){
         Log.w(TAG, className + " is missing \"" + attrName +"\" list attribute.");
     }

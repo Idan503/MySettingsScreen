@@ -30,6 +30,7 @@ import java.util.ArrayList;
 public class MySettingsScreen {
 
 
+    //Singleton instance of this class.
     private static MySettingsScreen single_instance = null;
     private ArrayList<SettingsTileData> tilesData;
 

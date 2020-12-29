@@ -10,6 +10,10 @@ import androidx.annotation.Nullable;
 
 import com.idankorenisraeli.mysettingsscreen.activity.MySettingsScreen;
 
+/**
+ * For detecting when main app starts for init of SharedPrefs.
+ * which is used for saving and loading data from device.
+ */
 public class MySettingsScreenContentProvider extends ContentProvider {
     @Override
     public boolean onCreate() {

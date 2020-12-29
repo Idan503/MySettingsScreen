@@ -13,7 +13,6 @@ import java.io.Serializable;
  */
 public abstract class BasicTileData<T> implements SettingsTileData, Serializable {
 
-
     protected String title;
     protected String description;
 

@@ -7,6 +7,7 @@ import java.io.Serializable;
 
 /**
  * A horizontal line that will divide the tile before and the tile after this one visually
+ * default color is white.
  */
 public class DividerTileData implements Serializable, SettingsTileData {
 

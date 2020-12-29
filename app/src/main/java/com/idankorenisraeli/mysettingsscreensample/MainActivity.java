@@ -84,7 +84,7 @@ public class MainActivity extends AppCompatActivity {
                 .withOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        showToast("Button Tile Clicked");
+                        showToast("Button tile clicked");
                     }
                 })
                 .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_radio_button_unchecked_24);
