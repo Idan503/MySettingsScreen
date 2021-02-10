@@ -206,7 +206,7 @@ public class MainActivity extends AppCompatActivity {
                 .withTimeFormat(TimeFormat.CLOCK_12H)
                 .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_access_time_24);
 
-        MultiChoiceTileData multiTileData = new MultiChoiceTileData("Multi Choice Tile", "Select multiple options from a dialog")
+        MultiChoiceTileData multiTileData = new MultiChoiceTileData ("Multi Choice Tile", "Select multiple options from a dialog")
                 .withOptionsList(options)
                 .withDefaultValue(checkedOptions)
                 .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_rule_24)

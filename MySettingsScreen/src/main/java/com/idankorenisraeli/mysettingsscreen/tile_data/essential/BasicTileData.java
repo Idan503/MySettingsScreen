@@ -2,6 +2,8 @@ package com.idankorenisraeli.mysettingsscreen.tile_data.essential;
 
 import androidx.annotation.Nullable;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.io.Serializable;
 
 /**
