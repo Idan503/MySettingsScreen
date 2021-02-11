@@ -36,8 +36,6 @@ import java.util.ArrayList;
  * In this example we will create a settings screen
  * which will include all the possible tiles that can be implemented
  * using the library.
- *
- *
  */
 public class MainActivity extends AppCompatActivity {
 

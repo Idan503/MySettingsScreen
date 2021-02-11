@@ -1,12 +1,13 @@
 
 
+
 [![](https://jitpack.io/v/Idan503/MySettingsScreen.svg)](https://jitpack.io/#Idan503/MySettingsScreen) [![GitHub license](https://img.shields.io/github/license/Idan503/MySettingsScreen?style=flat-square)](https://github.com/Idan503/MySettingsScreen)
 # MySettingsScreen
 An easy to use android library for automatically creating a fully functional custom-made ***settings activity*** for your application, programmatically. 
 ## Why should I use this?  
-Creating a settings screen for your app is a task that can be *tedious* and *time consuming*.    
+Creating a *settings screen* for your app is a task that can be *tedious* and *time consuming*.    
 <br>
-*MySettingsSreen* library provides you with a simpler and a lot faster way of creating a suitable settings screen to your app.  
+*MySettingsScreen* library provides you with a simpler and a lot faster way of creating a suitable settings screen to your app.  
 This activity will also take care of all save and load functionalities for the many possible preferences that can be set, by saving the selected options to device's ***SharedPreferences***.
 <br/>
 Your new settings screen will feel and look like a *native android settings screen*, and supports *[Material Desgin](https://github.com/material-components/material-components-android)* principles and interfaces.  
@@ -15,19 +16,18 @@ Your new settings screen will feel and look like a *native android settings scre
 
 ## A Quick Look
   <p float="left" align="middle" padding="10">
-  <img src="/screenshots/usage_full_example.gif?raw=true" width="380" />
+  <img src="/screenshots/usage_full_example.gif?raw=true" width="325" />
 </p>
 
-Full implementation snippet of this example can be found here
+Full implementation snippet of this example can be found [here](https://github.com/Idan503/MySettingsScreen/wiki/All-Tiles-Usage-Example)
 
 ## Usage
 The following snippet will create a settings screen with 3 basic tiles 
 (Switch, Checkbox and Seekbar options)
-<br/>
-More examples can be found in the [Wiki Pages](https://github.com/Idan503/SpyBoard/wiki) of the library
+
 
 <br/>
-Initializing a *Switch Tile*:
+Initializing a Switch Tile:
 
 	  ToggleTileData switchTileData = new ToggleTileData("Switch Tile", "Can be toggled off/on")
 	        .withDefaultValue(true)
@@ -43,7 +43,7 @@ Initializing a *Switch Tile*:
 	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_toggle_on_24);
 
 <br/>
-Initializing a *Checkbox Tile*:
+Initializing a Checkbox Tile:
 
 	  ToggleTileData checkboxTileData = new ToggleTileData("Checkbox Tile", "Can be toggled off/on")
 	        .withDefaultValue(true)
@@ -59,7 +59,7 @@ Initializing a *Checkbox Tile*:
 	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_check_24);
 
 <br/>
-Initializing a *Switch Tile*:    
+Initializing a Seekbar Tile:    
 
 	  SeekbarTileData seekbarTileData = new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
 	        .withDefaultValue(50)
@@ -80,7 +80,7 @@ Initializing a *Switch Tile*:
 	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_96_settings);
 
 <br/>
-Adding initialized tiles to an *ArrayList*:
+Adding initialized tiles to an ArrayList:
 
 	  ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
 	  
@@ -91,15 +91,19 @@ Adding initialized tiles to an *ArrayList*:
 
 
 <br/>
-Starting the *Settings Activity* with the tiles:
+Starting the Settings Activity with the tiles:
 
 	  main_BTN_settings.setOnClickListener( new View.OnClickListener() {
 	            @Override
 	            public void onClick(View v) {
-	                MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, tiles, "My Settings Screen" );
+	                MySettingsScreen.getInstance()
+					.initSettingsScreen(MainActivity.this, tiles, "My Settings Screen" );
 	            }
 	        }
 	   );
+	   
+
+> More examples can be found in the [Wiki Pages](https://github.com/Idan503/MySettingsScreen/wiki) of the library
 
 ## Setup
 ##### Step 1
@@ -107,7 +111,7 @@ Add this to build.gradle of your project
 ```
 allprojects {
 	repositories {
-		...
+
 		maven { url 'https://jitpack.io' }
 	}
 }
