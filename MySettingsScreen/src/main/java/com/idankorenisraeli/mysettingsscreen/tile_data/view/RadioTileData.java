@@ -7,6 +7,10 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData
 import java.util.InputMismatchException;
 import java.util.List;
 
+/**
+ * Tile data of radio type settings.
+ * Can be either dialog (by default), which can be labeled or not labeled or dropdown.
+ */
 public class RadioTileData extends SavableTileData<String, RadioTileData> {
     private RadioType radioType = RadioType.DIALOG_LABELED;
     private OnOptionSelectListener onSelectedListener;

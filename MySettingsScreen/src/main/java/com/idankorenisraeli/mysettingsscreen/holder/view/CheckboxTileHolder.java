@@ -9,6 +9,10 @@ import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 
+/**
+ * Holds a Toggle Setting tile which is on type of Checkbox.
+ * Provide the user with the checkbox component to toggle on/off
+ */
 public class CheckboxTileHolder extends TitleTileHolder {
 
 

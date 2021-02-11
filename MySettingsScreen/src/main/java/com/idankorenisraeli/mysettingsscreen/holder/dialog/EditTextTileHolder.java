@@ -13,6 +13,11 @@ import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.EditTextTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
+/**
+ * Holds the content of the string that the user chose
+ * and lets user press on it to open a dialog for editing this string.
+ *
+ */
 public class EditTextTileHolder extends TitleTileHolder {
 
     TextView selectedLabel;
@@ -46,6 +51,11 @@ public class EditTextTileHolder extends TitleTileHolder {
 
     }
 
+    /**
+     * Generates a dialog with an EditText component inside it
+     * to provide the user with a way to set the string of this tile setting.
+     * @param mData Data of the this tile.
+     */
     private void buildEditTextDialog(EditTextTileData mData){
         TextInputEditText editText = createEditText(mData.getSavedValue());
 
@@ -86,6 +96,11 @@ public class EditTextTileHolder extends TitleTileHolder {
         }
     }
 
+    /**
+     * Creates the edit text for the dialog that will be popped up when tile is clicked.
+     * @param selectedOption String that is currently set by the user
+     * @return An EditText that user can interact with.
+     */
     private TextInputEditText createEditText(String selectedOption) {
         TextInputEditText editText = new TextInputEditText(itemView.getContext());
         editText.setText(selectedOption);

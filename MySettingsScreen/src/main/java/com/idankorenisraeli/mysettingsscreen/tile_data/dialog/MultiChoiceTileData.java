@@ -7,8 +7,6 @@ import java.util.ArrayList;
 
 
 /**
- *
- *
  * String savable type will represent the checked values from options by
  * a single string which contains 1s and 0s in the same order of checked/unchecked in list
  *

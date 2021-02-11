@@ -5,6 +5,10 @@ import android.view.View;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
+/**
+ * Holds the data of a button tile.
+ * User can click on the item of the holder to perform the callback (optional)
+ */
 public class ButtonTileHolder extends TitleTileHolder{
 
     public ButtonTileHolder(View itemView) {

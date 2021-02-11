@@ -16,6 +16,13 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileDat
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Holds the data of a Radio tile
+ * When the type of the tile is a dialog.
+ *
+ * When the item will be clicked,
+ * A radio dialog will pop up
+ */
 public class RadioDialogTileHolder extends TitleTileHolder {
 
     TextView selectedLabel;
@@ -52,6 +59,10 @@ public class RadioDialogTileHolder extends TitleTileHolder {
 
     }
 
+    /**
+     * Creates the radio dialog that the user will be able to choose an option from.
+     * @param mData Data of current tile, with list and default option.
+     */
     private void buildRadioAlertDialog(RadioTileData mData){
         RadioGroup radioGroup = createRadioGroup(mData.getOptionsList(), mData.getSavedValue());
 
@@ -94,6 +105,13 @@ public class RadioDialogTileHolder extends TitleTileHolder {
         }
     }
 
+
+    /**
+     * Creates a radio group based on list of strings that are the options
+     * @param options list of options that the user can choose from
+     * @param selectedOption the options that will be selected when the dialog pops up
+     * @return The relevant radio group of the provided options.
+     */
     private RadioGroup createRadioGroup(List<String> options, String selectedOption) {
         final RadioButton[] innerButtons = new RadioButton[options.size()];
         RadioGroup radioGroup = new RadioGroup(itemView.getContext()); //create the RadioGroup

@@ -5,6 +5,10 @@ import android.widget.SeekBar;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
 
+/**
+ * Data of a seekbar tile, that provides with the user a selection of an integer
+ * value between a certain minimum and maximum values
+ */
 public class SeekbarTileData extends SavableTileData<Integer,SeekbarTileData> {
 
 

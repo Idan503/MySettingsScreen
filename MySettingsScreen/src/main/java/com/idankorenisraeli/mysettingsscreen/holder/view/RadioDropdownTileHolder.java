@@ -16,6 +16,11 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileDat
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Holds radio settings tile that is dropdown type.
+ * Providing the user with a dropdown menu that he can choose an options from
+ * base on a radio data tile.
+ */
 public class RadioDropdownTileHolder extends TitleTileHolder {
 
     private AppCompatSpinner spinner;
@@ -72,6 +77,10 @@ public class RadioDropdownTileHolder extends TitleTileHolder {
 
     }
 
+    /**
+     * Creating the dropdown menu component (spinner)
+     * @param mData data of the tile which contains the options that will be set.
+     */
     private void buildDropdown(RadioTileData mData) {
 
         ArrayAdapter<CharSequence> adapter =

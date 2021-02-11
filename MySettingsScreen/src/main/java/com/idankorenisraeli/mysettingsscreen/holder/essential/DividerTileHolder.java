@@ -11,6 +11,10 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.DividerTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
+/**
+ * This is a visual divider holder that presents an horizontal line
+ * to separate between tiles
+ */
 public class DividerTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
 
     View divider;

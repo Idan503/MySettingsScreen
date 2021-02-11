@@ -8,7 +8,8 @@ import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
 /**
- * Settings tile that contains a single switch
+ * Settings tile that let user choose a certain option of on/off
+ * can be either by a switch (default) or by a checkbox
  */
 public class ToggleTileData extends SavableTileData<Boolean, ToggleTileData> {
 

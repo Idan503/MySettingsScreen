@@ -12,6 +12,10 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileDat
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Holds a multi choice settings tiles
+ * And shows a dialog when user presses on it.
+ */
 public class MultiChoiceDialogTileHolder extends TitleTileHolder {
 
     public MultiChoiceDialogTileHolder(View itemView) {
@@ -36,7 +40,11 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
     }
 
 
-
+    /**
+     * Creating the multi choice dialog window based on the options from the tile data object given.
+     * User will be able to pick 0 or more options from this list by this dialog.
+     * @param mData Data of the settings tile, to provide list of options and current state.
+     */
     private void buildMultiChoiceAlertDialog(MultiChoiceTileData mData){
         CharSequence[] options = mData.getOptionsList().toArray(new CharSequence[mData.getOptionsList().size()]);
 

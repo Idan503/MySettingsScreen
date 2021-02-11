@@ -1,10 +1,11 @@
 
 
 
+
 [![](https://jitpack.io/v/Idan503/MySettingsScreen.svg)](https://jitpack.io/#Idan503/MySettingsScreen) [![GitHub license](https://img.shields.io/github/license/Idan503/MySettingsScreen?style=flat-square)](https://github.com/Idan503/MySettingsScreen)
 # MySettingsScreen
 An easy to use android library for automatically creating a fully functional custom-made ***settings activity*** for your application, programmatically. 
-## Why should I use this?  
+### Why should I use this?  
 Creating a *settings screen* for your app is a task that can be *tedious* and *time consuming*.    
 <br>
 *MySettingsScreen* library provides you with a simpler and a lot faster way of creating a suitable settings screen to your app.  
@@ -16,10 +17,30 @@ Your new settings screen will feel and look like a *native android settings scre
 
 ## A Quick Look
   <p float="left" align="middle" padding="10">
-  <img src="/screenshots/usage_full_example.gif?raw=true" width="325" />
+  <img src="/screenshots/usage_full_example.gif?raw=true" width="310" />
 </p>
 
-Full implementation snippet of this example can be found [here](https://github.com/Idan503/MySettingsScreen/wiki/All-Tiles-Usage-Example)
+> Full implementation snippet of this example can be found [here](https://github.com/Idan503/MySettingsScreen/wiki/All-Tiles-Usage-Example).
+
+
+## Types of Settings Tiles
+As you can see in the example above, your MySettingsScreen activity will contains settings tiles of different types.
+* Stateless Tiles  
+  *  `TitleTile` 
+  *  `ButtonTile` 
+
+* Stateful Tiles (Saves user preferences to device)
+  *  `ToggleTile` 
+  *  `RadioTile` 
+  *  `MultiChoiceTile` 
+  *  `SeekbarTile` 
+  *  `EditTextTile` 
+  *  `Time PickerTile`
+
+* Divider Tiles  
+  *  `DeviderTile` 
+ 
+> More information about settings tiles and their types can be found [here](https://github.com/Idan503/MySettingsScreen/wiki).
 
 ## Usage
 The following snippet will create a settings screen with 3 basic tiles 

@@ -9,6 +9,10 @@ import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 
+/**
+ * Holds a toggle settings tile which is in a type of switch
+ * and providing the user with a Switch view
+ */
 public class SwitchTileHolder extends TitleTileHolder {
 
 

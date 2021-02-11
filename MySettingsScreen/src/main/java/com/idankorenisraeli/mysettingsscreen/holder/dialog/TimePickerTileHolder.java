@@ -17,6 +17,11 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 
+/**
+ * Holds the data object of the Time Picker tile.
+ * When the user clicks on this item,
+ * A Time Picker dialog will pop up.
+ */
 public class TimePickerTileHolder extends TitleTileHolder {
 
     TextView timeSelectedLabel;
@@ -45,6 +50,10 @@ public class TimePickerTileHolder extends TitleTileHolder {
 
     }
 
+    /**
+     * Creates a time picker dialog that the user can select time from.
+     * @param mData Data of the settings tile, that provides current selected time
+     */
     private void buildTimePickerDialog(TimePickerTileData mData){
         MaterialTimePicker materialTimePicker = new MaterialTimePicker.Builder()
                 .setTimeFormat(mData.getFormat())
@@ -88,7 +97,13 @@ public class TimePickerTileHolder extends TitleTileHolder {
     }
 
 
-
+    /**
+     * Creates a string that will be represented on the holder based on hours and minutes.
+     * @param hours hours
+     * @param minutes minutes
+     * @param format time format
+     * @return A String that represents time based on the time format.
+     */
     private String generateTimeString(int hours, int minutes, @TimeFormat int format){
         String timeType = "";
         if(TimeFormat.CLOCK_12H == format) {

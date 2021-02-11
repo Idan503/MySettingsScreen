@@ -14,6 +14,10 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileDat
 import java.util.ArrayList;
 
 @SuppressWarnings("unchecked")
+/**
+ * This is the settings activity that is being provided by the library
+ * It contains a single recyclerview that includes all the tiles that were set by the developer.
+ */
 public class MySettingsActivity extends AppCompatActivity {
     android.widget.Toolbar actionBar;
     RecyclerView settingsRecycler;
@@ -29,6 +33,7 @@ public class MySettingsActivity extends AppCompatActivity {
 
 
         Bundle extras = getIntent().getExtras();
+        //Getting the app-bar title that was set by the developer
         if(extras!=null) {
             String title = extras.getString(APPBAR_TITLE);
             if (title != null)
@@ -39,13 +44,14 @@ public class MySettingsActivity extends AppCompatActivity {
         else
             hideActionBar();
 
-
+        // Getting the list of tiles-data that was provided by the calling application
         ArrayList<SettingsTileData> tilesData = MySettingsScreen.getInstance().getTilesData();
 
 
 
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, tilesData));
+        // Adding tiles to the adapter
 
     }
 

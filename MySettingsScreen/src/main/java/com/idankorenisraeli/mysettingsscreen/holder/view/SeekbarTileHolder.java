@@ -11,6 +11,9 @@ import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
+/**
+ * Holds a seekbar settings tile which has a seekbar component
+ */
 public class SeekbarTileHolder extends TitleTileHolder {
 
     SeekBar tileSeekBar;

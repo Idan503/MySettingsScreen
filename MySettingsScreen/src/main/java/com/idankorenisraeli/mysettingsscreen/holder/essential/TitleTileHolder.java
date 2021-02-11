@@ -14,6 +14,9 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.BasicTileData;
 
+/**
+ * Holds an item of a title tile, which has no functionality.
+ */
 public class TitleTileHolder extends RecyclerView.ViewHolder implements SettingsTileHolder {
 
     private TextView titleText;
@@ -68,6 +71,7 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
 
         if(mData.isSourceColorIcon()) {
             iconImage.getDrawable().setTintList(null);
+            // Overriding the style given of the icon by values/themes.xml
         }
 
     }
@@ -98,6 +102,10 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
 
     }
 
+    /**
+     * Setting the padding of the inner view from the left, when there is no icon.
+     * @param view view to extend the left padding of.
+     */
     private void overrideStartPadding(View view){
         int top = view.getPaddingTop();
         int end = view.getPaddingEnd();
