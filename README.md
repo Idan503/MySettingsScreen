@@ -8,8 +8,8 @@ An easy to use android library for automatically creating a fully functional cus
 ### Why should I use this?  
 Creating a *settings screen* for your app is a task that can be *tedious* and *time consuming*.    
 <br>
-*MySettingsScreen* library provides you with a simpler and a lot faster way of creating a suitable settings screen to your app.  
-This activity will also take care of all save and load functionalities for the many possible preferences that can be set, by saving the selected options to device's ***SharedPreferences***.
+*[MySettingsScreen](https://github.com/Idan503/MySettingsScreen/wiki)* library provides you with a simpler and a lot faster way of creating a suitable settings screen to your app.  
+This activity will also take care of all save and load functionalities for the many possible preferences that can be set, by saving the selected options to device's ***SharedPreferences***.  
 <br/>
 Your new settings screen will feel and look like a *native android settings screen*, and supports *[Material Desgin](https://github.com/material-components/material-components-android)* principles and interfaces.  
 
@@ -20,7 +20,7 @@ Your new settings screen will feel and look like a *native android settings scre
   <img src="/screenshots/usage_full_example.gif?raw=true" width="310" />
 </p>
 
-> Full implementation snippet of this example can be found [here](https://github.com/Idan503/MySettingsScreen/wiki/All-Tiles-Usage-Example).
+> #### Full implementation snippet of the example above can be found [here](https://github.com/Idan503/MySettingsScreen/wiki/All-Tiles-Usage-Example).
 
 
 ## Types of Settings Tiles
@@ -35,12 +35,12 @@ As you can see in the example above, your MySettingsScreen activity will contain
   *  `MultiChoiceTile` 
   *  `SeekbarTile` 
   *  `EditTextTile` 
-  *  `Time PickerTile`
+  *  `TimePickerTile`
 
 * Divider Tiles  
   *  `DeviderTile` 
  
-> More information about settings tiles and their types can be found [here](https://github.com/Idan503/MySettingsScreen/wiki).
+> #### More information about *settings tiles* and their types can be found [here](https://github.com/Idan503/MySettingsScreen/wiki).
 
 ## Usage
 The following snippet will create a settings screen with 3 basic tiles 
@@ -124,7 +124,7 @@ Starting the Settings Activity with the tiles:
 	   );
 	   
 
-> More examples can be found in the [Wiki Pages](https://github.com/Idan503/MySettingsScreen/wiki) of the library
+> #### More examples can be found in the [Wiki Pages](https://github.com/Idan503/MySettingsScreen/wiki) of the library
 
 ## Setup
 ##### Step 1
