@@ -212,12 +212,21 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onMultiSelect(ArrayList<String> options, ArrayList<Boolean> checked) {
                         StringBuilder optionsSelected = new StringBuilder();
+                        boolean selectedSomething = false;
                         for (int i = 0; i < options.size(); i++) {
-                            if(checked.get(i))
+                            if(checked.get(i)) {
                                 optionsSelected.append(options.get(i)).append(", ");
+                                selectedSomething = true;
+                            }
                         }
-                        String data = optionsSelected.substring(0,optionsSelected.length()-2);
-                        showToast("Multi-Choice selected: " + data);
+                        if(selectedSomething) {
+                            String data = optionsSelected.substring(0, optionsSelected.length() - 2);
+                            showToast("Multi-Choice selected: " + data);
+                        }
+                        else{
+                            showToast("Multi-Choice selected: None");
+                        }
+
                     }
                 });
 
