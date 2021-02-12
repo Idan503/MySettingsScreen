@@ -4,5 +4,7 @@
     <color name="text_primary">#F4F6F9</color>
     <color name="text_secondary">#ADB1B5</color>
     <color name="icon_tint">#dddddd</color>
+    <color name="toggle_on">#7FC7C3</color>
+    <color name="toggle_off">#BAB9BA</color>
 
 </resources>

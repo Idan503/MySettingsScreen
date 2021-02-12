@@ -47,10 +47,10 @@ As you can see in the example above, your MySettingsScreen activity will contain
 The following snippet will create a settings screen with 3 basic tiles 
 (Switch, Checkbox and Seekbar options)
 
-<br/>
+
 
 #### In Application onCreate
-<br/>
+
 Initializing a Switch Tile:
 
 	  ToggleTileData switchTileData = new ToggleTileData("Switch Tile", "Can be toggled off/on")
@@ -118,6 +118,7 @@ Adding initialized tiles to an ArrayList:
 ```
   MySettingsScreen.getInstance().setTilesData(dataTiles);
 ```
+<br/>
 
 #### In App's Activities
 

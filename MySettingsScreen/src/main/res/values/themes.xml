@@ -9,11 +9,15 @@
     </style>
 
 
-    <style name="CustomTheme.switchState" parent="Theme.AppCompat.Light">
-        <item name="colorControlActivated">@color/cardview_light_background</item>
+    <style name="CustomTheme.activated" parent="Theme.AppCompat.DayNight">
+        <!-- Custom Colors for activated components may be added in the future -->
+    </style>
+
+    <style name="CustomTheme.toggle" parent="CustomTheme.activated">
         <item name="android:textOn">On</item>
         <item name="android:textOff">Off</item>
     </style>
+
 
     <!-- Icon of Tile - Set by icon tint -->
     <style name="TileIcon">

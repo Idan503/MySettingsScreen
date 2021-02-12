@@ -1,5 +1,6 @@
 package com.idankorenisraeli.mysettingsscreen.activity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,6 +32,10 @@ public class MySettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_my_settings);
         findViews();
 
+
+        ActionBar defaultActionBar =getSupportActionBar();
+        if(defaultActionBar!=null)
+            defaultActionBar.hide(); //hides default action bar (there is a toolbar instead in the layout)
 
         Bundle extras = getIntent().getExtras();
         //Getting the app-bar title that was set by the developer

@@ -1,5 +1,6 @@
 package com.idankorenisraeli.mysettingsscreensample;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -50,12 +51,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViews();
+        hideActionBar();
 
 
         main_BTN_settings.setOnClickListener( new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
                         MySettingsScreen.getInstance().initSettingsScreen(MainActivity.this, "My Settings Screen" );
                     }
                 }
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         // Getting a saved value from tiles anywhere else in your app
         SettingsTileData data = MySettingsScreen.getInstance().getTileByTitle("Switch Tile");
         Boolean toggleSwitchValue =  ((SavableTileData<Boolean, ?>) data).getSavedValue();
-        showToast("Toggle Value Retrieved: " + toggleSwitchValue.toString());
+        //showToast("Toggle Value Retrieved: " + toggleSwitchValue.toString());
 
 
     }
@@ -75,7 +76,15 @@ public class MainActivity extends AppCompatActivity {
         main_BTN_settings = findViewById(R.id.main_BTN_settings);
     }
 
+    private void hideActionBar(){
+        ActionBar defaultActionBar = getSupportActionBar();
+        if(defaultActionBar!=null)
+            defaultActionBar.hide(); //hides default action bar (there is a toolbar instead in the layout)
+
+    }
+
     private void showToast(String message){
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
+
 }

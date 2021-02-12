@@ -12,9 +12,9 @@
     <android.widget.Toolbar
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Hello World"
         android:elevation="4dp"
         android:id="@+id/settings_TB_toolbar"
+        android:background="@color/background_primary"
         />
 
 

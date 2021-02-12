@@ -109,6 +109,7 @@ public class MySettingsScreen {
     @SuppressWarnings("rawtypes")
     public SettingsTileData getTileByTitle(String title){
         for(SettingsTileData tileData : tilesData){
+            // Tiles that are not basic tiles cannot store information (eg title, subtitle, icon)
             if(tileData instanceof BasicTileData)
                 if(((BasicTileData) tileData).getTitle().equals(title))
                     return tileData;

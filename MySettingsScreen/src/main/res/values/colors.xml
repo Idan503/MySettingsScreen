@@ -5,4 +5,6 @@
     <color name="text_primary">#464446</color>
     <color name="text_secondary">#8F8E90</color>
     <color name="icon_tint">#222222</color>
+    <color name="toggle_on">#018177</color>
+    <color name="toggle_off">#EDECED</color>
 </resources>
