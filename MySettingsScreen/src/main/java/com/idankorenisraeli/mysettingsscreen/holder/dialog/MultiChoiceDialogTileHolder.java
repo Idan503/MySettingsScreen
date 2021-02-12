@@ -25,13 +25,11 @@ public class MultiChoiceDialogTileHolder extends TitleTileHolder {
     @Override
     public void setData(SettingsTileData tileObject) {
         super.setData(tileObject);
-        Log.i("pttt", " Setting Multi dialog data");
         MultiChoiceTileData mData = (MultiChoiceTileData) tileObject;
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Log.i("pttt", "Clicked ItemView Dialog should open");
                     buildMultiChoiceAlertDialog(mData);
 
                 }

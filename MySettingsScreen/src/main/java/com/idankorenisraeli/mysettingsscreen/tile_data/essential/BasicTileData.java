@@ -106,4 +106,6 @@ public abstract class BasicTileData<T> implements SettingsTileData, Serializable
     public void setIconId(@Nullable Integer iconId) {
         this.iconId = iconId;
     }
+
+
 }

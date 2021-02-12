@@ -16,7 +16,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 public class SwitchTileHolder extends TitleTileHolder {
 
 
-    SwitchMaterial switchMaterial;
+    private SwitchMaterial switchMaterial;
 
     public SwitchTileHolder(View itemView) {
         super(itemView);
@@ -79,4 +79,11 @@ public class SwitchTileHolder extends TitleTileHolder {
 
     }
 
+    public SwitchMaterial getSwitchMaterial() {
+        return switchMaterial;
+    }
+
+    public void setSwitchMaterial(SwitchMaterial switchMaterial) {
+        this.switchMaterial = switchMaterial;
+    }
 }

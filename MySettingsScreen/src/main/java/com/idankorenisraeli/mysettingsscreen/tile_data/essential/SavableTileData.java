@@ -81,7 +81,6 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
             default:
                 Log.w("MySettingsScreen", "Could not save settings of type " + getSaveTypeName());
         }
-        Log.i("pttt", "SavableTileData" + " Getting " + result);
         return result;
     }
 
@@ -92,7 +91,6 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
      */
     @SuppressWarnings("unchecked")
     public void saveValue(T value){
-        Log.i("pttt", "SavableTileData" + " Saving " + value);
         String key = getSharedPrefsKey();
         switch (getSaveTypeName()){
             case "String":
@@ -162,5 +160,4 @@ public abstract class SavableTileData<T, U> extends BasicTileData<U> {
                 .replace('-', '_')
                 .toUpperCase();
     }
-
 }

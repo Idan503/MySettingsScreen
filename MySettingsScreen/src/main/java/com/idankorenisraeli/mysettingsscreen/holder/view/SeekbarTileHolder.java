@@ -16,8 +16,8 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileDat
  */
 public class SeekbarTileHolder extends TitleTileHolder {
 
-    SeekBar tileSeekBar;
-    TextView textIndicator;
+    private SeekBar tileSeekBar;
+    private TextView textIndicator;
 
     public SeekbarTileHolder(View itemView) {
         super(itemView);
@@ -98,4 +98,19 @@ public class SeekbarTileHolder extends TitleTileHolder {
 
     }
 
+    public SeekBar getTileSeekBar() {
+        return tileSeekBar;
+    }
+
+    public void setTileSeekBar(SeekBar tileSeekBar) {
+        this.tileSeekBar = tileSeekBar;
+    }
+
+    public TextView getTextIndicator() {
+        return textIndicator;
+    }
+
+    public void setTextIndicator(TextView textIndicator) {
+        this.textIndicator = textIndicator;
+    }
 }

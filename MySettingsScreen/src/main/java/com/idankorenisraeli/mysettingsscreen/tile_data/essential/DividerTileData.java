@@ -53,4 +53,5 @@ public class DividerTileData implements Serializable, SettingsTileData {
     public void setColor(int color) {
         this.color = color;
     }
+
 }

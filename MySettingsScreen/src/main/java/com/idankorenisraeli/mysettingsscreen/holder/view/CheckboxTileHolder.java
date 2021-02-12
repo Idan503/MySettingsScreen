@@ -16,7 +16,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 public class CheckboxTileHolder extends TitleTileHolder {
 
 
-    CheckBox checkBox;
+    private CheckBox checkBox;
 
     public CheckboxTileHolder(View itemView) {
         super(itemView);
@@ -79,4 +79,11 @@ public class CheckboxTileHolder extends TitleTileHolder {
 
     }
 
+    public CheckBox getCheckBox() {
+        return checkBox;
+    }
+
+    public void setCheckBox(CheckBox checkBox) {
+        this.checkBox = checkBox;
+    }
 }

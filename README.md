@@ -2,6 +2,7 @@
 
 
 
+
 [![](https://jitpack.io/v/Idan503/MySettingsScreen.svg)](https://jitpack.io/#Idan503/MySettingsScreen) [![GitHub license](https://img.shields.io/github/license/Idan503/MySettingsScreen?style=flat-square)](https://github.com/Idan503/MySettingsScreen)
 # MySettingsScreen
 An easy to use android library for automatically creating a fully functional custom-made ***settings activity*** for your application, programmatically. 
@@ -46,7 +47,9 @@ As you can see in the example above, your MySettingsScreen activity will contain
 The following snippet will create a settings screen with 3 basic tiles 
 (Switch, Checkbox and Seekbar options)
 
+<br/>
 
+#### In Application onCreate
 <br/>
 Initializing a Switch Tile:
 
@@ -109,10 +112,16 @@ Adding initialized tiles to an ArrayList:
 	  dataTiles.add(checkboxTileData);
 	  dataTiles.add(seekbarTileData);
 
-
-
 <br/>
-Starting the Settings Activity with the tiles:
+ Adding the new Settings Tiles to the future created Settings Activity:
+
+```
+  MySettingsScreen.getInstance().setTilesData(dataTiles);
+```
+
+#### In App's Activities
+
+Starting the Settings Activity, from any activity in your app:
 
 	  main_BTN_settings.setOnClickListener( new View.OnClickListener() {
 	            @Override
@@ -123,6 +132,11 @@ Starting the Settings Activity with the tiles:
 	        }
 	   );
 	   
+Retreving a value from the Data Tiles anywhere on the app:	
+```
+  SettingsTileData data = MySettingsScreen.getInstance().getTileByTitle("Switch Tile");  
+  Boolean toggleSwitchValue = ((SavableTileData<Boolean, ?>) data).getSavedValue();
+```   
 
 > #### More examples can be found in the [Wiki Pages](https://github.com/Idan503/MySettingsScreen/wiki) of the library
 
