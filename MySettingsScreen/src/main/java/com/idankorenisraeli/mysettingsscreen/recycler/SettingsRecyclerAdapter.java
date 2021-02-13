@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
+import com.idankorenisraeli.mysettingsscreen.holder.dialog.DatePickerTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.essential.ButtonTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.view.CheckboxTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.essential.DividerTileHolder;
@@ -47,6 +48,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int TIME_PICKER = 8;
     public static final int MULTI_CHOICE=9;
     public static final int EDIT_TEXT=10;
+    public static final int DATE_PICKER=11;
+
 
     final private List<SettingsTileData> tilesData;
     final private LayoutInflater mInflater;
@@ -97,6 +100,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case DIVIDER:
                 view = mInflater.inflate(R.layout.divider_tile_layout, parent, false);
                 return new DividerTileHolder(view);
+            case DATE_PICKER:
+                view = mInflater.inflate(R.layout.option_selected_tile_layout, parent, false);
+                return new DatePickerTileHolder(view);
             default:
                 view = mInflater.inflate(R.layout.title_tile_layout, parent, false);
                 return new TitleTileHolder(view);
@@ -149,6 +155,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return EDIT_TEXT;
             case "DividerTileData":
                 return DIVIDER;
+            case "DatePickerTileData":
+                return DATE_PICKER;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + getItem(position).getClass());

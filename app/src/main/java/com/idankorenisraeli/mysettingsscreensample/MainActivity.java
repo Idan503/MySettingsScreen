@@ -3,37 +3,14 @@ package com.idankorenisraeli.mysettingsscreensample;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.CompoundButton;
-import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
-import com.google.android.material.timepicker.TimeFormat;
-import com.idankorenisraeli.mysettingsscreen.activity.MySettingsScreen;
-import com.idankorenisraeli.mysettingsscreen.callback.OnMultiSelectListener;
-import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
-import com.idankorenisraeli.mysettingsscreen.callback.OnTimeSelectedListener;
-import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
-import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
-import com.idankorenisraeli.mysettingsscreen.holder.essential.SettingsTileHolder;
-import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.EditTextTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.MultiChoiceTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.TimePickerTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.ButtonTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.DividerTileData;
+import com.idankorenisraeli.mysettingsscreen.MySettingsScreen;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.TitleTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.view.RadioTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.view.SeekbarTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
-
-import java.util.ArrayList;
 
 
 /**

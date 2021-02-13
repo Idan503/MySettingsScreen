@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class RadioDialogTileHolder extends TitleTileHolder {
 
-    TextView selectedLabel;
+    private TextView selectedLabel;
 
     public RadioDialogTileHolder(View itemView) {
         super(itemView);

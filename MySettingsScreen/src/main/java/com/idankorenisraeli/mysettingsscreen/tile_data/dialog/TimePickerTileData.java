@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 
 /**
+ * Data for a material time picker dialog tile
  * Value that is saved to represent time is an ArrayList<Integer> with 2 values.
  * First value is hoursOfDay
  * Second value is minutes

@@ -8,12 +8,13 @@ import android.widget.SeekBar;
 import android.widget.Toast;
 
 import com.google.android.material.timepicker.TimeFormat;
-import com.idankorenisraeli.mysettingsscreen.activity.MySettingsScreen;
+import com.idankorenisraeli.mysettingsscreen.MySettingsScreen;
 import com.idankorenisraeli.mysettingsscreen.callback.OnMultiSelectListener;
 import com.idankorenisraeli.mysettingsscreen.callback.OnOptionSelectListener;
 import com.idankorenisraeli.mysettingsscreen.callback.OnTimeSelectedListener;
 import com.idankorenisraeli.mysettingsscreen.enums.RadioType;
 import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
+import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.DatePickerTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.EditTextTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.TimePickerTileData;
@@ -25,6 +26,8 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.view.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.SeekbarTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
 
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class MyApp extends Application {
@@ -177,18 +180,6 @@ public class MyApp extends Application {
                 });
 
 
-
-        TimePickerTileData timePickerData = new TimePickerTileData("Time Picker", "Tap to change selected time")
-                .withOnSelectedListener(new OnTimeSelectedListener() {
-                    @Override
-                    public void onTimeSelected(int hours, int minutes) {
-                        showToast("Time selected " + hours + ":" + minutes);
-                    }
-                })
-                .withDefaultValue(defaultTime)
-                .withTimeFormat(TimeFormat.CLOCK_12H)
-                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_access_time_24);
-
         MultiChoiceTileData multiTileData = new MultiChoiceTileData ("Multi Choice Tile", "Select multiple options from a dialog")
                 .withOptionsList(options)
                 .withDefaultValue(checkedOptions)
@@ -215,6 +206,25 @@ public class MyApp extends Application {
                     }
                 });
 
+        TimePickerTileData timePickerData = new TimePickerTileData("Time Picker", "Tap to change selected time")
+                .withOnSelectedListener(new OnTimeSelectedListener() {
+                    @Override
+                    public void onTimeSelected(int hours, int minutes) {
+                        showToast("Time selected " + hours + ":" + minutes);
+                    }
+                })
+                .withDefaultValue(defaultTime)
+                .withTimeFormat(TimeFormat.CLOCK_12H)
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_access_time_24);
+
+        DatePickerTileData datePickerData = new DatePickerTileData("Date Picker", "Tap to select a date")
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_calendar_today_24)
+                .withDateFormat(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
+                .withZoneId(ZoneId.of("Israel"))
+                ;
+
+
+
         //endregion
 
 
@@ -235,6 +245,7 @@ public class MyApp extends Application {
         dataTiles.add(seekbarTileData);
         dataTiles.add(editTextTileData);
         dataTiles.add(timePickerData);
+        dataTiles.add(datePickerData);
 
 
         MySettingsScreen.getInstance().setTilesData(dataTiles);

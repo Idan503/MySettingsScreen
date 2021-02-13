@@ -24,7 +24,7 @@ import java.util.Arrays;
  */
 public class TimePickerTileHolder extends TitleTileHolder {
 
-    TextView timeSelectedLabel;
+    private TextView timeSelectedLabel;
 
     public TimePickerTileHolder(View itemView) {
         super(itemView);

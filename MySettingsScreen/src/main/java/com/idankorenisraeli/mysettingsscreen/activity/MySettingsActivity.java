@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.view.View;
 
+import com.idankorenisraeli.mysettingsscreen.MySettingsScreen;
 import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.recycler.SettingsRecyclerAdapter;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;

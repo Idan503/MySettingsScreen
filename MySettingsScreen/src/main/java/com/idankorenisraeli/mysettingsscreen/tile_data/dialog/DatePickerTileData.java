@@ -4,25 +4,29 @@ import com.google.android.material.timepicker.TimeFormat;
 import com.idankorenisraeli.mysettingsscreen.callback.OnTimeSelectedListener;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Date;
 
 
 /**
- * Value that is saved to represent time is an ArrayList<Integer> with 2 values.
- * First value is hoursOfDay
- * Second value is minutes
+ * Date picker dialog tile data
+ *
+ *
  */
-public class TimePickerTileData extends SavableTileData<ArrayList<Integer>, TimePickerTileData> {
+public class DatePickerTileData extends SavableTileData<Long, DatePickerTileData> {
     private OnTimeSelectedListener onSelectedListener;
-    private @TimeFormat int format = TimeFormat.CLOCK_24H;
+    private ZoneId zoneId;
+    private DateTimeFormatter dateFormat;
 
     //Outer layout click functionality implemented inside holder object
     @Override
-    protected TimePickerTileData build() {
+    protected DatePickerTileData build() {
         return this;
     }
 
-    public TimePickerTileData(String title, String description) {
+    public DatePickerTileData(String title, String description) {
         super(title, description);
     }
 
@@ -30,13 +34,13 @@ public class TimePickerTileData extends SavableTileData<ArrayList<Integer>, Time
         return onSelectedListener;
     }
 
-    public TimePickerTileData withOnSelectedListener(OnTimeSelectedListener onSelectedListener) {
+    public DatePickerTileData withOnSelectedListener(OnTimeSelectedListener onSelectedListener) {
         this.onSelectedListener = onSelectedListener;
         return build();
     }
 
-    public TimePickerTileData withTimeFormat(@TimeFormat int format){
-        this.format = format;
+    public DatePickerTileData withZoneId(ZoneId zone){
+        this.zoneId = zone;
         return build();
     }
 
@@ -44,11 +48,24 @@ public class TimePickerTileData extends SavableTileData<ArrayList<Integer>, Time
         this.onSelectedListener = onSelectedListener;
     }
 
-    public int getFormat() {
-        return format;
+    public DatePickerTileData withDateFormat(DateTimeFormatter format){
+        this.dateFormat = format;
+        return build();
     }
 
-    public void setFormat(int format) {
-        this.format = format;
+    public ZoneId getZoneId() {
+        return zoneId;
+    }
+
+    public void setZoneId(ZoneId zoneId) {
+        this.zoneId = zoneId;
+    }
+
+    public DateTimeFormatter getDateFormat() {
+        return dateFormat;
+    }
+
+    public void setDateFormat(DateTimeFormatter dateFormat) {
+        this.dateFormat = dateFormat;
     }
 }

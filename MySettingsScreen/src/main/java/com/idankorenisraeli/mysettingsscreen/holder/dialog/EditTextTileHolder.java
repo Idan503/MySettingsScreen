@@ -20,7 +20,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileDat
  */
 public class EditTextTileHolder extends TitleTileHolder {
 
-    TextView selectedLabel;
+    private TextView selectedLabel;
 
     public EditTextTileHolder(View itemView) {
         super(itemView);

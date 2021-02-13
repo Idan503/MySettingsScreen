@@ -18,7 +18,7 @@ Your new settings screen will feel and look like a *native android settings scre
 
 ## A Quick Look
   <p float="left" align="middle" padding="10">
-  <img src="/screenshots/usage_full_example.gif?raw=true" width="310" />
+  <img src="/screenshots/usage_full_example.gif?raw=true" width="305" />
 </p>
 
 > #### Full implementation snippet of the example above can be found [here](https://github.com/Idan503/MySettingsScreen/wiki/All-Tiles-Usage-Example).
@@ -37,6 +37,7 @@ As you can see in the example above, your MySettingsScreen activity will contain
   *  `SeekbarTile` 
   *  `EditTextTile` 
   *  `TimePickerTile`
+  *  `DatePickerTile`
 
 * Divider Tiles  
   *  `DeviderTile` 
@@ -106,7 +107,8 @@ Here we will initialize all the tiles we would like to add to our settings scree
 
 * Initializing a Seekbar Tile:    
 
-	  SeekbarTileData seekbarTileData = new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
+	  SeekbarTileData seekbarTileData = 
+	      new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
 	        .withDefaultValue(50)
 	        .withMaxValue(100)
 	        .withMinValue(0)
@@ -146,7 +148,7 @@ Adding initialized tiles to a single ArrayList:
 <br/>
 
 #### Step 2 - In App's Activities
-Now we have in our app a ready settings screen with all the tiles that we have initialized in step 1.
+Now we have in our app a ready settings screen with all the tiles that we have initialized in step 1.  
 We can now call `initSettingsScreen` to launch the settings screen anytime we want.
 
 	  main_BTN_settings.setOnClickListener( new View.OnClickListener() {
@@ -172,7 +174,6 @@ Add this to build.gradle of your project
 ```
 allprojects {
 	repositories {
-
 		maven { url 'https://jitpack.io' }
 	}
 }

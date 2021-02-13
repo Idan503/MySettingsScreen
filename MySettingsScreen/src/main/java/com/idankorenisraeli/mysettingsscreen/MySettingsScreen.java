@@ -1,10 +1,10 @@
-package com.idankorenisraeli.mysettingsscreen.activity;
+package com.idankorenisraeli.mysettingsscreen;
 
 import android.content.Context;
 import android.content.Intent;
 
+import com.idankorenisraeli.mysettingsscreen.activity.MySettingsActivity;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.BasicTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
 import java.util.ArrayList;
