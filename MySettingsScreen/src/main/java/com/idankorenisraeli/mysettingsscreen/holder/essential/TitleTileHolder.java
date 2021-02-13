@@ -123,7 +123,7 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
     }
 
     protected void logNotAllowed(String className, String info){
-        Log.w(TAG, className + ": \"" + info +"\" is not allowed.");
+        Log.w(TAG, className + ": " + info +" is not allowed.");
     }
 
 }

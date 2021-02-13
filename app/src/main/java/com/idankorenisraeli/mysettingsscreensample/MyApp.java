@@ -226,14 +226,28 @@ public class MyApp extends Application {
                 ;
 
 
+        //Creating tiles for an inner page
         ArrayList<SettingsTileData> innerTiles = new ArrayList<SettingsTileData>();
 
-        InnerPageTileData innerPageData = new InnerPageTileData("More Settings...", "Click here for more tiles")
-                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.navigation_empty_icon)
+        innerTiles.add(new TitleTileData("Another Page", "Here you can add some more settings").withIconId(BasicTileData.IC_INVISIBLE));
+        innerTiles.add(new DividerTileData(2).withColor(Color.argb(255,111,111,111)));
+        innerTiles.add(new ToggleTileData("Inner Switch Tile ", "An inner page switch tile")
+                .withToggleType(ToggleType.SWITCH)
+                .withDefaultValue(true)
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_toggle_on_24));
+        innerTiles.add(new SeekbarTileData("Inner Seekbar Tile", "An inner page seekbar tile")
+                .withMinValue(50).withMaxValue(200)
+                .withDefaultValue(150)
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_96_settings));
+
+
+
+
+        //Adding the created tiles to a new inner page tile
+        InnerPageTileData innerPageData = new InnerPageTileData("More Settings", "Click here for more tiles")
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_more_horiz_24)
                 .withActionBarTitle("Settings Inner Page")
                 .withInnerTilesData(innerTiles);
-
-        innerTiles.add(new TitleTileData("Another Page", "Here you can add some more settings"));
 
         //endregion
 

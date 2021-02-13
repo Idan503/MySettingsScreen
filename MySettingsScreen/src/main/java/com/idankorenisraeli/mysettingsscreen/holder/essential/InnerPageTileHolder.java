@@ -14,6 +14,7 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.essential.InnerPageTileDa
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class InnerPageTileHolder extends TitleTileHolder{
 
@@ -62,9 +63,20 @@ public class InnerPageTileHolder extends TitleTileHolder{
             logMissedAttribute(getClass().getSimpleName(),"Inner Tiles Data is Empty");
         }
 
-        for(SettingsTileData tile : mData.getInnerTilesData()){
-            if(tile instanceof InnerPageTileData)
+        Iterator<SettingsTileData> itr = mData.getInnerTilesData().iterator();
+        while(itr.hasNext()){
+            SettingsTileData tileData = itr.next();
+
+            if(tileData instanceof InnerPageTileData) {
                 logNotAllowed(getClass().getSimpleName(), "Inner page inside inner page");
+                itr.remove();
+            }
+        }
+        for(SettingsTileData tile : mData.getInnerTilesData()){
+            if(tile instanceof InnerPageTileData) {
+                logNotAllowed(getClass().getSimpleName(), "Inner page data tile inside inner page");
+
+            }
         }
 
     }

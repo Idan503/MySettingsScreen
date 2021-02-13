@@ -29,6 +29,7 @@ As you can see in the example above, your MySettingsScreen activity will contain
 * Stateless Tiles  
   *  `TitleTile` 
   *  `ButtonTile` 
+  *  `InnerPageTile` 
 
 * Stateful Tiles (Saves user preferences to device)
   *  `ToggleTile` 
