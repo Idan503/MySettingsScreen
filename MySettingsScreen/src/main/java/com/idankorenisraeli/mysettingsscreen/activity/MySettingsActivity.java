@@ -21,8 +21,8 @@ import java.util.ArrayList;
  * It contains a single recyclerview that includes all the tiles that were set by the developer.
  */
 public class MySettingsActivity extends AppCompatActivity {
-    android.widget.Toolbar actionBar;
-    RecyclerView settingsRecycler;
+    private android.widget.Toolbar actionBar;
+    private RecyclerView settingsRecycler;
 
     public static final String APPBAR_TITLE = "APPBAR_TITLE";
 
@@ -34,9 +34,7 @@ public class MySettingsActivity extends AppCompatActivity {
         findViews();
 
 
-        ActionBar defaultActionBar =getSupportActionBar();
-        if(defaultActionBar!=null)
-            defaultActionBar.hide(); //hides default action bar (there is a toolbar instead in the layout)
+        disableDefaultActionBar();
 
         Bundle extras = getIntent().getExtras();
         //Getting the app-bar title that was set by the developer
@@ -54,7 +52,6 @@ public class MySettingsActivity extends AppCompatActivity {
         ArrayList<SettingsTileData> tilesData = MySettingsScreen.getInstance().getTilesData();
 
 
-
         settingsRecycler.setLayoutManager(new LinearLayoutManager(this));
         settingsRecycler.setAdapter(new SettingsRecyclerAdapter(this, tilesData));
         // Adding tiles to the adapter
@@ -68,6 +65,12 @@ public class MySettingsActivity extends AppCompatActivity {
 
     private void hideActionBar(){
         actionBar.setVisibility(View.GONE);
+    }
+
+    private void disableDefaultActionBar(){
+        ActionBar defaultActionBar = getSupportActionBar();
+        if(defaultActionBar!=null)
+            defaultActionBar.hide(); //hides default action bar (there is a toolbar instead in the layout)
     }
 
 

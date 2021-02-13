@@ -122,4 +122,8 @@ public class TitleTileHolder extends RecyclerView.ViewHolder implements Settings
         Log.w(TAG, className + " is missing \"" + attrName +"\" list attribute.");
     }
 
+    protected void logNotAllowed(String className, String info){
+        Log.w(TAG, className + ": \"" + info +"\" is not allowed.");
+    }
+
 }

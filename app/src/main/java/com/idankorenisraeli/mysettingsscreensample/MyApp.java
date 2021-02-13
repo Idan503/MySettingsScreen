@@ -18,8 +18,10 @@ import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.DatePickerTileData
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.EditTextTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.MultiChoiceTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.dialog.TimePickerTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.BasicTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.ButtonTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.DividerTileData;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.InnerPageTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.TitleTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.RadioTileData;
@@ -224,6 +226,14 @@ public class MyApp extends Application {
                 ;
 
 
+        ArrayList<SettingsTileData> innerTiles = new ArrayList<SettingsTileData>();
+
+        InnerPageTileData innerPageData = new InnerPageTileData("More Settings...", "Click here for more tiles")
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.navigation_empty_icon)
+                .withActionBarTitle("Settings Inner Page")
+                .withInnerTilesData(innerTiles);
+
+        innerTiles.add(new TitleTileData("Another Page", "Here you can add some more settings"));
 
         //endregion
 
@@ -246,6 +256,7 @@ public class MyApp extends Application {
         dataTiles.add(editTextTileData);
         dataTiles.add(timePickerData);
         dataTiles.add(datePickerData);
+        dataTiles.add(innerPageData);
 
 
         MySettingsScreen.getInstance().setTilesData(dataTiles);

@@ -6,7 +6,6 @@
         <activity
             android:name=".activity.MySettingsActivity"
             android:screenOrientation="portrait"
-
             />
 
         <provider

@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:theme="@style/Theme.AppCompat.DayNight"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/Theme.AppCompat.DayNight"
     tools:context=".activity.MySettingsActivity">
 
-    <android.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="4dp"
-        android:id="@+id/settings_TB_toolbar"
-        android:background="@color/background_primary"
-        />
-
-
-    <androidx.recyclerview.widget.RecyclerView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        android:id="@+id/settings_RV_recycler"
+        <android.widget.Toolbar
+            android:id="@+id/settings_TB_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_primary"
+            android:elevation="4dp" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/settings_RV_recycler"
+            android:layout_width="match_parent"
+
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/settings_FRAG_inner_page"
         />
 
 
-</LinearLayout>
+</FrameLayout>

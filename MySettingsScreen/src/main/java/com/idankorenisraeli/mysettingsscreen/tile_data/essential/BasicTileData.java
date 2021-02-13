@@ -1,5 +1,6 @@
 package com.idankorenisraeli.mysettingsscreen.tile_data.essential;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -15,8 +16,8 @@ import java.io.Serializable;
  */
 public abstract class BasicTileData<T> implements SettingsTileData, Serializable {
 
-    protected String title;
-    protected String description;
+    protected @NonNull String title = "Tile Title";
+    protected @NonNull String description = "Tile Description";
 
     protected  @Nullable Integer iconId;
 
@@ -37,6 +38,7 @@ public abstract class BasicTileData<T> implements SettingsTileData, Serializable
         this.description = description;
     }
 
+    @NonNull
     public String getTitle() {
         return title;
     }
@@ -46,6 +48,7 @@ public abstract class BasicTileData<T> implements SettingsTileData, Serializable
         return build();
     }
 
+    @NonNull
     public String getDescription() {
         return description;
     }

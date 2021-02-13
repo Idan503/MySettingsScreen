@@ -12,6 +12,7 @@ import com.idankorenisraeli.mysettingsscreen.R;
 import com.idankorenisraeli.mysettingsscreen.enums.ToggleType;
 import com.idankorenisraeli.mysettingsscreen.holder.dialog.DatePickerTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.essential.ButtonTileHolder;
+import com.idankorenisraeli.mysettingsscreen.holder.essential.InnerPageTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.view.CheckboxTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.essential.DividerTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.dialog.EditTextTileHolder;
@@ -23,6 +24,7 @@ import com.idankorenisraeli.mysettingsscreen.holder.essential.SettingsTileHolder
 import com.idankorenisraeli.mysettingsscreen.holder.view.SwitchTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.dialog.TimePickerTileHolder;
 import com.idankorenisraeli.mysettingsscreen.holder.essential.TitleTileHolder;
+import com.idankorenisraeli.mysettingsscreen.tile_data.essential.InnerPageTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.RadioTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 import com.idankorenisraeli.mysettingsscreen.tile_data.view.ToggleTileData;
@@ -49,6 +51,7 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
     public static final int MULTI_CHOICE=9;
     public static final int EDIT_TEXT=10;
     public static final int DATE_PICKER=11;
+    public static final int INNER_PAGE=12;
 
 
     final private List<SettingsTileData> tilesData;
@@ -103,6 +106,9 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
             case DATE_PICKER:
                 view = mInflater.inflate(R.layout.option_selected_tile_layout, parent, false);
                 return new DatePickerTileHolder(view);
+            case INNER_PAGE:
+                view = mInflater.inflate(R.layout.clickable_tile_layout, parent, false);
+                return new InnerPageTileHolder(view);
             default:
                 view = mInflater.inflate(R.layout.title_tile_layout, parent, false);
                 return new TitleTileHolder(view);
@@ -157,6 +163,8 @@ public class SettingsRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.V
                 return DIVIDER;
             case "DatePickerTileData":
                 return DATE_PICKER;
+            case "InnerPageTileData":
+                return INNER_PAGE;
 
             default:
                 throw new IllegalStateException("Unexpected value: " + getItem(position).getClass());

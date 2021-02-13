@@ -66,8 +66,8 @@ To make the settings screen ready, we would need to set the `SettingsTileData` o
 While also setting this class as your application name on `AndroidManifest.xml`
 ```
   <application  
-    android:name=".MyApp"
     
+	android:name=".MyApp"
   </application>
 ```
 ##### Step 1.3

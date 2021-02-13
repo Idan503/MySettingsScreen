@@ -40,12 +40,15 @@ public class MainActivity extends AppCompatActivity {
         );
 
 
+        /**
+
         // Getting a saved value from tiles anywhere else in your app
+
         SettingsTileData data = MySettingsScreen.getInstance().getTileByTitle("Switch Tile");
         Boolean toggleSwitchValue =  ((SavableTileData<Boolean, ?>) data).getSavedValue();
-        //showToast("Toggle Value Retrieved: " + toggleSwitchValue.toString());
+        showToast("Toggle Value Retrieved: " + toggleSwitchValue.toString());
 
-
+        */
     }
 
 
@@ -57,7 +60,6 @@ public class MainActivity extends AppCompatActivity {
         ActionBar defaultActionBar = getSupportActionBar();
         if(defaultActionBar!=null)
             defaultActionBar.hide(); //hides default action bar (there is a toolbar instead in the layout)
-
     }
 
     private void showToast(String message){
