@@ -43,15 +43,35 @@ As you can see in the example above, your MySettingsScreen activity will contain
  
 > #### More information about *settings tiles* and their types can be found [here](https://github.com/Idan503/MySettingsScreen/wiki).
 
-## Usage
+## How to use?
 The following snippet will create a settings screen with 3 basic tiles 
 (Switch, Checkbox and Seekbar options)
 
 
 
-#### In Application onCreate
+#### Step 1 - In Application `onCreate`
+##### Step 1.1
+To make the settings screen ready, we would need to set the `SettingsTileData` on the `Application` class `onCreate` method:
+```
+  public class MyApp extends Application {  
+      
+      @Override  
+    public void onCreate() {  
+      super.onCreate();
+      // Steps 1.3 to 1.5 should be implemeted here
 
-Initializing a Switch Tile:
+```
+##### Step 1.2
+While also setting this class as your application name on `AndroidManifest.xml`
+```
+  <application  
+    android:name=".MyApp"
+    
+  </application>
+```
+##### Step 1.3
+Here we will initialize all the tiles we would like to add to our settings screen:
+* Initializing a Switch Tile:
 
 	  ToggleTileData switchTileData = new ToggleTileData("Switch Tile", "Can be toggled off/on")
 	        .withDefaultValue(true)
@@ -65,9 +85,9 @@ Initializing a Switch Tile:
 	            }
 	        })
 	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_toggle_on_24);
-
 <br/>
-Initializing a Checkbox Tile:
+
+* Initializing a Checkbox Tile:
 
 	  ToggleTileData checkboxTileData = new ToggleTileData("Checkbox Tile", "Can be toggled off/on")
 	        .withDefaultValue(true)
@@ -83,7 +103,8 @@ Initializing a Checkbox Tile:
 	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_check_24);
 
 <br/>
-Initializing a Seekbar Tile:    
+
+* Initializing a Seekbar Tile:    
 
 	  SeekbarTileData seekbarTileData = new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
 	        .withDefaultValue(50)
@@ -104,7 +125,9 @@ Initializing a Seekbar Tile:
 	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_96_settings);
 
 <br/>
-Adding initialized tiles to an ArrayList:
+
+##### Step 1.4
+Adding initialized tiles to a single ArrayList:
 
 	  ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
 	  
@@ -113,16 +136,18 @@ Adding initialized tiles to an ArrayList:
 	  dataTiles.add(seekbarTileData);
 
 <br/>
- Adding the new Settings Tiles to the future created Settings Activity:
+
+##### Step 1.5
+ Setting the new tiles data to the future created Settings Activity:
 
 ```
   MySettingsScreen.getInstance().setTilesData(dataTiles);
 ```
 <br/>
 
-#### In App's Activities
-
-Starting the Settings Activity, from any activity in your app:
+#### Step 2 - In App's Activities
+Now we have in our app a ready settings screen with all the tiles that we have initialized in step 1.
+We can now call `initSettingsScreen` to launch the settings screen anytime we want.
 
 	  main_BTN_settings.setOnClickListener( new View.OnClickListener() {
 	            @Override
@@ -133,7 +158,7 @@ Starting the Settings Activity, from any activity in your app:
 	        }
 	   );
 	   
-Retreving a value from the Data Tiles anywhere on the app:	
+We can also retreving a value from the Data Tiles anywhere on the app:	
 ```
   SettingsTileData data = MySettingsScreen.getInstance().getTileByTitle("Switch Tile");  
   Boolean toggleSwitchValue = ((SavableTileData<Boolean, ?>) data).getSavedValue();

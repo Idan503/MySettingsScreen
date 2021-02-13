@@ -29,11 +29,9 @@ import java.util.ArrayList;
 
 public class MyApp extends Application {
 
-
     @Override
     public void onCreate() {
         super.onCreate();
-
 
 
         // Generic list for multi-options examples
