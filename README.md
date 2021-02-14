@@ -21,7 +21,7 @@ Your new settings screen will feel and look like a *native android settings scre
   <img src="/screenshots/usage_full_example.gif?raw=true" width="305" />
 </p>
 
-> #### Full implementation snippet of the example above can be found [here](https://github.com/Idan503/MySettingsScreen/wiki/All-Tiles-Usage-Example).
+> #### Full implementation of the example above can be found in the included example app.
 
 
 ## Types of Settings Tiles
@@ -43,7 +43,7 @@ As you can see in the example above, your MySettingsScreen activity will contain
 * Divider Tiles  
   *  `DeviderTile` 
  
-> #### More information about *settings tiles* and their types can be found [here](https://github.com/Idan503/MySettingsScreen/wiki).
+> #### More information about *settings tiles* and their types can be found in the [Wiki Page](https://github.com/Idan503/MySettingsScreen/wiki).
 
 ## How to use?
 The following snippet will create a settings screen with 3 basic tiles 
@@ -167,7 +167,6 @@ We can also retreving a value from the Data Tiles anywhere on the app:
   Boolean toggleSwitchValue = ((SavableTileData<Boolean, ?>) data).getSavedValue();
 ```   
 
-> #### More examples can be found in the [Wiki Pages](https://github.com/Idan503/MySettingsScreen/wiki) of the library
 
 ## Setup
 ##### Step 1
