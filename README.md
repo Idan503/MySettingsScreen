@@ -138,7 +138,7 @@ Adding initialized tiles to a single ArrayList:
 	  ArrayList<SettingsTileData> dataTiles = new ArrayList<>();
 	  
 	  dataTiles.add(switchTileData);
-	  dataTiles.add(checkboxTileData);
+	  dataTiles.add(timePickerTileData);
 	  dataTiles.add(seekbarTileData);
 
 <br/>
