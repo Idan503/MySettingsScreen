@@ -9,8 +9,6 @@ import android.widget.Toast;
 
 import com.google.android.material.button.MaterialButton;
 import com.idankorenisraeli.mysettingsscreen.MySettingsScreen;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SavableTileData;
-import com.idankorenisraeli.mysettingsscreen.tile_data.essential.SettingsTileData;
 
 
 /**

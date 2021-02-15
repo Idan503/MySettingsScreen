@@ -3,6 +3,7 @@
 
 
 
+
 [![](https://jitpack.io/v/Idan503/MySettingsScreen.svg)](https://jitpack.io/#Idan503/MySettingsScreen) [![GitHub license](https://img.shields.io/github/license/Idan503/MySettingsScreen?style=flat-square)](https://github.com/Idan503/MySettingsScreen)
 # MySettingsScreen
 An easy to use android library for automatically creating a fully functional custom-made ***settings activity*** for your application, programmatically. 
@@ -57,7 +58,7 @@ To make the settings screen ready, we would need to set the `SettingsTileData` o
 ```
   public class MyApp extends Application {  
       
-      @Override  
+    @Override  
     public void onCreate() {  
       super.onCreate();
       // Steps 1.3 to 1.5 should be implemeted here
@@ -72,60 +73,61 @@ While also setting this class as your application name on `AndroidManifest.xml`
   </application>
 ```
 ##### Step 1.3
-Here we will initialize all the tiles we would like to add to our settings screen:
+Here we will initialize all the tiles we would like to add to our settings screen,  
+in this example we selected 3 tiles (Switch, Time Picker, Seekbar).  
+Feel free to check the [sample project](https://github.com/Idan503/MySettingsScreen/blob/main/app/src/main/java/com/idankorenisraeli/mysettingsscreensample/MyApp.java) for implementation examples of all tiles types.  
 * Initializing a Switch Tile:
 
-	  ToggleTileData switchTileData = new ToggleTileData("Switch Tile", "Can be toggled off/on")
-	        .withDefaultValue(true)
-	        .withToggleType(ToggleType.SWITCH)
-	        .withOnChangeListener(new CompoundButton.OnCheckedChangeListener() {
-	            @Override
-	            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-	                String state = isChecked ? "on" : "off";
-	                String msg = "Switch is toggled " + state;
-	                showToast(msg);
-	            }
-	        })
-	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_toggle_on_24);
+        ToggleTileData switchTileData = new ToggleTileData("Switch Tile", "Can be toggled off/on")
+                .withDefaultValue(true)
+                .withToggleType(ToggleType.SWITCH)
+                .withOnChangeListener(new CompoundButton.OnCheckedChangeListener() {
+                    @Override
+                    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                        String state = isChecked ? "on" : "off";
+                        String msg = "Switch is toggled " + state;
+                        Toast.makeText(MyApp.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_toggle_on_24);
 <br/>
 
-* Initializing a Checkbox Tile:
+* Initializing a Time Picker Tile:
 
-	  ToggleTileData checkboxTileData = new ToggleTileData("Checkbox Tile", "Can be toggled off/on")
-	        .withDefaultValue(true)
-	        .withToggleType(ToggleType.CHECK_BOX)
-	        .withOnChangeListener(new CompoundButton.OnCheckedChangeListener() {
-	            @Override
-	            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-	                String state = isChecked ? "on" : "off";
-	                String msg = "Checkbox is now toggled " + state;
-	                showToast(msg);
-	            }
-	         })
-	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_baseline_check_24);
+        TimePickerTileData timePickerTileData = new TimePickerTileData("TimePicker Tile", "Pick a time in the day")
+                .withTimeFormat(TimeFormat.CLOCK_12H)
+                .withOnSelectedListener(new OnTimeSelectedListener() {
+                    @Override
+                    public void onTimeSelected(int hours, int minutes) {
+                        String msg = "Hours: " + hours + ", Minutes: " + minutes;
+                        Toast.makeText(MyApp.this, msg, Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_clock_black_24dp);
 
 <br/>
 
 * Initializing a Seekbar Tile:    
 
-	  SeekbarTileData seekbarTileData = 
-	      new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
-	        .withDefaultValue(50)
-	        .withMaxValue(100)
-	        .withMinValue(0)
-	        .withOnChangeListener(new SeekBar.OnSeekBarChangeListener() {
-	            @Override
-	            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {}
+        SeekbarTileData seekbarTileData =
+                new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
+                        .withDefaultValue(50)
+                        .withMaxValue(100)
+                        .withMinValue(0)
+                        .withOnChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                            @Override
+                            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {}
 
-	            @Override
-	            public void onStartTrackingTouch(SeekBar seekBar) {}
+                            @Override
+                            public void onStartTrackingTouch(SeekBar seekBar) {}
 
-	            @Override
-	            public void onStopTrackingTouch(SeekBar seekBar) {
-	                showToast("Progress set to " + seekBar.getProgress());
-	            }
-	         })
-	        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_96_settings);
+                            @Override
+                            public void onStopTrackingTouch(SeekBar seekBar) {
+                                String msg = "Progress set to " + seekBar.getProgress();
+                                Toast.makeText(MyApp.this, msg, Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_96_settings);
 
 <br/>
 
@@ -183,7 +185,7 @@ allprojects {
 Add this dependency to your build.gradle of your app
 ```
 dependencies {
-	implementation 'com.github.Idan503:MySettingsScreen:<version>'
+	implementation 'com.github.Idan503:MySettingsScreen:v1.0.01'
 }
 ```	
 
