@@ -156,7 +156,7 @@ We can now call `initSettingsScreen` to launch the settings screen anytime we wa
 	            @Override
 	            public void onClick(View v) {
 	                MySettingsScreen.getInstance()
-					.initSettingsScreen(MainActivity.this, tiles, "My Settings Screen" );
+					.initSettingsScreen(MainActivity.this, "My Settings Screen" );
 	            }
 	        }
 	   );

@@ -31,11 +31,7 @@ public class MySettingsScreen {
 
     //Singleton instance of this class.
     private static MySettingsScreen single_instance = null;
-    private ArrayList<SettingsTileData> tilesData;
-
-    private MySettingsScreen(ArrayList<SettingsTileData> tilesDataList) {
-        tilesData = tilesDataList;
-    }
+    private ArrayList<SettingsTileData> tilesData = new ArrayList<>();
 
     private MySettingsScreen() {
     }
