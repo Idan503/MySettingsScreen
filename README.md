@@ -94,7 +94,8 @@ Feel free to check the [sample project](https://github.com/Idan503/MySettingsScr
 
 * Initializing a Time Picker Tile:
 
-        TimePickerTileData timePickerTileData = new TimePickerTileData("TimePicker Tile", "Pick a time in the day")
+        TimePickerTileData timePickerTileData = new TimePickerTileData("TimePicker Tile",
+		     "Pick a time in the day")
                 .withTimeFormat(TimeFormat.CLOCK_12H)
                 .withOnSelectedListener(new OnTimeSelectedListener() {
                     @Override
@@ -110,24 +111,24 @@ Feel free to check the [sample project](https://github.com/Idan503/MySettingsScr
 * Initializing a Seekbar Tile:    
 
         SeekbarTileData seekbarTileData =
-                new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
-                        .withDefaultValue(50)
-                        .withMaxValue(100)
-                        .withMinValue(0)
-                        .withOnChangeListener(new SeekBar.OnSeekBarChangeListener() {
-                            @Override
-                            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {}
+			new SeekbarTileData("Seekbar Tile", "Between min/max provided values")
+				.withDefaultValue(50)
+				.withMaxValue(100)
+				.withMinValue(0)
+				.withOnChangeListener(new SeekBar.OnSeekBarChangeListener() {
+					@Override
+					public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {}
 
-                            @Override
-                            public void onStartTrackingTouch(SeekBar seekBar) {}
+					@Override
+					public void onStartTrackingTouch(SeekBar seekBar) {}
 
-                            @Override
-                            public void onStopTrackingTouch(SeekBar seekBar) {
-                                String msg = "Progress set to " + seekBar.getProgress();
-                                Toast.makeText(MyApp.this, msg, Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_96_settings);
+					@Override
+					public void onStopTrackingTouch(SeekBar seekBar) {
+						String msg = "Progress set to " + seekBar.getProgress();
+						Toast.makeText(MyApp.this, msg, Toast.LENGTH_SHORT).show();
+					}
+				})
+				.withIconId(com.idankorenisraeli.mysettingsscreen.R.drawable.ic_96_settings);
 
 <br/>
 
@@ -157,7 +158,7 @@ We can now call `initSettingsScreen` to launch the settings screen anytime we wa
 	  main_BTN_settings.setOnClickListener( new View.OnClickListener() {
 	            @Override
 	            public void onClick(View v) {
-	                MySettingsScreen.getInstance()
+					MySettingsScreen.getInstance()
 					.initSettingsScreen(MainActivity.this, "My Settings Screen" );
 	            }
 	        }
